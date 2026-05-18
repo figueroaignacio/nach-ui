@@ -1,16 +1,16 @@
 import type { ComponentType } from 'react';
 
-import Dashboard01 from '@repo/ui/src/bricks/dashboard/dashboard-01/app/dashboard/page.js';
-import Dashboard02 from '@repo/ui/src/bricks/dashboard/dashboard-02/app/dashboard/page.js';
-import Login01 from '@repo/ui/src/bricks/login/login-01/app/login/page.js';
-import Login02 from '@repo/ui/src/bricks/login/login-02/app/login/page.js';
-import Login03 from '@repo/ui/src/bricks/login/login-03/app/login/page.js';
-import Pricing01 from '@repo/ui/src/bricks/pricing/pricing-01/app/pricing/page.js';
-import Pricing02 from '@repo/ui/src/bricks/pricing/pricing-02/app/pricing/page.js';
-import Settings01 from '@repo/ui/src/bricks/settings/settings-01/app/settings/page.js';
-import Settings02 from '@repo/ui/src/bricks/settings/settings-02/app/settings/page.js';
-import Signup01 from '@repo/ui/src/bricks/signup/signup-01/app/signup/page.js';
-import Signup02 from '@repo/ui/src/bricks/signup/signup-02/app/signup/page.js';
+import Dashboard01 from '@repo/ui/src/bricks/dashboard/dashboard-01/app/dashboard/page';
+import Dashboard02 from '@repo/ui/src/bricks/dashboard/dashboard-02/app/dashboard/page';
+import Login01 from '@repo/ui/src/bricks/login/login-01/app/login/page';
+import Login02 from '@repo/ui/src/bricks/login/login-02/app/login/page';
+import Login03 from '@repo/ui/src/bricks/login/login-03/app/login/page';
+import Pricing01 from '@repo/ui/src/bricks/pricing/pricing-01/app/pricing/page';
+import Pricing02 from '@repo/ui/src/bricks/pricing/pricing-02/app/pricing/page';
+import Settings01 from '@repo/ui/src/bricks/settings/settings-01/app/settings/page';
+import Settings02 from '@repo/ui/src/bricks/settings/settings-02/app/settings/page';
+import Signup01 from '@repo/ui/src/bricks/signup/signup-01/app/signup/page';
+import Signup02 from '@repo/ui/src/bricks/signup/signup-02/app/signup/page';
 
 export const BRICK_COMPONENTS: Record<string, ComponentType> = {
   'dashboard-01': Dashboard01,
