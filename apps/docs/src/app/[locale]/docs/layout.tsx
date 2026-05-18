@@ -1,3 +1,4 @@
+import { AiChat } from '@/features/chat/components/ai-chat';
 import { Sidebar } from '@/features/docs/components/sidebar';
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
@@ -6,6 +7,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
       <Sidebar />
       {children}
       <div id="toc-container" />
+      <AiChat />
     </div>
   );
 }

@@ -2,7 +2,6 @@ import { SkipLink } from '@/components/common/skip-link';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { Providers } from '@/components/providers';
-import { AiChat } from '@/features/chat/components/ai-chat';
 import { ThemeInitScript } from '@/features/theme/components/theme-init-script';
 import { routing } from '@/i18n/routing';
 import { fontHeading, fontSans } from '@/lib/font';
@@ -50,7 +49,6 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
               {children}
             </main>
             <Footer />
-            <AiChat />
           </Providers>
         </NextIntlClientProvider>
       </body>
