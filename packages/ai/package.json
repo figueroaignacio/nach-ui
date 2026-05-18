@@ -36,7 +36,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "check-types": "tsc --noEmit",
-    "ingest": "tsx --env-file=../../packages/db/.env --env-file=../../apps/docs/.env src/scripts/ingest.ts"
+    "ingest": "tsx --env-file=../../packages/db/.env --env-file=../../apps/web/.env src/scripts/ingest.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.72",
