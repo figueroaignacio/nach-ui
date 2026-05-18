@@ -4,6 +4,11 @@ import { motion } from 'motion/react';
 import * as React from 'react';
 import { cn } from '../lib/cn';
 
+const INDETERMINATE_ANIMATE = { left: ['-33%', '100%'] };
+const INDETERMINATE_TRANSITION = { repeat: Infinity, duration: 1.5, ease: 'easeInOut' } as const;
+const DETERMINATE_INITIAL = { x: '-100%' } as const;
+const DETERMINATE_TRANSITION = { type: 'spring', stiffness: 50, damping: 15 } as const;
+
 export interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: number | null;
   max?: number;
@@ -29,15 +34,15 @@ function Progress({
       {value === null || value === undefined ? (
         <motion.div
           className="bg-primary absolute inset-y-0 w-1/3 rounded-full"
-          animate={{ left: ['-33%', '100%'] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+          animate={INDETERMINATE_ANIMATE}
+          transition={INDETERMINATE_TRANSITION}
         />
       ) : (
         <motion.div
           className="bg-primary h-full w-full flex-1"
-          initial={{ x: '-100%' }}
+          initial={DETERMINATE_INITIAL}
           animate={{ x: `-${100 - (value / max) * 100}%` }}
-          transition={{ type: 'spring', stiffness: 50, damping: 15 }}
+          transition={DETERMINATE_TRANSITION}
         />
       )}
     </div>

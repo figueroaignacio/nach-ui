@@ -142,6 +142,8 @@ function ToastItem({ toast: t, onDismiss, position }: ToastItemProps) {
       animate={TOAST_ENTER.animate}
       exit={{ ...TOAST_EXIT_BY_POSITION[position], transition: TOAST_EXIT_TRANSITION }}
       transition={TOAST_TRANSITION}
+      role={t.variant === 'error' || t.variant === 'warning' ? 'alert' : 'status'}
+      aria-live="polite"
       className={cn(toastVariants({ variant: t.variant }), 'flex-col')}
     >
       <div className="flex w-full items-center gap-2">
@@ -149,6 +151,7 @@ function ToastItem({ toast: t, onDismiss, position }: ToastItemProps) {
         <p className="flex-1 text-sm font-semibold">{t.title}</p>
         <button
           type="button"
+          aria-label="Dismiss notification"
           onClick={() => onDismiss(t.id)}
           className="shrink-0 opacity-50 transition-opacity hover:opacity-100"
         >
@@ -207,7 +210,10 @@ function ToastProvider({
 
   const toast = React.useCallback(
     (options: ToastOptions): string => {
-      const id = `toast-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+      const id =
+        typeof crypto !== 'undefined' && crypto.randomUUID
+          ? crypto.randomUUID()
+          : `toast-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
       const newToast: ToastData = { ...options, id };
 
       setToasts((prev) => {
@@ -231,9 +237,8 @@ function ToastProvider({
       {mounted &&
         createPortal(
           <div
-            role="status"
-            aria-live="polite"
-            aria-relevant="additions"
+            role="region"
+            aria-label="Notifications"
             className={cn(
               'pointer-events-none fixed z-9999 flex max-h-screen gap-2 p-4',
               POSITION_CLASSES[position],

@@ -70,8 +70,8 @@ const collapsibleTriggerVariants = cva(
     variants: {
       variant: {
         default: 'hover:opacity-80',
-        bordered: 'p-4',
-        card: 'p-4',
+        bordered: 'p-4 hover:bg-muted/50',
+        card: 'p-4 hover:bg-muted/50',
       },
     },
     defaultVariants: {
@@ -234,12 +234,8 @@ const CollapsibleTrigger = ({
       data-state={isOpen ? 'open' : 'closed'}
       aria-expanded={isOpen}
       aria-controls={`${id}-content`}
-      whileHover={
-        !disabled && !shouldReduceMotion
-          ? { scale: 1.005, backgroundColor: 'rgba(0,0,0,0.02)' }
-          : {}
-      }
-      whileTap={!disabled && !shouldReduceMotion ? { scale: 0.99 } : {}}
+      whileHover={!disabled && !shouldReduceMotion ? { scale: 1.005 } : undefined}
+      whileTap={!disabled && !shouldReduceMotion ? { scale: 0.99 } : undefined}
       className={cn(collapsibleTriggerVariants({ variant }), className)}
       {...props}
     >

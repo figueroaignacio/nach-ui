@@ -49,7 +49,7 @@ export interface AvatarImageProps extends React.ImgHTMLAttributes<HTMLImageEleme
 const AvatarImage = ({ className, src, ...props }: AvatarImageProps) => {
   const { status, setStatus } = useAvatarContext();
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if (!src) setStatus('error');
     else setStatus('loading');
   }, [src, setStatus]);

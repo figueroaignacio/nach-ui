@@ -48,6 +48,15 @@ const DRAWER_CONTENT_STYLE = { willChange: 'transform' } as const;
 const CLOSE_BUTTON_TAP = { scale: 0.9 } as const;
 const SWIPE_CLOSE_THRESHOLD = 80;
 
+const FOCUSABLE_SELECTOR = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])',
+].join(', ');
+
 // --- Context ---
 
 type DrawerContextProps = {
@@ -195,22 +204,13 @@ const DrawerContent = ({
 
     triggerRef.current = document.activeElement as HTMLElement;
 
-    const focusableSelector = [
-      'a[href]',
-      'button:not([disabled])',
-      'input:not([disabled])',
-      'select:not([disabled])',
-      'textarea:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])',
-    ].join(', ');
-
     const trapFocus = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
 
       const content = contentRef.current;
       if (!content) return;
 
-      const focusable = Array.from(content.querySelectorAll<HTMLElement>(focusableSelector));
+      const focusable = Array.from(content.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
       if (focusable.length === 0) return;
 
       const first = focusable[0];
@@ -239,7 +239,7 @@ const DrawerContent = ({
     requestAnimationFrame(() => {
       const content = contentRef.current;
       if (content) {
-        const focusable = content.querySelector<HTMLElement>(focusableSelector);
+        const focusable = content.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
         focusable?.focus();
       }
     });
@@ -348,7 +348,7 @@ const DrawerClose = ({ children }: { children: React.ReactNode }) => {
   const { setOpen } = useDrawerContext();
 
   return (
-    <button type="button" onClick={() => setOpen(false)}>
+    <button type="button" aria-label="Close" onClick={() => setOpen(false)}>
       {children}
     </button>
   );

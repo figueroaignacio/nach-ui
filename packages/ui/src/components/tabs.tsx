@@ -229,19 +229,21 @@ const TabsTrigger = ({
     }
   };
 
-  // Merge the external ref with our internal buttonRef
-  React.useEffect(() => {
-    if (!ref) return;
-    if (typeof ref === 'function') {
-      ref(buttonRef.current);
-    } else {
-      (ref as React.MutableRefObject<HTMLButtonElement | null>).current = buttonRef.current;
-    }
-  }, [ref]);
+  const mergedRef = React.useCallback(
+    (node: HTMLButtonElement | null) => {
+      (buttonRef as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        (ref as React.MutableRefObject<HTMLButtonElement | null>).current = node;
+      }
+    },
+    [ref],
+  );
 
   return (
     <button
-      ref={buttonRef}
+      ref={mergedRef}
       type="button"
       role="tab"
       id={`${layoutId}-trigger-${value}`}

@@ -60,6 +60,47 @@ const DROPDOWN_ICON_TRANSITION = { type: 'spring', stiffness: 300, damping: 20 }
 const DROPDOWN_ICON_STYLE = { willChange: 'transform' } as const;
 const DROPDOWN_CONTENT_STYLE = { willChange: 'opacity, transform, filter' } as const;
 
+const ALIGN_CLASSES = {
+  start: 'left-0 origin-top-left',
+  center: 'left-1/2 -translate-x-1/2 origin-top',
+  end: 'right-0 origin-top-right',
+} as const;
+
+const DROPDOWN_INITIAL = {
+  bottom: { opacity: 0, scale: 0.95, y: -8, filter: 'blur(4px)' },
+  top: { opacity: 0, scale: 0.95, y: 8, filter: 'blur(4px)' },
+} as const;
+
+const DROPDOWN_ANIMATE = {
+  opacity: 1,
+  scale: 1,
+  y: 0,
+  filter: 'blur(0px)',
+  transition: {
+    type: 'spring',
+    duration: 0.3,
+    bounce: 0,
+    opacity: { duration: 0.2 },
+  },
+} as const;
+
+const DROPDOWN_EXIT = {
+  bottom: {
+    opacity: 0,
+    scale: 0.98,
+    y: -4,
+    filter: 'blur(2px)',
+    transition: { duration: 0.15 },
+  },
+  top: {
+    opacity: 0,
+    scale: 0.98,
+    y: 4,
+    filter: 'blur(2px)',
+    transition: { duration: 0.15 },
+  },
+} as const;
+
 // --- Context ---
 
 const DropdownContext = React.createContext<DropdownContextValue | null>(null);
@@ -262,12 +303,6 @@ const DropdownMenuContent = ({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, closeMenu]);
 
-  const alignClasses = {
-    start: 'left-0 origin-top-left',
-    center: 'left-1/2 -translate-x-1/2 origin-top',
-    end: 'right-0 origin-top-right',
-  };
-
   const transformOriginClass =
     position === 'bottom'
       ? align === 'start'
@@ -294,36 +329,14 @@ const DropdownMenuContent = ({
           id={contentId}
           role="menu"
           aria-labelledby={triggerId}
-          initial={{
-            opacity: 0,
-            scale: 0.95,
-            y: position === 'bottom' ? -8 : 8,
-            filter: 'blur(4px)',
-          }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            filter: 'blur(0px)',
-            transition: {
-              type: 'spring',
-              duration: 0.3,
-              bounce: 0,
-              opacity: { duration: 0.2 },
-            },
-          }}
-          exit={{
-            opacity: 0,
-            scale: 0.98,
-            y: position === 'bottom' ? -4 : 4,
-            filter: 'blur(2px)',
-            transition: { duration: 0.15 },
-          }}
+          initial={DROPDOWN_INITIAL[position]}
+          animate={DROPDOWN_ANIMATE}
+          exit={DROPDOWN_EXIT[position]}
           style={{ ...verticalStyle, ...DROPDOWN_CONTENT_STYLE }}
           className={cn(
             'border-border absolute z-50 min-w-48 overflow-hidden rounded-md border',
             'bg-background backdrop-blur-lg',
-            alignClasses[align].split(' ')[0],
+            ALIGN_CLASSES[align].split(' ')[0],
             transformOriginClass,
             className,
           )}
@@ -379,18 +392,14 @@ const DropdownMenuItem = ({
     [disabled, onClick, onSelect, closeMenu],
   );
 
-  const style = {
-    '--accent': variant === 'destructive' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(0,0,0, 0.04)',
-  } as React.CSSProperties;
-
   const content = (
     <motion.div
       role="menuitem"
       tabIndex={disabled ? -1 : 0}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      whileHover={!disabled ? { backgroundColor: 'var(--muted)', scale: 1 } : {}}
-      whileTap={!disabled ? { scale: 0.98 } : {}}
+      whileHover={!disabled ? { backgroundColor: 'var(--muted)', scale: 1 } : undefined}
+      whileTap={!disabled ? { scale: 0.98 } : undefined}
       className={cn(
         'relative flex cursor-pointer items-center rounded-md px-3 py-2 text-sm outline-none select-none',
         'transition-colors duration-200',
@@ -398,7 +407,6 @@ const DropdownMenuItem = ({
         variant === 'destructive' && 'text-destructive focus:text-destructive',
         className,
       )}
-      style={style}
     >
       {children}
     </motion.div>
@@ -418,10 +426,7 @@ const DropdownMenuItem = ({
         className,
         (children.props as Record<string, unknown>)?.className as string | undefined,
       ),
-      style: {
-        ...style,
-        ...((children.props as Record<string, unknown>)?.style as React.CSSProperties | undefined),
-      },
+      style: (children.props as Record<string, unknown>)?.style as React.CSSProperties | undefined,
     } as React.ComponentProps<'div'>);
   }
 

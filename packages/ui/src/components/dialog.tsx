@@ -8,6 +8,15 @@ import { cloneElement } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '../lib/cn';
 
+const FOCUSABLE_SELECTOR = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])',
+].join(', ');
+
 // --- Animation constants (module level) ---
 
 const OVERLAY_VARIANTS = {
@@ -208,22 +217,13 @@ const DialogContent = ({
 
     triggerRef.current = document.activeElement as HTMLElement;
 
-    const focusableSelector = [
-      'a[href]',
-      'button:not([disabled])',
-      'input:not([disabled])',
-      'select:not([disabled])',
-      'textarea:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])',
-    ].join(', ');
-
     const trapFocus = (e: KeyboardEvent) => {
       if (e.key !== 'Tab') return;
 
       const content = contentRef.current;
       if (!content) return;
 
-      const focusable = Array.from(content.querySelectorAll<HTMLElement>(focusableSelector));
+      const focusable = Array.from(content.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
       if (focusable.length === 0) return;
 
       const first = focusable[0];
@@ -252,25 +252,20 @@ const DialogContent = ({
     requestAnimationFrame(() => {
       const content = contentRef.current;
       if (content) {
-        const focusable = content.querySelector<HTMLElement>(focusableSelector);
+        const focusable = content.querySelector<HTMLElement>(FOCUSABLE_SELECTOR);
         focusable?.focus();
       }
     });
 
+    document.body.style.overflow = 'hidden';
+
     return () => {
       document.removeEventListener('keydown', trapFocus);
       document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
       triggerRef.current?.focus();
     };
   }, [open, setOpen]);
-
-  React.useEffect(() => {
-    if (!open) return;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [open]);
 
   return (
     <AnimatePresence mode="wait">
