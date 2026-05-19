@@ -75,6 +75,7 @@ export function Footer() {
             <FooterLink href="/docs/components">{t('footer.product.components')}</FooterLink>
             <FooterLink href="/docs/installation">{t('footer.product.installation')}</FooterLink>
             <FooterLink href="/blog">{t('footer.product.blog')}</FooterLink>
+            <FooterLink href="/about">{t('footer.product.about')}</FooterLink>
           </FooterSection>
           <FooterSection title={t('footer.resources.title')}>
             <FooterLink href="/docs/concepts/theming">{t('footer.resources.theming')}</FooterLink>

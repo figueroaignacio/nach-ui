@@ -107,7 +107,8 @@
       "docs": "Documentation",
       "components": "Components",
       "installation": "Installation",
-      "blog": "Blog"
+      "blog": "Blog",
+      "about": "About"
     },
     "resources": {
       "title": "Resources",
@@ -165,5 +166,13 @@
         "answer": "Always. All components follow WCAG 2.2 and WAI-ARIA standards out of the box. Keyboard navigation, screen reader support, and proper focus states are fundamental, not optional."
       }
     ]
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "Why I created this project",
+    "content1": "I built NachUI with a simple goal: to learn.",
+    "content2": "What started as just a couple of basic components quickly evolved. Curiosity drove me to integrate native AI capabilities, develop a full backend, build a smart CLI, and implement comprehensive testing.",
+    "content3": "But beyond the technical growth, my goal was always to create something genuinely useful. Something free of bloat, free of lock-in, and built with absolute care.",
+    "content4": "This project is a labor of love—what we call in Spanish \"amor al arte\""
   }
 }
