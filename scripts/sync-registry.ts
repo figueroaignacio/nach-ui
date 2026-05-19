@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const UI_COMPONENTS_ROOT = path.resolve(process.cwd(), 'packages/ui/src/components');
+const LAYOUT_COMPONENTS_ROOT = path.resolve(process.cwd(), 'packages/ui/src/layout');
 
 function extractDependencies(code: string): string[] {
   const dependencies: string[] = [];
@@ -34,18 +35,16 @@ function extractDependencies(code: string): string[] {
   return [...new Set(dependencies)];
 }
 
-async function syncRegistry() {
-  console.log('🚀 Starting sync registry...');
-
-  if (!fs.existsSync(UI_COMPONENTS_ROOT)) {
-    console.error(`❌ Error: Root path not found: ${UI_COMPONENTS_ROOT}`);
-    process.exit(1);
+async function processDirectory(dirPath: string, type: 'ui' | 'layout') {
+  if (!fs.existsSync(dirPath)) {
+    console.error(`❌ Error: Root path not found: ${dirPath}`);
+    return;
   }
 
-  const items = fs.readdirSync(UI_COMPONENTS_ROOT);
+  const items = fs.readdirSync(dirPath);
 
   for (const item of items) {
-    const itemPath = path.join(UI_COMPONENTS_ROOT, item);
+    const itemPath = path.join(dirPath, item);
     const stats = fs.statSync(itemPath);
 
     let code = '',
@@ -75,7 +74,7 @@ async function syncRegistry() {
           name,
           slug,
           code,
-          type: 'ui',
+          type,
           dependencies: deps,
           registryDependencies: [],
         })
@@ -93,6 +92,13 @@ async function syncRegistry() {
       console.error(`❌ Error syncing ${name}:`, error);
     }
   }
+}
+
+async function syncRegistry() {
+  console.log('🚀 Starting sync registry...');
+
+  await processDirectory(UI_COMPONENTS_ROOT, 'ui');
+  await processDirectory(LAYOUT_COMPONENTS_ROOT, 'ui'); // Keeping type 'ui' as per DB schema if it doesn't have 'layout'
 
   console.log('\n✨ Syncing finished successfully.');
   process.exit(0);
