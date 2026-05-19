@@ -41,6 +41,7 @@ import { WithLabel as CheckboxWithLabel } from '@repo/ui/src/demos/checkbox/with
 import { Bordered as CollapsibleBordered } from '@repo/ui/src/demos/collapsible/bordered';
 import { Card as CollapsibleCard } from '@repo/ui/src/demos/collapsible/card';
 import { Default as CollapsibleDefault } from '@repo/ui/src/demos/collapsible/default';
+import { Default as ContainerDefault } from '@repo/ui/src/demos/container/default';
 import { Alert as DialogAlert } from '@repo/ui/src/demos/dialog/alert';
 import { Default as DialogDefault } from '@repo/ui/src/demos/dialog/default';
 import { Default as DrawerDefault } from '@repo/ui/src/demos/drawer/default';
@@ -50,6 +51,8 @@ import { Checkboxes as DropdownMenuCheckboxes } from '@repo/ui/src/demos/dropdow
 import { Default as DropdownMenuDefault } from '@repo/ui/src/demos/dropdown-menu/default';
 import { RadioGroup as DropdownMenuRadioGroup } from '@repo/ui/src/demos/dropdown-menu/radio-group';
 import { Default as FilesDefault } from '@repo/ui/src/demos/files/default';
+import { Default as FlexDefault } from '@repo/ui/src/demos/flex/default';
+import { Default as GridDefault } from '@repo/ui/src/demos/grid/default';
 import { Default as InputDefault } from '@repo/ui/src/demos/input/default';
 import { Disabled as InputDisabled } from '@repo/ui/src/demos/input/disabled';
 import { Sizes as InputSizes } from '@repo/ui/src/demos/input/sizes';
@@ -78,6 +81,7 @@ import { Default as SkeletonDefault } from '@repo/ui/src/demos/skeleton/default'
 import SpinnerDefault from '@repo/ui/src/demos/spinner/default';
 import SpinnerSizes from '@repo/ui/src/demos/spinner/sizes';
 import SpinnerVariants from '@repo/ui/src/demos/spinner/variants';
+import { Default as StackDefault } from '@repo/ui/src/demos/stack/default';
 import { Default as SwitchDefault } from '@repo/ui/src/demos/switch/default';
 import { Disabled as SwitchDisabled } from '@repo/ui/src/demos/switch/disabled';
 import { WithLabel as SwitchWithLabel } from '@repo/ui/src/demos/switch/with-label';
@@ -93,10 +97,10 @@ import { Variants as ToastVariants } from '@repo/ui/src/demos/toast/variants';
 import { WithAction as ToastWithAction } from '@repo/ui/src/demos/toast/with-action';
 import { Default as TooltipDefault } from '@repo/ui/src/demos/tooltip/default';
 import { Positions as TooltipPositions } from '@repo/ui/src/demos/tooltip/positions';
-import { Default as FlexDefault } from '@repo/ui/src/demos/flex/default';
-import { Default as StackDefault } from '@repo/ui/src/demos/stack/default';
-import { Default as GridDefault } from '@repo/ui/src/demos/grid/default';
-import { Default as ContainerDefault } from '@repo/ui/src/demos/container/default';
+import { CustomTag as TypographyCustomTag } from '@repo/ui/src/demos/typography/custom-tag';
+import { Default as TypographyDefault } from '@repo/ui/src/demos/typography/default';
+import { Headings as TypographyHeadings } from '@repo/ui/src/demos/typography/headings';
+import { LeadMuted as TypographyLeadMuted } from '@repo/ui/src/demos/typography/lead-muted';
 import React from 'react';
 
 export const DEMO_COMPONENTS: Record<string, Record<string, React.ComponentType>> = {
@@ -264,5 +268,11 @@ export const DEMO_COMPONENTS: Record<string, Record<string, React.ComponentType>
   },
   container: {
     default: ContainerDefault,
+  },
+  typography: {
+    default: TypographyDefault,
+    headings: TypographyHeadings,
+    'lead-muted': TypographyLeadMuted,
+    'custom-tag': TypographyCustomTag,
   },
 };

@@ -32,6 +32,7 @@ export const COMPONENT_REGISTRY = {
   stack: 'packages/ui/src/layout/stack.tsx',
   grid: 'packages/ui/src/layout/grid.tsx',
   container: 'packages/ui/src/layout/container.tsx',
+  typography: 'packages/ui/src/components/typography.tsx',
 } as const;
 
 export const DEMO_REGISTRY = {
@@ -239,6 +240,13 @@ export const DEMO_REGISTRY = {
   // Container demos
   container: {
     default: 'packages/ui/src/demos/container/default.tsx',
+  },
+  // Typography demos
+  typography: {
+    default: 'packages/ui/src/demos/typography/default.tsx',
+    headings: 'packages/ui/src/demos/typography/headings.tsx',
+    'lead-muted': 'packages/ui/src/demos/typography/lead-muted.tsx',
+    'custom-tag': 'packages/ui/src/demos/typography/custom-tag.tsx',
   },
 } as const;
 
