@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { Badge } from '@repo/ui/components/badge';
 import { Card } from '@repo/ui/components/card';
 import { Checkbox } from '@repo/ui/components/checkbox';
@@ -34,7 +35,7 @@ export function PreviewTasks() {
               >
                 Update landing hero copy
               </Label>
-              <p className="text-muted-foreground text-[10px]">Due in 2 hours</p>
+              <Typography variant="p" className="text-muted-foreground text-[10px]">Due in 2 hours</Typography>
             </div>
           </div>
           <div className="flex items-start gap-3">

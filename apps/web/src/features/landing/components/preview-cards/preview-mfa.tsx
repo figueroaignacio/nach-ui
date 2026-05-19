@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { Avatar } from '@repo/ui/components/avatar';
 import { Button } from '@repo/ui/components/button';
 import { Card } from '@repo/ui/components/card';
@@ -29,12 +30,12 @@ export function PreviewMfa() {
 
         <div className="flex w-full flex-col items-center space-y-4 text-center">
           <div className="space-y-1">
-            <h3 className="text-foreground text-sm font-bold tracking-tight uppercase">
+            <Typography variant="h3" className="text-foreground text-sm font-bold tracking-tight uppercase">
               MFA Required
-            </h3>
-            <p className="text-muted-foreground text-[10px]">
+            </Typography>
+            <Typography variant="p" className="text-muted-foreground text-[10px]">
               Enter the 6-digit code from your authenticator app.
-            </p>
+            </Typography>
           </div>
           <div className="flex justify-center gap-2">
             {[3, 8, 4, 1, 0, 0].map((v, i) => (
@@ -45,12 +46,12 @@ export function PreviewMfa() {
               />
             ))}
           </div>
-          <p className="text-muted-foreground text-[10px]">
+          <Typography variant="p" className="text-muted-foreground text-[10px]">
             Lost access?{' '}
             <span className="text-foreground cursor-pointer font-bold underline underline-offset-2">
               Use recovery code
             </span>
-          </p>
+          </Typography>
         </div>
 
         <div className="grid w-full grid-cols-2 gap-2">

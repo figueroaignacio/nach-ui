@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 // Hooks
 import { useTranslations } from 'next-intl';
 
@@ -10,8 +11,8 @@ export default function BlogPage() {
   return (
     <section className="container mx-auto space-y-12 py-12">
       <div className="space-y-1">
-        <h1 className="text-2xl font-bold">Blog</h1>
-        <h2 className="text-muted-foreground text-lg">{t('subtitle')}</h2>
+        <Typography variant="h1" className="text-2xl font-bold">Blog</Typography>
+        <Typography variant="h2" className="text-muted-foreground text-lg">{t('subtitle')}</Typography>
       </div>
       <AllPosts />
     </section>

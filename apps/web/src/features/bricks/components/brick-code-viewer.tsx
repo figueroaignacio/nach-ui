@@ -3,6 +3,7 @@
 import { CodeBlock } from '@/components/mdx/codeblock';
 import type { BrickSourceFile } from '@/features/bricks/lib/get-brick-source';
 import { Files } from '@repo/ui/components/files';
+import { Typography } from '@repo/ui/components/typography';
 import { cn } from '@repo/ui/lib/cn';
 import { useMemo, useState } from 'react';
 
@@ -141,7 +142,12 @@ export function BrickCodeViewer({ files }: BrickCodeViewerProps) {
     <div className="dark text-foreground flex min-h-[500px] flex-col overflow-hidden rounded-lg bg-[#0e1216] md:flex-row">
       <div className="flex flex-col border-b md:w-64 md:border-r md:border-b-0">
         <div className="p-3">
-          <h4 className="text-xs font-semibold tracking-wider text-white/80 uppercase">Files</h4>
+          <Typography
+            variant="h4"
+            className="text-xs font-semibold tracking-wider text-white/80 uppercase"
+          >
+            Files
+          </Typography>
         </div>
         <div className="flex-1 overflow-auto py-2">
           <Files
@@ -164,7 +170,6 @@ export function BrickCodeViewer({ files }: BrickCodeViewerProps) {
           language="tsx"
           filename={activeFileName}
           showLineNumbers
-          isExpanded
           className="mt-0 h-full rounded-none border-0"
         />
       </div>

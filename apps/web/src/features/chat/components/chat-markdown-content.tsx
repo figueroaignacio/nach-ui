@@ -3,6 +3,7 @@
 import { CodeBlock } from '@/components/mdx/codeblock';
 import { InlineCode } from '@/components/mdx/inline-code';
 import { Table } from '@repo/ui/components/table';
+import { Typography } from '@repo/ui/components/typography';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -17,29 +18,44 @@ export function ChatMarkdownContent({ content }: MarkdownContentProps) {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ children }) => (
-            <h1 className="text-foreground wrap-break-words mt-8 mb-4 text-3xl font-bold tracking-tight first:mt-0">
+            <Typography
+              variant="h1"
+              className="text-foreground wrap-break-words mt-8 mb-4 text-3xl font-bold tracking-tight first:mt-0"
+            >
               {children}
-            </h1>
+            </Typography>
           ),
           h2: ({ children }) => (
-            <h2 className="text-foreground wrap-break-words mt-8 mb-4 text-2xl font-semibold tracking-tight first:mt-0">
+            <Typography
+              variant="h2"
+              className="text-foreground wrap-break-words mt-8 mb-4 text-2xl font-semibold tracking-tight first:mt-0"
+            >
               {children}
-            </h2>
+            </Typography>
           ),
           h3: ({ children }) => (
-            <h3 className="text-foreground wrap-break-words mt-6 mb-3 text-xl font-semibold tracking-tight">
+            <Typography
+              variant="h3"
+              className="text-foreground wrap-break-words mt-6 mb-3 text-xl font-semibold tracking-tight"
+            >
               {children}
-            </h3>
+            </Typography>
           ),
           h4: ({ children }) => (
-            <h4 className="text-foreground wrap-break-words mt-4 mb-2 text-lg font-semibold tracking-tight">
+            <Typography
+              variant="h4"
+              className="text-foreground wrap-break-words mt-4 mb-2 text-lg font-semibold tracking-tight"
+            >
               {children}
-            </h4>
+            </Typography>
           ),
           p: ({ children }) => (
-            <p className="text-foreground wrap-break-words mb-4 leading-7 not-first:mt-4">
+            <Typography
+              variant="p"
+              className="text-foreground wrap-break-words mb-4 leading-7 not-first:mt-4"
+            >
               {children}
-            </p>
+            </Typography>
           ),
           ul: ({ children }) => (
             <ul className="text-foreground wrap-break-words my-6 ml-6 list-disc space-y-2 [&>li]:pl-2">

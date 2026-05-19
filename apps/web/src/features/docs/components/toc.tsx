@@ -2,6 +2,7 @@
 
 import { GitHubStarTocCta } from '@/components/common/github-star-cta';
 import { useMounted } from '@/hooks/use-mounted';
+import { Typography } from '@repo/ui/components/typography';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
@@ -81,9 +82,12 @@ export function Toc({ toc }: TocProps) {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <p className="text-muted-foreground/60 text-[10px] font-semibold tracking-[0.15em] uppercase">
+      <Typography
+        variant="p"
+        className="text-muted-foreground/60 text-[10px] font-semibold tracking-[0.15em] uppercase"
+      >
         {t('label')}
-      </p>
+      </Typography>
 
       <Tree tree={toc} activeItem={activeHeading} />
 

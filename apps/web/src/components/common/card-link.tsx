@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Card } from '@repo/ui/components/card';
+import { Typography } from '@repo/ui/components/typography';
 
 interface CardLinkProps {
   label: string;
@@ -20,7 +21,9 @@ export function CardLink({ label, href, description }: CardLinkProps) {
         </Card.Header>
         {description && (
           <Card.Content compact>
-            <p className="text-muted-foreground text-sm">{description}</p>
+            <Typography variant="p" className="text-muted-foreground text-sm">
+              {description}
+            </Typography>
           </Card.Content>
         )}
         <Card.Footer align="end" compact>

@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { ArrowRight02Icon, SourceCodeIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Button } from '@repo/ui/components/button';
+import { Typography } from '@repo/ui/components/typography';
 import type { Variants } from 'motion/react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
@@ -47,12 +48,18 @@ export function LandingHero() {
       >
         <motion.div variants={itemVariants} className="space-y-4 text-center">
           <GitHubStarHeroCta />
-          <h1 className="text-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
+          <Typography
+            variant="h1"
+            className="text-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl"
+          >
             {t('subheading1')}
-          </h1>
-          <h1 className="text-muted-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
+          </Typography>
+          <Typography
+            variant="h1"
+            className="text-muted-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl"
+          >
             {t('subheading2')}
-          </h1>
+          </Typography>
         </motion.div>
         <motion.p
           variants={itemVariants}

@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { Steps } from '@repo/ui/components/steps';
 import { useTranslations } from 'next-intl';
 import { ComponentInstallTabsClient } from './component-install-tabs-client';
@@ -16,17 +17,17 @@ export function ComponentInstallTabs({ component, dependencies }: ComponentInsta
     <Steps>
       {dependencies ? (
         <>
-          <h4>{t('dependencies')}</h4>
+          <Typography variant="h4">{t('dependencies')}</Typography>
           <PackageManagerTabs command={dependencies} />
-          <h4>{t('copyCode')}</h4>
+          <Typography variant="h4">{t('copyCode')}</Typography>
           <ComponentSource component={component} />
-          <h4>{t('updatePaths')}</h4>
+          <Typography variant="h4">{t('updatePaths')}</Typography>
         </>
       ) : (
         <>
-          <h4 className="text-sm">{t('copyCode')}</h4>
+          <Typography variant="h4" className="text-sm">{t('copyCode')}</Typography>
           <ComponentSource component={component} />
-          <h4 className="text-sm">{t('updatePaths')}</h4>
+          <Typography variant="h4" className="text-sm">{t('updatePaths')}</Typography>
         </>
       )}
     </Steps>

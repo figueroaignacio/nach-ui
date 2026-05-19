@@ -8,6 +8,7 @@ import type { DocSection, Navigation } from '@/lib/definitions';
 import { getIcon } from '@/lib/get-icon';
 import { Cancel01Icon, PanelLeftIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { Typography } from '@repo/ui/components/typography';
 import { cn } from '@repo/ui/lib/cn';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -80,9 +81,12 @@ export function MobileMenu() {
         <div className="flex-1 overflow-y-auto px-6 py-6">
           {navigation && navigation.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-muted-foreground mb-3 text-xs font-bold tracking-widest uppercase">
+              <Typography
+                variant="h2"
+                className="text-muted-foreground mb-3 text-xs font-bold tracking-widest uppercase"
+              >
                 Menu
-              </h2>
+              </Typography>
               <ul className="space-y-1">
                 {navigation.map((item) => {
                   const isActive = pathname === item.href;
@@ -111,10 +115,13 @@ export function MobileMenu() {
           )}
           {docsNavigation.map((section, sectionIndex) => (
             <div key={sectionIndex} className="mb-6 last:mb-0">
-              <h2 className="text-foreground font-heading mb-3 flex items-center gap-2 text-sm font-bold tracking-tight">
+              <Typography
+                variant="h2"
+                className="text-foreground font-heading mb-3 flex items-center gap-2 text-sm font-bold tracking-tight"
+              >
                 {getIcon(section.title)}
                 {section.title}
-              </h2>
+              </Typography>
               <ul className="ml-1.5 space-y-1 border-l pl-4">
                 {section.items.map((item, itemIndex) => {
                   const isActive = pathname === item.href;

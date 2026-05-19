@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { Link } from '@/i18n/navigation';
 import type { NavigationSection, SearchResultItem } from '@/lib/definitions';
 import { Dialog } from '@repo/ui/components/dialog';
@@ -31,7 +32,7 @@ export function SearchResults({ query, results, navigation, selectedIndex }: Sea
     return (
       <div ref={containerRef} className="max-h-[300px] overflow-y-auto p-2">
         <div className="mb-2">
-          <h2 className="text-muted-foreground px-2 py-1.5 text-xs font-medium">Results</h2>
+          <Typography variant="h2" className="text-muted-foreground px-2 py-1.5 text-xs font-medium">Results</Typography>
           <ul className="space-y-0.5">
             {results.map((item, index) => {
               const isActive = index === selectedIndex;
@@ -65,7 +66,7 @@ export function SearchResults({ query, results, navigation, selectedIndex }: Sea
     <div ref={containerRef} className="max-h-[300px] overflow-y-auto p-2">
       {navigation.map((section) => (
         <div key={section.title} className="mb-4 last:mb-0">
-          <h2 className="text-muted-foreground px-2 py-1.5 text-xs font-medium">{section.title}</h2>
+          <Typography variant="h2" className="text-muted-foreground px-2 py-1.5 text-xs font-medium">{section.title}</Typography>
           <ul className="space-y-0.5">
             {section.items.map((item) => {
               const isActive = globalIndex === selectedIndex;

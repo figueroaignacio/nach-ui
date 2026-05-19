@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { MDXContent } from '@/components/mdx/mdx-content';
 import { DocActions } from '@/features/docs/components/doc-actions';
 import { DocsNavigationButtons } from '@/features/docs/components/docs-navigation-button';
@@ -40,13 +41,13 @@ export default async function DocPage({ params }: { params: Promise<DocPageProps
         <div className="mt-8 mb-10 flex flex-col gap-1 sm:mt-10 sm:mb-12">
           <MobileToc toc={tocContent} />
           <div className="flex flex-col gap-3">
-            <h1 className="font-heading text-foreground text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl">
+            <Typography variant="h1" className="font-heading text-foreground text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl">
               {doc.title}
-            </h1>
+            </Typography>
             {doc.description && (
-              <p className="text-muted-foreground max-w-2xl text-base leading-relaxed sm:text-lg">
+              <Typography variant="p" className="text-muted-foreground max-w-2xl text-base leading-relaxed sm:text-lg">
                 {doc.description}
-              </p>
+              </Typography>
             )}
           </div>
           <div className="mt-5 flex flex-wrap items-center justify-between gap-3 pb-5">

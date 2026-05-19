@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import type { Message } from '@/lib/definitions';
 import { cn } from '@repo/ui/lib/cn';
 import { ChatExplanationRequest } from './chat-explanation-request';
@@ -30,9 +31,9 @@ export function ChatMessage({ message, isStreaming }: ChatMessageProps) {
             {isExplanation ? (
               <ChatExplanationRequest componentName={componentName} />
             ) : (
-              <p className="bg-foreground text-background max-w-[85%] rounded-[24px] rounded-tr-[4px] px-6 py-3.5 text-[15px] leading-relaxed font-medium wrap-break-word shadow-sm ring-1 ring-black/5 dark:ring-white/10">
+              <Typography variant="p" className="bg-foreground text-background max-w-[85%] rounded-[24px] rounded-tr-[4px] px-6 py-3.5 text-[15px] leading-relaxed font-medium wrap-break-word shadow-sm ring-1 ring-black/5 dark:ring-white/10">
                 {message.content}
-              </p>
+              </Typography>
             )}
           </div>
         ) : (

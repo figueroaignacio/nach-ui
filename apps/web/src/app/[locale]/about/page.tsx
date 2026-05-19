@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 
@@ -38,17 +39,17 @@ export default async function AboutPage({ params }: PageProps) {
             className="border-border relative z-10 rounded-full border shadow-md"
           />
         </div>
-        <h1 className="text-foreground mb-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+        <Typography variant="h1" className="text-foreground mb-4 text-4xl font-extrabold tracking-tight md:text-5xl">
           {t('title')}
-        </h1>
-        <h2 className="text-muted-foreground mb-12 text-xl font-medium md:text-2xl">
+        </Typography>
+        <Typography variant="h2" className="text-muted-foreground mb-12 text-xl font-medium md:text-2xl">
           {t('subtitle')}
-        </h2>
+        </Typography>
         <div className="text-foreground/80 max-w-2xl space-y-6 text-left text-lg leading-relaxed">
-          <p>{t('content1')}</p>
-          <p>{t('content2')}</p>
-          <p>{t('content3')}</p>
-          <p>{t('content4')}</p>
+          <Typography variant="p">{t('content1')}</Typography>
+          <Typography variant="p">{t('content2')}</Typography>
+          <Typography variant="p">{t('content3')}</Typography>
+          <Typography variant="p">{t('content4')}</Typography>
         </div>
         <div className="border-border mt-16 flex w-full flex-wrap space-x-3 border-t pt-8">
           {actions.map((action) => (

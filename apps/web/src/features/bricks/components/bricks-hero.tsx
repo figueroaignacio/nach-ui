@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { GitHubStarHeroCta } from '@/components/common/github-star-cta';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons';
@@ -24,16 +25,16 @@ export function BricksHero({ activeSlug }: BricksHeroProps) {
     <div className="bg-background relative flex flex-col items-center justify-start overflow-hidden pt-24 pb-8">
       <section className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-center space-y-3">
         <div className="space-y-2 text-center">
-          <h1 className="text-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
+          <Typography variant="h1" className="text-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
             {t('title')}
-          </h1>
-          <p className="text-muted-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
+          </Typography>
+          <Typography variant="p" className="text-muted-foreground text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-7xl">
             {t('subtitle')}
-          </p>
+          </Typography>
         </div>
-        <p className="text-muted-foreground mx-auto max-w-2xl text-center text-lg">
+        <Typography variant="p" className="text-muted-foreground mx-auto max-w-2xl text-center text-lg">
           {t('description')}
-        </p>
+        </Typography>
         <div className="flex items-center gap-4">
           {actions.map((action) => (
             <Button

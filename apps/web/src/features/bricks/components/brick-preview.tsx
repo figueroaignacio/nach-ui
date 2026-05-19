@@ -5,6 +5,7 @@ import { useCopyToClipboard } from '@/features/docs/hooks/use-copy-to-clipboard'
 import { Copy01Icon, LaptopIcon, Tick02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Tabs } from '@repo/ui/components/tabs';
+import { Typography } from '@repo/ui/components/typography';
 import { cn } from '@repo/ui/lib/cn';
 import { useState } from 'react';
 import { BrickCodeViewer } from './brick-code-viewer';
@@ -49,7 +50,9 @@ export function BrickPreview({
                 Code
               </Tabs.Trigger>
             </Tabs.List>
-            <p className="text-muted-foreground hidden text-sm sm:block">{description}</p>
+            <Typography variant="p" className="text-muted-foreground hidden text-sm sm:block">
+              {description}
+            </Typography>
           </div>
 
           <div className="flex items-center gap-2">
@@ -144,9 +147,9 @@ export function BrickPreview({
             <BrickCodeViewer files={files} />
           ) : (
             <div className="border-border bg-destructive/10 rounded-lg border p-6">
-              <p className="text-destructive text-sm font-medium">
+              <Typography variant="p" className="text-destructive text-sm font-medium">
                 ⚠️ Source code not available for brick &ldquo;{name}&rdquo;.
-              </p>
+              </Typography>
             </div>
           )}
         </Tabs.Content>

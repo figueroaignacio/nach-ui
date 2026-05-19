@@ -11,6 +11,7 @@ import {
 } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Card } from '@repo/ui/components/card';
+import { Typography } from '@repo/ui/components/typography';
 import type { Variants } from 'motion/react';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
@@ -61,14 +62,20 @@ export function LandingFeatures() {
           className="flex flex-col items-center gap-12"
         >
           <motion.div variants={itemVariants} className="text-center">
-            <h2 className="font-heading text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
+            <Typography
+              variant="h2"
+              className="font-heading text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl"
+            >
               {t('title')}
               <br />
               <span className="text-muted-foreground">{t('subtitle')}</span>
-            </h2>
-            <p className="text-muted-foreground mt-4 max-w-2xl text-lg sm:text-xl">
+            </Typography>
+            <Typography
+              variant="p"
+              className="text-muted-foreground mt-4 max-w-2xl text-lg sm:text-xl"
+            >
               {t('description')}
-            </p>
+            </Typography>
           </motion.div>
 
           <motion.div

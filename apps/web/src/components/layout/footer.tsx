@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { LocaleSwitcher } from '../common/locale-switcher';
@@ -8,7 +9,7 @@ import { ThemeToggle } from '../common/theme-toggle';
 function FooterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="text-foreground text-sm font-semibold">{title}</h3>
+      <Typography variant="h3" className="text-foreground text-sm font-semibold">{title}</Typography>
       <ul className="flex flex-col gap-3">{children}</ul>
     </div>
   );
@@ -61,7 +62,7 @@ export function Footer() {
             <div className="mb-4">
               <Logo />
             </div>
-            <p className="text-muted-foreground mb-6 max-w-xs text-sm">{t('home.description')}</p>
+            <Typography variant="p" className="text-muted-foreground mb-6 max-w-xs text-sm">{t('home.description')}</Typography>
             <div className="flex items-center gap-4">
               <SocialLink
                 href="https://github.com/figueroaignacio/ui"
@@ -94,10 +95,10 @@ export function Footer() {
         <div className="py-6">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex flex-col gap-1 text-center md:text-left">
-              <p className="text-muted-foreground text-sm">
+              <Typography variant="p" className="text-muted-foreground text-sm">
                 © {currentYear} NachUI. {t('footer.copyright')}
-              </p>
-              <p className="text-muted-foreground text-sm">
+              </Typography>
+              <Typography variant="p" className="text-muted-foreground text-sm">
                 {t('footer.developedBy')}
                 <a
                   href="https://ignaciofigueroa.dev"
@@ -107,7 +108,7 @@ export function Footer() {
                 >
                   ignaciofigueroa.dev
                 </a>
-              </p>
+              </Typography>
             </div>
             <div className="flex items-center gap-6">
               <Link
@@ -131,9 +132,9 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <p className="text-muted-foreground text-center text-xs lg:text-left">
+        <Typography variant="p" className="text-muted-foreground text-center text-xs lg:text-left">
           I was told to keep it simple. So I did. - Nacho
-        </p>
+        </Typography>
       </div>
     </footer>
   );

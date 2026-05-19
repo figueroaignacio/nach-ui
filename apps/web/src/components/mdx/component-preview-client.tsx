@@ -1,5 +1,6 @@
 'use client';
 
+import { Typography } from '@repo/ui/components/typography';
 import { CodeBlock } from './codeblock';
 
 interface ComponentPreviewClientProps {
@@ -33,7 +34,9 @@ export function ComponentPreviewClient({
         </div>
         {description && (
           <div className="border-border bg-muted/30 border-t px-6 py-4">
-            <p className="text-muted-foreground text-sm">{description}</p>
+            <Typography variant="p" className="text-muted-foreground text-sm">
+              {description}
+            </Typography>
           </div>
         )}
         <div className="border-border border-t">
@@ -47,9 +50,9 @@ export function ComponentPreviewClient({
             />
           ) : (
             <div className="border-border bg-destructive/10 p-6">
-              <p className="text-destructive text-sm font-medium">
+              <Typography variant="p" className="text-destructive text-sm font-medium">
                 ⚠️ Error al leer el archivo: {filePath || 'No especificado'}
-              </p>
+              </Typography>
             </div>
           )}
         </div>

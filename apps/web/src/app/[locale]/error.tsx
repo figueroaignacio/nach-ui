@@ -1,5 +1,6 @@
 'use client';
 
+import { Typography } from '@repo/ui/components/typography';
 import { useEffect } from 'react';
 
 export default function ErrorBoundary({
@@ -10,16 +11,17 @@ export default function ErrorBoundary({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
     <div className="flex min-h-[50vh] flex-col items-center justify-center space-y-4">
-      <h2 className="text-2xl font-bold tracking-tight">Something went wrong!</h2>
-      <p className="text-muted-foreground max-w-md text-center">
+      <Typography variant="h2" className="text-2xl font-bold tracking-tight">
+        Something went wrong!
+      </Typography>
+      <Typography variant="p" className="text-muted-foreground max-w-md text-center">
         An unexpected error occurred. You can try recovering by clicking the button below.
-      </p>
+      </Typography>
       <button
         onClick={() => reset()}
         className="bg-foreground text-background hover:bg-foreground/90 rounded-md px-4 py-2 font-medium transition-colors"

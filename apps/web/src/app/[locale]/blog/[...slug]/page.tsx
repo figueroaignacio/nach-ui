@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { BackButton } from '@/components/common/back-button';
 import { DeveloperWatermark } from '@/components/layout/developer-watermark';
 import { MDXContent } from '@/components/mdx/mdx-content';
@@ -86,13 +87,13 @@ export default async function PostPage({ params }: { params: Promise<PostPagePro
   return (
     <article className="mx-auto max-w-2xl space-y-8 py-10">
       <BackButton />
-      <p>{formatDateOnly(post.date, locale)}</p>
+      <Typography variant="p">{formatDateOnly(post.date, locale)}</Typography>
       <div className="space-y-1">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
-        <p className="text-muted-foreground">{post.description}</p>
+        <Typography variant="h1" className="text-3xl font-bold">{post.title}</Typography>
+        <Typography variant="p" className="text-muted-foreground">{post.description}</Typography>
       </div>
       <div className="border-border space-y-3 border-b pb-3">
-        <p>{t('postedBy')}</p>
+        <Typography variant="p">{t('postedBy')}</Typography>
         <DeveloperWatermark />
       </div>
       <MDXContent code={post.body} />

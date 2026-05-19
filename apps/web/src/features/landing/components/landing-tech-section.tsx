@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import {
   MotionIcon,
   NextJSIcon,
@@ -57,10 +58,10 @@ export function LandingTechSection() {
       <div className="bg-grid-pattern absolute inset-0 opacity-50"></div>
       <div className="relative z-10 mx-auto max-w-3xl">
         <div className="mb-12 md:mb-16">
-          <h2 className="gradient-text mb-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+          <Typography variant="h2" className="gradient-text mb-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             {t('title')}
-          </h2>
-          <p className="text-muted-foreground max-w-2xl text-lg">{t('subtitle')}</p>
+          </Typography>
+          <Typography variant="p" className="text-muted-foreground max-w-2xl text-lg">{t('subtitle')}</Typography>
         </div>
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
           {technologies.map((tech) => {
@@ -73,12 +74,12 @@ export function LandingTechSection() {
                       <div className="mb-6 flex items-center justify-between">
                         <div className="">{config.icon}</div>
                       </div>
-                      <h3 className="text-card-foreground group-hover:text-foreground mb-3 text-xl font-semibold transition-colors duration-300">
+                      <Typography variant="h3" className="text-card-foreground group-hover:text-foreground mb-3 text-xl font-semibold transition-colors duration-300">
                         {tech.name}
-                      </h3>
-                      <p className="text-muted-foreground group-hover:text-card-foreground/80 text-sm leading-relaxed transition-colors duration-300">
+                      </Typography>
+                      <Typography variant="p" className="text-muted-foreground group-hover:text-card-foreground/80 text-sm leading-relaxed transition-colors duration-300">
                         {tech.description}
-                      </p>
+                      </Typography>
                     </div>
                   </div>
                 </div>

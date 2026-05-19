@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { Card } from '@repo/ui/components/card';
 import { Input } from '@repo/ui/components/input';
 import { Label } from '@repo/ui/components/label';
@@ -27,7 +28,7 @@ export function PreviewWorkspace() {
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
             <Label className="text-xs">Maintenance Mode</Label>
-            <p className="text-muted-foreground text-[10px]">Disable public access</p>
+            <Typography variant="p" className="text-muted-foreground text-[10px]">Disable public access</Typography>
           </div>
           <Switch defaultChecked />
         </div>
@@ -38,7 +39,7 @@ export function PreviewWorkspace() {
             <span>70%</span>
           </div>
           <Progress value={70} />
-          <p className="text-muted-foreground text-right text-[10px]">700 / 1,000 hr</p>
+          <Typography variant="p" className="text-muted-foreground text-right text-[10px]">700 / 1,000 hr</Typography>
         </div>
       </Card.Content>
     </Card>

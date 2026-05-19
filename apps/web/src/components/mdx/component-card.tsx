@@ -3,6 +3,7 @@
 import { Link } from '@/i18n/navigation';
 import { LinkSquare02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { Typography } from '@repo/ui/components/typography';
 import { COMPONENT_LIST_PREVIEWS } from './component-list-previews';
 import { DEMO_COMPONENTS } from './demo-registry';
 
@@ -37,11 +38,16 @@ export function ComponentCard({ label, href, description }: ComponentCardProps) 
         </div>
         <div className="border-border bg-secondary/50 flex justify-between border-t px-4 py-12">
           <div>
-            <h3 className="font-heading font-semibold tracking-tight">{label}</h3>
+            <Typography variant="h3" className="font-heading font-semibold tracking-tight">
+              {label}
+            </Typography>
             {description && (
-              <p className="text-muted-foreground mt-1 line-clamp-2 text-xs leading-relaxed">
+              <Typography
+                variant="p"
+                className="text-muted-foreground mt-1 line-clamp-2 text-xs leading-relaxed"
+              >
                 {description}
-              </p>
+              </Typography>
             )}
           </div>
           <div>

@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { BricksHero } from '@/features/bricks/components/bricks-hero';
 import { BRICK_CATEGORIES } from '@/features/bricks/lib/bricks-registry';
 import { Link } from '@/i18n/navigation';
@@ -30,12 +31,12 @@ export default async function BricksPage({ params }: PageProps) {
                   <span className="text-lg font-bold">{category.name.charAt(0)}</span>
                 </div>
                 <div>
-                  <h3 className="text-foreground text-xl font-semibold tracking-tight">
+                  <Typography variant="h3" className="text-foreground text-xl font-semibold tracking-tight">
                     {category.name}
-                  </h3>
-                  <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
+                  </Typography>
+                  <Typography variant="p" className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
                     {category.description}
-                  </p>
+                  </Typography>
                 </div>
               </div>
               <div className="mt-8 flex items-center text-sm font-medium">

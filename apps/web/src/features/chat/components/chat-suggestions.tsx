@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { BulbIcon, CodeIcon, Comment01Icon, SparklesIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
@@ -31,8 +32,8 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
   return (
     <div className="flex min-h-[500px] flex-col items-center justify-center space-y-5 py-6 text-center">
       <div>
-        <h3 className="text-foreground mb-1.5 text-sm font-semibold">{t('title')}</h3>
-        <p className="text-muted-foreground text-xs">{t('subtitle')}</p>
+        <Typography variant="h3" className="text-foreground mb-1.5 text-sm font-semibold">{t('title')}</Typography>
+        <Typography variant="p" className="text-muted-foreground text-xs">{t('subtitle')}</Typography>
       </div>
       <div className="flex flex-wrap justify-center gap-2.5">
         {suggestions.map((suggestion, index) => (
@@ -47,9 +48,9 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
               size={14}
               className="text-muted-foreground group-hover:text-foreground transition-colors"
             />
-            <p className="text-foreground/70 group-hover:text-foreground text-left text-[13px] leading-snug font-medium transition-colors">
+            <Typography variant="p" className="text-foreground/70 group-hover:text-foreground text-left text-[13px] leading-snug font-medium transition-colors">
               {suggestion.text}
-            </p>
+            </Typography>
           </button>
         ))}
       </div>

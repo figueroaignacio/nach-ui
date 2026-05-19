@@ -1,3 +1,4 @@
+import { Typography } from '@repo/ui/components/typography';
 import { Loading03Icon, SentIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { useTranslations } from 'next-intl';
@@ -49,9 +50,9 @@ export function ChatInput(props: ChatInputProps) {
           )}
         </button>
       </div>
-      <p className="text-muted-foreground mt-2 hidden px-1 text-xs lg:block">
+      <Typography variant="p" className="text-muted-foreground mt-2 hidden px-1 text-xs lg:block">
         {t('messages.helperText')}
-      </p>
+      </Typography>
     </form>
   );
 }

@@ -4,6 +4,7 @@ import { Cancel01Icon, ChatAdd01Icon, Tick02Icon } from '@hugeicons/core-free-ic
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Button } from '@repo/ui/components/button';
 import { Tooltip } from '@repo/ui/components/tooltip';
+import { Typography } from '@repo/ui/components/typography';
 import { cn } from '@repo/ui/lib/cn';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -49,7 +50,12 @@ export function ChatHeader({ onClose, onReset }: ChatHeaderProps) {
     <header className="bg-background/80 flex items-center justify-between px-6 py-3.5 backdrop-blur-md">
       <div className="flex items-center gap-3">
         <AiAvatar size="sm" />
-        <h2 className="text-foreground text-[15px] font-semibold tracking-tight">Mate</h2>
+        <Typography
+          variant="h2"
+          className="text-foreground text-[15px] font-semibold tracking-tight"
+        >
+          Mate
+        </Typography>
       </div>
       <div className="flex items-center gap-2">
         {onReset && (
@@ -73,7 +79,7 @@ export function ChatHeader({ onClose, onReset }: ChatHeaderProps) {
               </Button>
             </Tooltip.Trigger>
             <Tooltip.Content side="bottom">
-              <p>{t('reset')}</p>
+              <Typography variant="p">{t('reset')}</Typography>
             </Tooltip.Content>
           </Tooltip>
         )}
