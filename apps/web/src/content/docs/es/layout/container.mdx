@@ -1,0 +1,38 @@
+---
+title: Container
+description: Restringe y centra el contenido horizontalmente en función de los puntos de interrupción de la pantalla.
+published: true
+date: 2026-05-19
+locale: es
+toc:
+  visible: true
+---
+
+<ComponentPreview component="container" demo="default" />
+
+## Instalación
+
+<ComponentInstallTabs component="container" />
+
+## Anatomía
+
+```tsx
+import { Container } from '@/components/ui/container';
+```
+
+```tsx
+<Container size="md" align="center">
+  <p>Contenido centrado dentro de un contenedor mediano.</p>
+</Container>
+```
+
+## Referencia de API
+
+### Container
+
+| Prop        | Tipo                                               | Por defecto | Descripción                                            |
+| ----------- | -------------------------------------------------- | ----------- | ------------------------------------------------------ |
+| `as`        | `React.ElementType`                                | `'div'`     | El tipo de elemento HTML para renderizar el componente |
+| `size`      | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| 'fluid'` | `'xl'`      | Ancho máximo del contenedor basado en breakpoints      |
+| `align`     | `'left' \| 'center' \| 'right'`                    | `'center'`  | Alineación horizontal del contenedor en la pantalla    |
+| `className` | `string`                                           | -           | Clases CSS personalizadas                              |

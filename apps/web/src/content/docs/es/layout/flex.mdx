@@ -1,0 +1,42 @@
+---
+title: Flex
+description: Componente de diseño basado en CSS Flexbox para alinear, direccionar, envolver y espaciar elementos hijos.
+published: true
+date: 2026-05-19
+locale: es
+toc:
+  visible: true
+---
+
+<ComponentPreview component="flex" demo="default" />
+
+## Instalación
+
+<ComponentInstallTabs component="flex" />
+
+## Anatomía
+
+```tsx
+import { Flex } from '@/components/ui/flex';
+```
+
+```tsx
+<Flex direction="row" align="center" justify="between" gap="4">
+  <div>Elemento 1</div>
+  <div>Elemento 2</div>
+</Flex>
+```
+
+## Referencia de API
+
+### Flex
+
+| Prop        | Tipo                                                                                                   | Por defecto | Descripción                                            |
+| ----------- | ------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------ |
+| `as`        | `React.ElementType`                                                                                    | `'div'`     | El tipo de elemento HTML para renderizar el componente |
+| `direction` | `'row' \| 'column' \| 'row-reverse' \| 'column-reverse'`                                               | `'row'`     | Dirección del flex (flex-direction)                    |
+| `align`     | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'`                                              | `'stretch'` | Alineación de elementos (align-items)                  |
+| `justify`   | `'start' \| 'center' \| 'end' \| 'between' \| 'around' \| 'evenly'`                                    | `'start'`   | Distribución del contenido (justify-content)           |
+| `wrap`      | `'nowrap' \| 'wrap' \| 'wrap-reverse'`                                                                 | `'nowrap'`  | Comportamiento de envoltura (flex-wrap)                |
+| `gap`       | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '8' \| '10' \| '12' \| '16' \| '20' \| '24' \| '32'` | -           | Espacio entre elementos                                |
+| `className` | `string`                                                                                               | -           | Clases CSS personalizadas                              |

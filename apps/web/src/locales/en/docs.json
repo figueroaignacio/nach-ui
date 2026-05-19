@@ -16,6 +16,10 @@
         {
           "title": "Components",
           "href": "/docs/components"
+        },
+        {
+          "title": "Layout",
+          "href": "/docs/layout"
         }
       ]
     },
@@ -188,6 +192,31 @@
           "title": "Tooltip",
           "href": "/docs/components/tooltip",
           "description": "A popup that displays contextual information associated with an element when it receives keyboard focus or when the user hovers over it with the mouse."
+        }
+      ]
+    },
+    {
+      "title": "Layout",
+      "items": [
+        {
+          "title": "Flex",
+          "href": "/docs/layout/flex",
+          "description": "Flexbox container for aligning items."
+        },
+        {
+          "title": "Stack",
+          "href": "/docs/layout/stack",
+          "description": "A vertical stack helper."
+        },
+        {
+          "title": "Grid",
+          "href": "/docs/layout/grid",
+          "description": "Grid layout configuration."
+        },
+        {
+          "title": "Container",
+          "href": "/docs/layout/container",
+          "description": "Constrains and centers content."
         }
       ]
     }

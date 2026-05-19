@@ -1,0 +1,42 @@
+---
+title: Stack
+description: A layout utility that structures elements in a single column (or row) with consistent gaps.
+published: true
+date: 2026-05-19
+locale: en
+toc:
+  visible: true
+---
+
+<ComponentPreview component="stack" demo="default" />
+
+## Installation
+
+<ComponentInstallTabs component="stack" />
+
+## Anatomy
+
+```tsx
+import { Stack } from '@/components/ui/stack';
+```
+
+```tsx
+<Stack gap="3">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Stack>
+```
+
+## API Reference
+
+### Stack
+
+| Prop        | Type                                                                                                   | Default     | Description                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------- |
+| `as`        | `React.ElementType`                                                                                    | `'div'`     | The element type to render the component as |
+| `direction` | `'column' \| 'row'`                                                                                    | `'column'`  | The flex orientation flow                   |
+| `align`     | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'`                                              | `'stretch'` | CSS align-items mapping                     |
+| `justify`   | `'start' \| 'center' \| 'end' \| 'between' \| 'around' \| 'evenly'`                                    | `'start'`   | CSS justify-content mapping                 |
+| `wrap`      | `'nowrap' \| 'wrap' \| 'wrap-reverse'`                                                                 | `'nowrap'`  | CSS flex-wrap mapping                       |
+| `gap`       | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '8' \| '10' \| '12' \| '16' \| '20' \| '24' \| '32'` | -           | Gap spacing between elements                |
+| `className` | `string`                                                                                               | -           | Custom CSS classes                          |

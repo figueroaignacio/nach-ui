@@ -16,6 +16,10 @@
         {
           "title": "Componentes",
           "href": "/docs/components"
+        },
+        {
+          "title": "Diseño",
+          "href": "/docs/layout"
         }
       ]
     },
@@ -187,6 +191,31 @@
           "title": "Tooltip",
           "href": "/docs/components/tooltip",
           "description": "Un popup que muestra información contextual asociada a un elemento."
+        }
+      ]
+    },
+    {
+      "title": "Diseño",
+      "items": [
+        {
+          "title": "Flex",
+          "href": "/docs/layout/flex",
+          "description": "Contenedor Flexbox para alinear elementos."
+        },
+        {
+          "title": "Stack",
+          "href": "/docs/layout/stack",
+          "description": "Un asistente de pila vertical."
+        },
+        {
+          "title": "Grid",
+          "href": "/docs/layout/grid",
+          "description": "Configuración de diseño de cuadrícula."
+        },
+        {
+          "title": "Container",
+          "href": "/docs/layout/container",
+          "description": "Restringe y centra el contenido."
         }
       ]
     }

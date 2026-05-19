@@ -1,0 +1,38 @@
+---
+title: Container
+description: Constrains and centers content horizontally based on screen breakpoints.
+published: true
+date: 2026-05-19
+locale: en
+toc:
+  visible: true
+---
+
+<ComponentPreview component="container" demo="default" />
+
+## Installation
+
+<ComponentInstallTabs component="container" />
+
+## Anatomy
+
+```tsx
+import { Container } from '@/components/ui/container';
+```
+
+```tsx
+<Container size="md" align="center">
+  <p>Centered content inside a medium container.</p>
+</Container>
+```
+
+## API Reference
+
+### Container
+
+| Prop        | Type                                               | Default    | Description                                     |
+| ----------- | -------------------------------------------------- | ---------- | ----------------------------------------------- |
+| `as`        | `React.ElementType`                                | `'div'`    | The element type to render the component as     |
+| `size`      | `'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| 'fluid'` | `'xl'`     | Container size mapping to max-width breakpoints |
+| `align`     | `'left' \| 'center' \| 'right'`                    | `'center'` | Horizontal alignment of the container itself    |
+| `className` | `string`                                           | -          | Custom CSS classes                              |

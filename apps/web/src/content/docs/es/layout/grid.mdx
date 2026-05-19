@@ -1,0 +1,46 @@
+---
+title: Grid
+description: Un constructor de diseño de cuadrícula responsivo que utiliza propiedades de CSS Grid y utilidades de Tailwind.
+published: true
+date: 2026-05-19
+locale: es
+toc:
+  visible: true
+---
+
+<ComponentPreview component="grid" demo="default" />
+
+## Instalación
+
+<ComponentInstallTabs component="grid" />
+
+## Anatomía
+
+```tsx
+import { Grid } from '@/components/ui/grid';
+```
+
+```tsx
+<Grid columns="3" gap="4">
+  <div>Columna 1</div>
+  <div>Columna 2</div>
+  <div>Columna 3</div>
+</Grid>
+```
+
+## Referencia de API
+
+### Grid
+
+| Prop        | Tipo                                                      | Por defecto | Descripción                                            |
+| ----------- | --------------------------------------------------------- | ----------- | ------------------------------------------------------ |
+| `as`        | `React.ElementType`                                       | `'div'`     | El tipo de elemento HTML para renderizar el componente |
+| `columns`   | `'1' \| '2' \| ... \| '12' \| 'none' \| 'subgrid'`        | `'1'`       | Número de columnas en la cuadrícula                    |
+| `rows`      | `'1' \| '2' \| ... \| '6' \| 'none' \| 'subgrid'`         | -           | Número de filas en la cuadrícula                       |
+| `flow`      | `'row' \| 'col' \| 'dense' \| 'row-dense' \| 'col-dense'` | -           | Flujos de cuadrícula (grid-flow)                       |
+| `align`     | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'` | -           | Alinea los hijos a lo largo del eje del bloque         |
+| `justify`   | `'start' \| 'center' \| 'end' \| 'stretch'`               | -           | Justifica los hijos a lo largo del eje en línea        |
+| `gap`       | `'0' \| '1' \| ... \| '32'`                               | -           | Espaciado entre elementos en ambos ejes                |
+| `gapX`      | `'0' \| '1' \| ... \| '32'`                               | -           | Espaciado horizontal entre columnas                    |
+| `gapY`      | `'0' \| '1' \| ... \| '32'`                               | -           | Espaciado vertical entre filas                         |
+| `className` | `string`                                                  | -           | Clases CSS personalizadas                              |

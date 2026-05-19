@@ -1,0 +1,42 @@
+---
+title: Flex
+description: Layout component based on CSS Flexbox for alignment, direction, wrapping, and spacing of child elements.
+published: true
+date: 2026-05-19
+locale: en
+toc:
+  visible: true
+---
+
+<ComponentPreview component="flex" demo="default" />
+
+## Installation
+
+<ComponentInstallTabs component="flex" />
+
+## Anatomy
+
+```tsx
+import { Flex } from '@/components/ui/flex';
+```
+
+```tsx
+<Flex direction="row" align="center" justify="between" gap="4">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Flex>
+```
+
+## API Reference
+
+### Flex
+
+| Prop        | Type                                                                                                   | Default     | Description                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------- |
+| `as`        | `React.ElementType`                                                                                    | `'div'`     | The element type to render the component as |
+| `direction` | `'row' \| 'column' \| 'row-reverse' \| 'column-reverse'`                                               | `'row'`     | CSS flex-direction mapping                  |
+| `align`     | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'`                                              | `'stretch'` | CSS align-items mapping                     |
+| `justify`   | `'start' \| 'center' \| 'end' \| 'between' \| 'around' \| 'evenly'`                                    | `'start'`   | CSS justify-content mapping                 |
+| `wrap`      | `'nowrap' \| 'wrap' \| 'wrap-reverse'`                                                                 | `'nowrap'`  | CSS flex-wrap mapping                       |
+| `gap`       | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '8' \| '10' \| '12' \| '16' \| '20' \| '24' \| '32'` | -           | Gap spacing between elements                |
+| `className` | `string`                                                                                               | -           | Custom CSS classes                          |

@@ -1,0 +1,42 @@
+---
+title: Stack
+description: Una utilidad de diseño que organiza elementos en una sola columna (o fila) con espaciados consistentes.
+published: true
+date: 2026-05-19
+locale: es
+toc:
+  visible: true
+---
+
+<ComponentPreview component="stack" demo="default" />
+
+## Instalación
+
+<ComponentInstallTabs component="stack" />
+
+## Anatomía
+
+```tsx
+import { Stack } from '@/components/ui/stack';
+```
+
+```tsx
+<Stack gap="3">
+  <div>Elemento 1</div>
+  <div>Elemento 2</div>
+</Stack>
+```
+
+## Referencia de API
+
+### Stack
+
+| Prop        | Tipo                                                                                                   | Por defecto | Descripción                                            |
+| ----------- | ------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------ |
+| `as`        | `React.ElementType`                                                                                    | `'div'`     | El tipo de elemento HTML para renderizar el componente |
+| `direction` | `'column' \| 'row'`                                                                                    | `'column'`  | La orientación del flujo flex                          |
+| `align`     | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'`                                              | `'stretch'` | Alineación de elementos (align-items)                  |
+| `justify`   | `'start' \| 'center' \| 'end' \| 'between' \| 'around' \| 'evenly'`                                    | `'start'`   | Distribución del contenido (justify-content)           |
+| `wrap`      | `'nowrap' \| 'wrap' \| 'wrap-reverse'`                                                                 | `'nowrap'`  | Comportamiento de envoltura (flex-wrap)                |
+| `gap`       | `'0' \| '1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '8' \| '10' \| '12' \| '16' \| '20' \| '24' \| '32'` | -           | Espacio entre elementos                                |
+| `className` | `string`                                                                                               | -           | Clases CSS personalizadas                              |
