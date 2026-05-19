@@ -1,11 +1,12 @@
 import { Typography } from '@repo/ui/components/typography';
 import Link from 'next/link';
+import { Flex } from '@repo/ui/layout/flex';
 
 export default function GlobalNotFound() {
   return (
     <html lang="en">
       <body>
-        <div className="flex min-h-screen flex-col items-center justify-center">
+        <Flex direction="column" align="center" justify="center" className="min-h-screen">
           <Typography variant="h1" className="text-4xl font-bold">
             404
           </Typography>
@@ -15,7 +16,7 @@ export default function GlobalNotFound() {
           <Link href="/" className="bg-primary text-primary-foreground mt-4 rounded-lg px-4 py-2">
             Go home
           </Link>
-        </div>
+        </Flex>
       </body>
     </html>
   );

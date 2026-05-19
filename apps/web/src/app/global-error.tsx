@@ -1,5 +1,6 @@
 'use client';
 import { Typography } from '@repo/ui/components/typography';
+import { Flex } from '@repo/ui/layout/flex';
 
 export default function GlobalError({
   reset,
@@ -10,7 +11,12 @@ export default function GlobalError({
   return (
     <html lang="en">
       <body>
-        <div className="flex min-h-screen flex-col items-center justify-center p-4 text-center">
+        <Flex
+          direction="column"
+          align="center"
+          justify="center"
+          className="min-h-screen p-4 text-center"
+        >
           <Typography variant="h2" className="mb-2 text-3xl font-bold">
             Critical Application Error
           </Typography>
@@ -23,7 +29,7 @@ export default function GlobalError({
           >
             Try again
           </button>
-        </div>
+        </Flex>
       </body>
     </html>
   );

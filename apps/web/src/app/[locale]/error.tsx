@@ -2,6 +2,7 @@
 
 import { Typography } from '@repo/ui/components/typography';
 import { useEffect } from 'react';
+import { Flex } from '@repo/ui/layout/flex';
 
 export default function ErrorBoundary({
   error,
@@ -15,7 +16,7 @@ export default function ErrorBoundary({
   }, [error]);
 
   return (
-    <div className="flex min-h-[50vh] flex-col items-center justify-center space-y-4">
+    <Flex direction="column" align="center" justify="center" className="min-h-[50vh] space-y-4">
       <Typography variant="h2" className="text-2xl font-bold tracking-tight">
         Something went wrong!
       </Typography>
@@ -28,6 +29,6 @@ export default function ErrorBoundary({
       >
         Try again
       </button>
-    </div>
+    </Flex>
   );
 }

@@ -1,4 +1,3 @@
-import { Typography } from '@repo/ui/components/typography';
 import { MDXContent } from '@/components/mdx/mdx-content';
 import { DocActions } from '@/features/docs/components/doc-actions';
 import { DocsNavigationButtons } from '@/features/docs/components/docs-navigation-button';
@@ -7,6 +6,10 @@ import { MobileToc } from '@/features/docs/components/mobile-toc';
 import { Toc } from '@/features/docs/components/toc';
 import { ContentRepository } from '@/lib/content-repository';
 import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
+import { Typography } from '@repo/ui/components/typography';
+import { Flex } from '@repo/ui/layout/flex';
+import { Stack } from '@repo/ui/layout/stack';
+import { Container } from '@repo/ui/src/layout/container';
 import { allDocs as docs } from 'content-collections';
 import type { Metadata } from 'next';
 import type { Locale } from 'next-intl';
@@ -37,34 +40,42 @@ export default async function DocPage({ params }: { params: Promise<DocPageProps
 
   return (
     <>
-      <article className="doc-container flex w-full min-w-0 flex-col">
-        <div className="mt-8 mb-10 flex flex-col gap-1 sm:mt-10 sm:mb-12">
-          <MobileToc toc={tocContent} />
-          <div className="flex flex-col gap-3">
-            <Typography variant="h1" className="font-heading text-foreground text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl">
-              {doc.title}
-            </Typography>
-            {doc.description && (
-              <Typography variant="p" className="text-muted-foreground max-w-2xl text-base leading-relaxed sm:text-lg">
-                {doc.description}
+      <Container size="md">
+        <Stack as="article" className="w-full min-w-0">
+          <Stack gap="1" className="mt-8 mb-10 sm:mt-10 sm:mb-12">
+            <MobileToc toc={tocContent} />
+            <Stack gap="3">
+              <Typography
+                variant="h1"
+                className="font-heading text-foreground text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl"
+              >
+                {doc.title}
               </Typography>
-            )}
+              {doc.description && (
+                <Typography
+                  variant="p"
+                  className="text-muted-foreground max-w-2xl text-base leading-relaxed sm:text-lg"
+                >
+                  {doc.description}
+                </Typography>
+              )}
+            </Stack>
+            <Flex wrap="wrap" align="center" justify="between" gap="3" className="mt-5 pb-5">
+              <DocActions
+                page={doc.title}
+                url={getAbsoluteUrl(doc.locale || 'en', `/docs/${doc.slugAsParams}`)}
+                filePath={doc.sourceFilePath}
+                rawContent={doc.raw}
+              />
+              <DocsNavigationButtons currentPath={currentPath} />
+            </Flex>
+          </Stack>
+          <div className="min-w-0 flex-1">
+            {doc.body ? <MDXContent code={doc.body} /> : <div>Error</div>}
           </div>
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-3 pb-5">
-            <DocActions
-              page={doc.title}
-              url={getAbsoluteUrl(doc.locale || 'en', `/docs/${doc.slugAsParams}`)}
-              filePath={doc.sourceFilePath}
-              rawContent={doc.raw}
-            />
-            <DocsNavigationButtons currentPath={currentPath} />
-          </div>
-        </div>
-        <div className="min-w-0 flex-1">
-          {doc.body ? <MDXContent code={doc.body} /> : <div>Error</div>}
-        </div>
-        <DocsPagination currentPath={currentPath} />
-      </article>
+          <DocsPagination currentPath={currentPath} />
+        </Stack>
+      </Container>
       <div className="hidden lg:block">
         <Toc toc={tocContent} />
       </div>

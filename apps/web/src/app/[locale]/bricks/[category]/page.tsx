@@ -3,6 +3,8 @@ import { BricksHero } from '@/features/bricks/components/bricks-hero';
 import { BRICK_COMPONENTS } from '@/features/bricks/lib/brick-components';
 import { getAllCategorySlugs, getBrickCategory } from '@/features/bricks/lib/bricks-registry';
 import { getBrickSourceCode } from '@/features/bricks/lib/get-brick-source';
+import { Container } from '@repo/ui/layout/container';
+import { Stack } from '@repo/ui/layout/stack';
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -51,27 +53,29 @@ export default async function BricksCategoryPage({ params }: PageProps) {
     <div className="bg-background relative min-h-svh overflow-hidden pb-16">
       <BricksHero activeSlug={category} />
 
-      <div className="mx-auto w-full max-w-7xl space-y-12 pt-8">
-        {bricksWithCode.map((brick) => {
-          const Component = BRICK_COMPONENTS[brick.component];
+      <Container size="xl" className="pt-8">
+        <Stack gap="12">
+          {bricksWithCode.map((brick) => {
+            const Component = BRICK_COMPONENTS[brick.component];
 
-          if (!Component) {
-            return null;
-          }
+            if (!Component) {
+              return null;
+            }
 
-          return (
-            <BrickPreview
-              key={brick.id}
-              id={brick.id}
-              name={brick.name}
-              description={brick.description}
-              files={brick.files}
-            >
-              <Component />
-            </BrickPreview>
-          );
-        })}
-      </div>
+            return (
+              <BrickPreview
+                key={brick.id}
+                id={brick.id}
+                name={brick.name}
+                description={brick.description}
+                files={brick.files}
+              >
+                <Component />
+              </BrickPreview>
+            );
+          })}
+        </Stack>
+      </Container>
     </div>
   );
 }

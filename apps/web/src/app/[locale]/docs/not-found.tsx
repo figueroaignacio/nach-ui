@@ -5,14 +5,16 @@ import { Home01Icon, Search02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Button } from '@repo/ui/components/button';
 import { Typography } from '@repo/ui/components/typography';
+import { Container } from '@repo/ui/layout/container';
+import { Flex } from '@repo/ui/layout/flex';
 import { useTranslations } from 'next-intl';
 
 export default function NotFound() {
   const t = useTranslations('docs.notFound');
 
   return (
-    <div className="relative flex min-h-[85svh] items-center justify-center overflow-hidden px-4">
-      <div className="relative z-10 mx-auto max-w-2xl text-center">
+    <Flex align="center" justify="center" className="relative min-h-[85svh] overflow-hidden px-4">
+      <Container size="md" className="relative z-10 text-center">
         <div className="relative mb-8">
           <Typography variant="h1" className="text-5xl leading-none font-black tracking-tighter">
             Error 404
@@ -24,7 +26,7 @@ export default function NotFound() {
         >
           {t('description')}
         </Typography>
-        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <Flex direction="column" align="center" justify="center" gap="4" className="sm:flex-row">
           <Button.Group>
             <Link href="/">
               <Button
@@ -55,8 +57,8 @@ export default function NotFound() {
               </Button>
             </Link>
           </Button.Group>
-        </div>
-      </div>
-    </div>
+        </Flex>
+      </Container>
+    </Flex>
   );
 }

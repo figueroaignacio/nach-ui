@@ -1,6 +1,9 @@
 import { Typography } from '@repo/ui/components/typography';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
+import { Container } from '@repo/ui/layout/container';
+import { Flex } from '@repo/ui/layout/flex';
+import { Stack } from '@repo/ui/layout/stack';
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -28,8 +31,13 @@ export default async function AboutPage({ params }: PageProps) {
   ];
 
   return (
-    <div className="bg-background relative flex min-h-svh flex-col items-center justify-center overflow-hidden py-24">
-      <section className="z-10 mx-auto flex w-full max-w-3xl flex-col px-6">
+    <Flex
+      direction="column"
+      align="center"
+      justify="center"
+      className="bg-background relative min-h-svh overflow-hidden py-24"
+    >
+      <Container as="section" size="lg" className="z-10 max-w-3xl">
         <div className="relative mb-8">
           <Image
             src="https://github.com/figueroaignacio.png"
@@ -39,21 +47,28 @@ export default async function AboutPage({ params }: PageProps) {
             className="border-border relative z-10 rounded-full border shadow-md"
           />
         </div>
-        <Typography variant="h1" className="text-foreground mb-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+        <Typography
+          variant="h1"
+          className="text-foreground mb-4 text-4xl font-extrabold tracking-tight md:text-5xl"
+        >
           {t('title')}
         </Typography>
-        <Typography variant="h2" className="text-muted-foreground mb-12 text-xl font-medium md:text-2xl">
+        <Typography
+          variant="h2"
+          className="text-muted-foreground mb-12 text-xl font-medium md:text-2xl"
+        >
           {t('subtitle')}
         </Typography>
-        <div className="text-foreground/80 max-w-2xl space-y-6 text-left text-lg leading-relaxed">
+        <Stack gap="6" className="text-foreground/80 max-w-2xl text-left text-lg leading-relaxed">
           <Typography variant="p">{t('content1')}</Typography>
           <Typography variant="p">{t('content2')}</Typography>
           <Typography variant="p">{t('content3')}</Typography>
           <Typography variant="p">{t('content4')}</Typography>
-        </div>
-        <div className="border-border mt-16 flex w-full flex-wrap space-x-3 border-t pt-8">
+        </Stack>
+        <Flex wrap="wrap" className="border-border mt-16 w-full space-x-3 border-t pt-8">
           {actions.map((action) => (
             <a
+              key={action.href}
               href={action.href}
               target="_blank"
               rel="noopener noreferrer"
@@ -62,9 +77,9 @@ export default async function AboutPage({ params }: PageProps) {
               {action.label}
             </a>
           ))}
-        </div>
-      </section>
-    </div>
+        </Flex>
+      </Container>
+    </Flex>
   );
 }
 

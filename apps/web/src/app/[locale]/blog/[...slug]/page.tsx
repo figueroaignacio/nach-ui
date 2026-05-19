@@ -6,6 +6,8 @@ import { allPosts as posts } from 'content-collections';
 import { ContentRepository } from '@/lib/content-repository';
 import { formatDateOnly } from '@/lib/format-date';
 import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
+import { Container } from '@repo/ui/layout/container';
+import { Stack } from '@repo/ui/layout/stack';
 import type { Locale } from 'next-intl';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -85,18 +87,22 @@ export default async function PostPage({ params }: { params: Promise<PostPagePro
   }
 
   return (
-    <article className="mx-auto max-w-2xl space-y-8 py-10">
+    <Container as="article" size="md" className="space-y-8 py-10">
       <BackButton />
       <Typography variant="p">{formatDateOnly(post.date, locale)}</Typography>
-      <div className="space-y-1">
-        <Typography variant="h1" className="text-3xl font-bold">{post.title}</Typography>
-        <Typography variant="p" className="text-muted-foreground">{post.description}</Typography>
-      </div>
+      <Stack gap="1">
+        <Typography variant="h1" className="text-3xl font-bold">
+          {post.title}
+        </Typography>
+        <Typography variant="p" className="text-muted-foreground">
+          {post.description}
+        </Typography>
+      </Stack>
       <div className="border-border space-y-3 border-b pb-3">
         <Typography variant="p">{t('postedBy')}</Typography>
         <DeveloperWatermark />
       </div>
       <MDXContent code={post.body} />
-    </article>
+    </Container>
   );
 }
