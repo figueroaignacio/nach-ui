@@ -95,14 +95,9 @@
     "description": "Componentes de React de nivel de producción diseñados para creadores. Cero dependencias. Código limpio y accesible, listo para tu próximo proyecto.",
     "actions": [
       {
-        "label": "Explorar Componentes",
-        "href": "/bricks/login",
-        "variant": "default"
-      },
-      {
         "label": "Leer Documentación",
         "href": "/docs",
-        "variant": "secondary"
+        "variant": "default"
       }
     ]
   },

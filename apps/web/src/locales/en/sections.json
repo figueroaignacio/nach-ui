@@ -95,14 +95,9 @@
     "description": "Production-grade React components designed for builders. Zero dependencies. No 'AI slop'. Just clean, accessible code ready for your next project.",
     "actions": [
       {
-        "label": "Browse Components",
-        "href": "/bricks/login",
-        "variant": "default"
-      },
-      {
         "label": "Read the Docs",
         "href": "/docs",
-        "variant": "secondary"
+        "variant": "default"
       }
     ]
   },

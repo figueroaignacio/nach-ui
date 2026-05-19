@@ -1,3 +1,4 @@
+import { GitHubStarHeroCta } from '@/components/common/github-star-cta';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -45,6 +46,7 @@ export function BricksHero({ activeSlug }: BricksHeroProps) {
               <Link href={action.href}>{action.label}</Link>
             </Button>
           ))}
+          <GitHubStarHeroCta />
         </div>
       </section>
       <nav
