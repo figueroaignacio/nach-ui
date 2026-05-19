@@ -35,7 +35,9 @@ export function PreviewTasks() {
               >
                 Update landing hero copy
               </Label>
-              <Typography variant="p" className="text-muted-foreground text-[10px]">Due in 2 hours</Typography>
+              <Typography variant="p" className="text-muted-foreground text-[10px]">
+                Due in 2 hours
+              </Typography>
             </div>
           </div>
           <div className="flex items-start gap-3">

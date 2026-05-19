@@ -25,9 +25,13 @@ export function ComponentInstallTabs({ component, dependencies }: ComponentInsta
         </>
       ) : (
         <>
-          <Typography variant="h4" className="text-sm">{t('copyCode')}</Typography>
+          <Typography variant="h4" className="text-sm">
+            {t('copyCode')}
+          </Typography>
           <ComponentSource component={component} />
-          <Typography variant="h4" className="text-sm">{t('updatePaths')}</Typography>
+          <Typography variant="h4" className="text-sm">
+            {t('updatePaths')}
+          </Typography>
         </>
       )}
     </Steps>

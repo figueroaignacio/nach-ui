@@ -32,7 +32,12 @@ export function SearchResults({ query, results, navigation, selectedIndex }: Sea
     return (
       <div ref={containerRef} className="max-h-[300px] overflow-y-auto p-2">
         <div className="mb-2">
-          <Typography variant="h2" className="text-muted-foreground px-2 py-1.5 text-xs font-medium">Results</Typography>
+          <Typography
+            variant="h2"
+            className="text-muted-foreground px-2 py-1.5 text-xs font-medium"
+          >
+            Results
+          </Typography>
           <ul className="space-y-0.5">
             {results.map((item, index) => {
               const isActive = index === selectedIndex;
@@ -66,7 +71,12 @@ export function SearchResults({ query, results, navigation, selectedIndex }: Sea
     <div ref={containerRef} className="max-h-[300px] overflow-y-auto p-2">
       {navigation.map((section) => (
         <div key={section.title} className="mb-4 last:mb-0">
-          <Typography variant="h2" className="text-muted-foreground px-2 py-1.5 text-xs font-medium">{section.title}</Typography>
+          <Typography
+            variant="h2"
+            className="text-muted-foreground px-2 py-1.5 text-xs font-medium"
+          >
+            {section.title}
+          </Typography>
           <ul className="space-y-0.5">
             {section.items.map((item) => {
               const isActive = globalIndex === selectedIndex;

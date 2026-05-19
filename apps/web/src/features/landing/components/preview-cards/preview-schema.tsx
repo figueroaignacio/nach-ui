@@ -9,7 +9,9 @@ export function PreviewSchema() {
         <div className="bg-destructive/20 text-destructive mb-3 flex size-8 items-center justify-center rounded-full">
           <span className="font-bold">!</span>
         </div>
-        <Typography variant="h4" className="text-foreground text-sm font-bold">Unsaved Schema Changes</Typography>
+        <Typography variant="h4" className="text-foreground text-sm font-bold">
+          Unsaved Schema Changes
+        </Typography>
         <Typography variant="p" className="text-muted-foreground mt-1 mb-4 text-xs">
           These database migrations have not been applied yet.
         </Typography>

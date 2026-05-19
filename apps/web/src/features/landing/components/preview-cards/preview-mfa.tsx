@@ -30,7 +30,10 @@ export function PreviewMfa() {
 
         <div className="flex w-full flex-col items-center space-y-4 text-center">
           <div className="space-y-1">
-            <Typography variant="h3" className="text-foreground text-sm font-bold tracking-tight uppercase">
+            <Typography
+              variant="h3"
+              className="text-foreground text-sm font-bold tracking-tight uppercase"
+            >
               MFA Required
             </Typography>
             <Typography variant="p" className="text-muted-foreground text-[10px]">

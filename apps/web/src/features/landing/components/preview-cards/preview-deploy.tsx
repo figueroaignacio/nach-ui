@@ -15,13 +15,19 @@ export function PreviewDeploy() {
             <HugeiconsIcon icon={Rocket01Icon} className="text-foreground" size={24} />
           </div>
           <div className="text-center">
-            <Typography variant="h4" className="text-foreground flex items-center justify-center gap-2 text-lg font-bold">
+            <Typography
+              variant="h4"
+              className="text-foreground flex items-center justify-center gap-2 text-lg font-bold"
+            >
               Deploy to Edge
               <Badge variant="secondary" className="h-5 animate-pulse text-[10px]">
                 LIVE
               </Badge>
             </Typography>
-            <Typography variant="p" className="text-muted-foreground mt-1 text-sm leading-tight text-balance">
+            <Typography
+              variant="p"
+              className="text-muted-foreground mt-1 text-sm leading-tight text-balance"
+            >
               Push your application globally in seconds.
             </Typography>
           </div>
