@@ -2,8 +2,10 @@
 
 import type { Message } from '@/lib/definitions';
 import { useChat as useAIChat } from '@ai-sdk/react';
+import { useLocalStorage } from '@repo/ui/hooks/use-local-storage';
+import type { UIMessage as AIMessage } from 'ai';
 import { DefaultChatTransport } from 'ai';
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -13,6 +15,10 @@ const transport = new DefaultChatTransport({
 
 export function useChat() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [storedMessages, setStoredMessages, resetStoredMessages, isMounted] = useLocalStorage<
+    AIMessage[]
+  >('nachui-chat-messages', []);
+  const loadedRef = useRef(false);
 
   const {
     messages: uiMessages,
@@ -23,9 +29,25 @@ export function useChat() {
     error,
   } = useAIChat({ transport });
 
+  useEffect(() => {
+    if (isMounted && !loadedRef.current) {
+      loadedRef.current = true;
+      if (storedMessages && storedMessages.length > 0) {
+        setMessages(storedMessages);
+      }
+    }
+  }, [isMounted, storedMessages, setMessages]);
+
+  useEffect(() => {
+    if (loadedRef.current) {
+      setStoredMessages(uiMessages);
+    }
+  }, [uiMessages, setStoredMessages]);
+
   const resetChat = useCallback(() => {
     setMessages([]);
-  }, [setMessages]);
+    resetStoredMessages();
+  }, [setMessages, resetStoredMessages]);
 
   const messages: Message[] = useMemo(() => {
     return uiMessages.map((m) => {
