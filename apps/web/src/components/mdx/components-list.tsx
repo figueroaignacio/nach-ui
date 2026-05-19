@@ -14,16 +14,18 @@ type DocsNavigationSection = {
   items: DocsNavigationItem[];
 };
 
-export function ComponentsList() {
+export function ComponentsList({ section }: { section?: string }) {
   const t = useTranslations('docs');
   const docsNavigation = t.raw('navigation') as DocsNavigationSection[];
 
-  const componentsSection = docsNavigation.find(
-    (section) => section.title === 'Componentes' || section.title === 'Components',
+  const componentsSection = docsNavigation.find((s) =>
+    section
+      ? s.title.toLowerCase() === section.toLowerCase()
+      : s.title === 'Componentes' || s.title === 'Components',
   );
 
   if (!componentsSection) {
-    return <div>No components found</div>;
+    return <div>No components found for section "{section || 'Components'}"</div>;
   }
 
   return (

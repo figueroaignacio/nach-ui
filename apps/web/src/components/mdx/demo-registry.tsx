@@ -93,6 +93,10 @@ import { Variants as ToastVariants } from '@repo/ui/src/demos/toast/variants';
 import { WithAction as ToastWithAction } from '@repo/ui/src/demos/toast/with-action';
 import { Default as TooltipDefault } from '@repo/ui/src/demos/tooltip/default';
 import { Positions as TooltipPositions } from '@repo/ui/src/demos/tooltip/positions';
+import { Default as FlexDefault } from '@repo/ui/src/demos/flex/default';
+import { Default as StackDefault } from '@repo/ui/src/demos/stack/default';
+import { Default as GridDefault } from '@repo/ui/src/demos/grid/default';
+import { Default as ContainerDefault } from '@repo/ui/src/demos/container/default';
 import React from 'react';
 
 export const DEMO_COMPONENTS: Record<string, Record<string, React.ComponentType>> = {
@@ -248,5 +252,17 @@ export const DEMO_COMPONENTS: Record<string, Record<string, React.ComponentType>
     sizes: KbdSizes,
     variants: KbdVariants,
     'with-group': KbdWithGroup,
+  },
+  flex: {
+    default: FlexDefault,
+  },
+  stack: {
+    default: StackDefault,
+  },
+  grid: {
+    default: GridDefault,
+  },
+  container: {
+    default: ContainerDefault,
   },
 };
