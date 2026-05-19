@@ -1,5 +1,9 @@
-import { Typography } from '@repo/ui/components/typography';
 import { Link } from '@/i18n/navigation';
+import { Typography } from '@repo/ui/components/typography';
+import { Container } from '@repo/ui/layout/container';
+import { Flex } from '@repo/ui/layout/flex';
+import { Grid } from '@repo/ui/layout/grid';
+import { Stack } from '@repo/ui/layout/stack';
 import { useTranslations } from 'next-intl';
 import { LocaleSwitcher } from '../common/locale-switcher';
 import { Logo } from '../common/logo';
@@ -8,10 +12,14 @@ import { ThemeToggle } from '../common/theme-toggle';
 
 function FooterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-4">
-      <Typography variant="h3" className="text-foreground text-sm font-semibold">{title}</Typography>
-      <ul className="flex flex-col gap-3">{children}</ul>
-    </div>
+    <Stack gap="4">
+      <Typography variant="h3" className="text-foreground text-sm font-semibold">
+        {title}
+      </Typography>
+      <Stack as="ul" gap="3">
+        {children}
+      </Stack>
+    </Stack>
   );
 }
 
@@ -56,20 +64,22 @@ export function Footer() {
 
   return (
     <footer className="border-border border-t pb-30 lg:pb-16">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 py-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-12">
+      <Container className="px-4 md:px-6 lg:px-8" size="fluid">
+        <Grid columns="2" gap="8" className="py-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-12">
           <div className="col-span-2 lg:col-span-2">
             <div className="mb-4">
               <Logo />
             </div>
-            <Typography variant="p" className="text-muted-foreground mb-6 max-w-xs text-sm">{t('home.description')}</Typography>
-            <div className="flex items-center gap-4">
+            <Typography variant="p" className="text-muted-foreground mb-6 max-w-xs text-sm">
+              {t('home.description')}
+            </Typography>
+            <Flex align="center" gap="4">
               <SocialLink
                 href="https://github.com/figueroaignacio/ui"
                 icon={GitHubIcon}
                 label="GitHub"
               />
-            </div>
+            </Flex>
           </div>
           <FooterSection title={t('footer.product.title')}>
             <FooterLink href="/docs">{t('footer.product.docs')}</FooterLink>
@@ -91,10 +101,10 @@ export function Footer() {
               {t('footer.community.github')}
             </FooterLink>
           </FooterSection>
-        </div>
+        </Grid>
         <div className="py-6">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex flex-col gap-1 text-center md:text-left">
+          <Flex direction="column" align="center" justify="between" gap="4" className="md:flex-row">
+            <Stack gap="1" className="text-center md:text-left">
               <Typography variant="p" className="text-muted-foreground text-sm">
                 © {currentYear} NachUI. {t('footer.copyright')}
               </Typography>
@@ -109,8 +119,8 @@ export function Footer() {
                   ignaciofigueroa.dev
                 </a>
               </Typography>
-            </div>
-            <div className="flex items-center gap-6">
+            </Stack>
+            <Flex align="center" gap="6">
               <Link
                 href="/sitemap.xml"
                 className="text-muted-foreground hover:text-foreground text-sm transition-colors"
@@ -123,19 +133,19 @@ export function Footer() {
               >
                 RSS
               </Link>
-              <div className="flex items-center gap-3">
+              <Flex align="center" gap="3">
                 <LocaleSwitcher />
                 <div className="hidden lg:block">
                   <ThemeToggle />
                 </div>
-              </div>
-            </div>
-          </div>
+              </Flex>
+            </Flex>
+          </Flex>
         </div>
         <Typography variant="p" className="text-muted-foreground text-center text-xs lg:text-left">
           I was told to keep it simple. So I did. - Nacho
         </Typography>
-      </div>
+      </Container>
     </footer>
   );
 }

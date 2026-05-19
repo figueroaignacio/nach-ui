@@ -1,11 +1,12 @@
+import { Stack } from '@repo/ui/layout/stack';
 import { MobileMenu } from './mobile-menu';
 import { Navbar } from './navbar';
 
 export function Header() {
   return (
-    <header className="bg-background sticky top-0 z-100 flex flex-col">
+    <Stack as="header" className="bg-background sticky top-0 z-100">
       <Navbar />
       <MobileMenu />
-    </header>
+    </Stack>
   );
 }
