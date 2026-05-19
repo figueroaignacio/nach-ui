@@ -191,6 +191,11 @@
           "title": "Tooltip",
           "href": "/docs/components/tooltip",
           "description": "Un popup que muestra información contextual asociada a un elemento."
+        },
+        {
+          "title": "Typography",
+          "href": "/docs/components/typography",
+          "description": "Un componente de texto polimórfico para encabezados, párrafos y estilos en línea."
         }
       ]
     },

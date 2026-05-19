@@ -192,6 +192,11 @@
           "title": "Tooltip",
           "href": "/docs/components/tooltip",
           "description": "A popup that displays contextual information associated with an element when it receives keyboard focus or when the user hovers over it with the mouse."
+        },
+        {
+          "title": "Typography",
+          "href": "/docs/components/typography",
+          "description": "A polymorphic text component for headings, paragraphs, and inline styles."
         }
       ]
     },

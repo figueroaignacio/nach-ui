@@ -1,0 +1,58 @@
+---
+title: Typography
+description: A polymorphic text component for consistent headings, paragraphs, lead text, and inline code styling.
+published: true
+date: 2026-05-19
+label: New
+locale: en
+toc:
+  visible: true
+---
+
+<ComponentPreview component="typography" demo="default" />
+
+## Installation
+
+<ComponentInstallTabs component="typography" />
+
+## Anatomy
+
+```tsx
+import { Typography } from '@/components/ui/typography';
+```
+
+```tsx
+<Typography variant="h1">Hello World</Typography>
+<Typography variant="p">Body copy goes here.</Typography>
+<Typography variant="muted">De-emphasized text.</Typography>
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview component="typography" demo="default" />
+
+### Headings
+
+<ComponentPreview component="typography" demo="headings" />
+
+### Lead, Large & Muted
+
+<ComponentPreview component="typography" demo="lead-muted" />
+
+### Polymorphic (`as` prop)
+
+<ComponentPreview component="typography" demo="custom-tag" />
+
+## API Reference
+
+### Typography
+
+| Prop        | Type                                                                                                                       | Default | Description                        |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------------------------- |
+| `variant`   | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6' \| 'p' \| 'blockquote' \| 'lead' \| 'large' \| 'small' \| 'muted' \| 'code'` | `'p'`   | Text style variant                 |
+| `as`        | `React.ElementType`                                                                                                        | -       | Override the rendered HTML element |
+| `align`     | `'left' \| 'center' \| 'right' \| 'justify'`                                                                               | -       | Text alignment                     |
+| `weight`    | `'light' \| 'normal' \| 'medium' \| 'semibold' \| 'bold' \| 'extrabold'`                                                   | -       | Font weight override               |
+| `className` | `string`                                                                                                                   | -       | Additional CSS classes             |

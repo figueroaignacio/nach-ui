@@ -1,0 +1,58 @@
+---
+title: Typography
+description: Un componente de texto polimórfico para encabezados, párrafos, texto destacado y estilos en línea consistentes.
+published: true
+date: 2026-05-19
+label: New
+locale: es
+toc:
+  visible: true
+---
+
+<ComponentPreview component="typography" demo="default" />
+
+## Instalación
+
+<ComponentInstallTabs component="typography" />
+
+## Anatomía
+
+```tsx
+import { Typography } from '@/components/ui/typography';
+```
+
+```tsx
+<Typography variant="h1">Hola Mundo</Typography>
+<Typography variant="p">El texto del cuerpo va aquí.</Typography>
+<Typography variant="muted">Texto de menor énfasis.</Typography>
+```
+
+## Ejemplos
+
+### Default
+
+<ComponentPreview component="typography" demo="default" />
+
+### Encabezados
+
+<ComponentPreview component="typography" demo="headings" />
+
+### Lead, Large y Muted
+
+<ComponentPreview component="typography" demo="lead-muted" />
+
+### Polimórfico (prop `as`)
+
+<ComponentPreview component="typography" demo="custom-tag" />
+
+## Referencia de API
+
+### Typography
+
+| Prop        | Tipo                                                                                                                       | Por defecto | Descripción                              |
+| ----------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------- |
+| `variant`   | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6' \| 'p' \| 'blockquote' \| 'lead' \| 'large' \| 'small' \| 'muted' \| 'code'` | `'p'`       | Variante de estilo de texto              |
+| `as`        | `React.ElementType`                                                                                                        | -           | Sobrescribe el elemento HTML renderizado |
+| `align`     | `'left' \| 'center' \| 'right' \| 'justify'`                                                                               | -           | Alineación del texto                     |
+| `weight`    | `'light' \| 'normal' \| 'medium' \| 'semibold' \| 'bold' \| 'extrabold'`                                                   | -           | Peso de fuente personalizado             |
+| `className` | `string`                                                                                                                   | -           | Clases CSS adicionales                   |
