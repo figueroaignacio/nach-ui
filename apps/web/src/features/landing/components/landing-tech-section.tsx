@@ -1,4 +1,3 @@
-import { Typography } from '@repo/ui/components/typography';
 import {
   MotionIcon,
   NextJSIcon,
@@ -6,6 +5,10 @@ import {
   TailwindIcon,
   TypescriptIcon,
 } from '@/components/common/tech-icons';
+import { Typography } from '@repo/ui/components/typography';
+import { Container } from '@repo/ui/layout/container';
+import { Grid } from '@repo/ui/layout/grid';
+import { Stack } from '@repo/ui/layout/stack';
 import { useTranslations } from 'next-intl';
 
 interface TechnologyConfig {
@@ -55,39 +58,49 @@ export function LandingTechSection() {
 
   return (
     <section className="bg-background relative w-full overflow-hidden py-16 md:py-24 lg:py-32">
-      <div className="bg-grid-pattern absolute inset-0 opacity-50"></div>
-      <div className="relative z-10 mx-auto max-w-3xl">
+      <Container size="2xl" className="relative z-10">
         <div className="mb-12 md:mb-16">
-          <Typography variant="h2" className="gradient-text mb-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+          <Typography
+            variant="h2"
+            className="gradient-text mb-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
+          >
             {t('title')}
           </Typography>
-          <Typography variant="p" className="text-muted-foreground max-w-2xl text-lg">{t('subtitle')}</Typography>
+          <Typography variant="p" className="text-muted-foreground max-w-2xl text-lg">
+            {t('subtitle')}
+          </Typography>
         </div>
-        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        <Grid columns="1" gap="2" className="md:grid-cols-2 lg:grid-cols-3">
           {technologies.map((tech) => {
             const config = technologiesConfig[tech.name];
             return (
               <div key={tech.name} className={`group relative h-full ${config.span || ''}`}>
                 <div className="bg-card border-border h-full overflow-hidden rounded-xl border">
-                  <div className="relative z-10 flex h-full flex-col justify-between p-6">
+                  <Stack justify="between" className="relative z-10 h-full p-6">
                     <div>
                       <div className="mb-6 flex items-center justify-between">
                         <div className="">{config.icon}</div>
                       </div>
-                      <Typography variant="h3" className="text-card-foreground group-hover:text-foreground mb-3 text-xl font-semibold transition-colors duration-300">
+                      <Typography
+                        variant="h3"
+                        className="text-card-foreground group-hover:text-foreground mb-3 text-xl font-semibold transition-colors duration-300"
+                      >
                         {tech.name}
                       </Typography>
-                      <Typography variant="p" className="text-muted-foreground group-hover:text-card-foreground/80 text-sm leading-relaxed transition-colors duration-300">
+                      <Typography
+                        variant="p"
+                        className="text-muted-foreground group-hover:text-card-foreground/80 text-sm leading-relaxed transition-colors duration-300"
+                      >
                         {tech.description}
                       </Typography>
                     </div>
-                  </div>
+                  </Stack>
                 </div>
               </div>
             );
           })}
-        </div>
-      </div>
+        </Grid>
+      </Container>
     </section>
   );
 }

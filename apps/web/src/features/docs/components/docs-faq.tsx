@@ -1,6 +1,7 @@
 'use client';
 
 import { Accordion } from '@repo/ui/components/accordion';
+import { Stack } from '@repo/ui/layout/stack';
 import { useTranslations } from 'next-intl';
 
 interface FaqItem {
@@ -14,7 +15,7 @@ export function DocsFaq() {
 
   return (
     <section className="bg-background relative z-10 w-full pt-7">
-      <div className="flex flex-col gap-12">
+      <Stack gap="12">
         <div>
           <Accordion type="single" className="w-full">
             {items.map((item, idx) => (
@@ -25,7 +26,7 @@ export function DocsFaq() {
             ))}
           </Accordion>
         </div>
-      </div>
+      </Stack>
     </section>
   );
 }

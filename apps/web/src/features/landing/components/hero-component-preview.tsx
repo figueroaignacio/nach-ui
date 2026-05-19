@@ -1,54 +1,62 @@
 'use client';
 
+import { Container } from '@repo/ui/layout/container';
+import { Flex } from '@repo/ui/layout/flex';
+import { Grid } from '@repo/ui/layout/grid';
+import { Stack } from '@repo/ui/layout/stack';
 import { PreviewAccordion } from './preview-cards/preview-accordion';
 import { PreviewBadges } from './preview-cards/preview-badges';
+import { PreviewButtonVariants } from './preview-cards/preview-button-variants';
 import { PreviewControls } from './preview-cards/preview-controls';
 import { PreviewDeploy } from './preview-cards/preview-deploy';
+import { PreviewFiles } from './preview-cards/preview-files';
 import { PreviewMenu } from './preview-cards/preview-menu';
 import { PreviewMfa } from './preview-cards/preview-mfa';
 import { PreviewNotifications } from './preview-cards/preview-notifications';
 import { PreviewProfile } from './preview-cards/preview-profile';
 import { PreviewProjectActions } from './preview-cards/preview-project-actions';
 import { PreviewSchema } from './preview-cards/preview-schema';
+import { PreviewSpinners } from './preview-cards/preview-spinners';
 import { PreviewStatus } from './preview-cards/preview-status';
+import { PreviewTabs } from './preview-cards/preview-tabs';
 import { PreviewTasks } from './preview-cards/preview-tasks';
 import { PreviewTeam } from './preview-cards/preview-team';
 import { PreviewUpgrade } from './preview-cards/preview-upgrade';
 import { PreviewWorkspace } from './preview-cards/preview-workspace';
-import { PreviewFiles } from './preview-cards/preview-files';
-import { PreviewButtonVariants } from './preview-cards/preview-button-variants';
-import { PreviewSpinners } from './preview-cards/preview-spinners';
-import { PreviewTabs } from './preview-cards/preview-tabs';
 
 export function HeroComponentPreview() {
   return (
-    <div className="mx-auto mt-16 w-full">
+    <Container className="mt-16" size="2xl">
       <div className="border-border bg-background relative overflow-hidden rounded-sm border backdrop-blur-xl">
-        <div className="border-border bg-muted/50 flex items-center justify-between border-b px-4 py-3">
-          <div className="flex gap-2">
+        <Flex
+          align="center"
+          justify="between"
+          className="border-border bg-muted/50 border-b px-4 py-3"
+        >
+          <Flex gap="2">
             <div className="bg-destructive size-3 rounded-full" />
             <div className="bg-warning size-3 rounded-full" />
             <div className="bg-success size-3 rounded-full" />
-          </div>
-        </div>
-        <div className="relative grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="flex flex-col gap-6">
+          </Flex>
+        </Flex>
+        <Grid columns="1" gap="6" className="relative p-6 sm:grid-cols-2 lg:grid-cols-3">
+          <Stack gap="6">
             <PreviewWorkspace />
             <PreviewButtonVariants />
             <PreviewProjectActions />
             <PreviewAccordion />
             <PreviewTasks />
             <PreviewNotifications />
-          </div>
-          <div className="flex flex-col gap-6">
+          </Stack>
+          <Stack gap="6">
             <PreviewMfa />
             <PreviewSpinners />
             <PreviewMenu />
             <PreviewControls />
             <PreviewProfile />
             <PreviewUpgrade />
-          </div>
-          <div className="flex flex-col gap-6">
+          </Stack>
+          <Stack gap="6">
             <PreviewDeploy />
             <PreviewTabs />
             <PreviewFiles />
@@ -56,9 +64,9 @@ export function HeroComponentPreview() {
             <PreviewTeam />
             <PreviewStatus />
             <PreviewSchema />
-          </div>
-        </div>
+          </Stack>
+        </Grid>
       </div>
-    </div>
+    </Container>
   );
 }
