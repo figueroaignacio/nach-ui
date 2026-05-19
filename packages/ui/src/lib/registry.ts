@@ -28,6 +28,10 @@ export const COMPONENT_REGISTRY = {
   tooltip: 'packages/ui/src/components/tooltip.tsx',
   spinner: 'packages/ui/src/components/spinner.tsx',
   kbd: 'packages/ui/src/components/kbd.tsx',
+  flex: 'packages/ui/src/layout/flex.tsx',
+  stack: 'packages/ui/src/layout/stack.tsx',
+  grid: 'packages/ui/src/layout/grid.tsx',
+  container: 'packages/ui/src/layout/container.tsx',
 } as const;
 
 export const DEMO_REGISTRY = {
@@ -219,6 +223,22 @@ export const DEMO_REGISTRY = {
     sizes: 'packages/ui/src/demos/kbd/sizes.tsx',
     variants: 'packages/ui/src/demos/kbd/variants.tsx',
     'with-group': 'packages/ui/src/demos/kbd/with-group.tsx',
+  },
+  // Flex demos
+  flex: {
+    default: 'packages/ui/src/demos/flex/default.tsx',
+  },
+  // Stack demos
+  stack: {
+    default: 'packages/ui/src/demos/stack/default.tsx',
+  },
+  // Grid demos
+  grid: {
+    default: 'packages/ui/src/demos/grid/default.tsx',
+  },
+  // Container demos
+  container: {
+    default: 'packages/ui/src/demos/container/default.tsx',
   },
 } as const;
 

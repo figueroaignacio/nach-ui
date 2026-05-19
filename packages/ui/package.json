@@ -8,6 +8,7 @@
     "./postcss.config": "./postcss.config.mjs",
     "./lib/*": "./src/lib/*.ts",
     "./components/*": "./src/components/*.tsx",
+    "./layout/*": "./src/layout/*.tsx",
     "./hooks/*": "./src/hooks/*.ts",
     "./registry": "./src/lib/registry.ts",
     "./src/demos/*/*": "./src/demos/*/*.tsx",
