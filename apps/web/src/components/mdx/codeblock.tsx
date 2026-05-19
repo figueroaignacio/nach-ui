@@ -1,11 +1,9 @@
 'use client';
 
 import { fontCode } from '@/lib/font';
-import { Button } from '@repo/ui/components/button';
 import { cn } from '@repo/ui/lib/cn';
-import { useTranslations } from 'next-intl';
 import { Highlight, themes } from 'prism-react-renderer';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { CopyButton } from './copy-button';
 
 interface CodeBlockProps {
@@ -13,9 +11,7 @@ interface CodeBlockProps {
   language?: string;
   className?: string;
   showLineNumbers?: boolean;
-  isExpanded?: boolean;
   filename?: string;
-  expandButton?: React.ReactNode;
 }
 
 export function CodeBlock({
@@ -23,37 +19,16 @@ export function CodeBlock({
   language = 'tsx',
   className,
   showLineNumbers = true,
-  isExpanded: initialIsExpanded = false,
   filename: _filename,
-  expandButton,
 }: CodeBlockProps) {
   const codeString = code.trim();
   const filename = _filename?.trim() || undefined;
   const preRef = useRef<HTMLPreElement>(null);
-  const [internalIsExpanded, setInternalIsExpanded] = useState(initialIsExpanded);
-  const [isExpandable, setIsExpandable] = useState(false);
-  const t = useTranslations('components.codeblockWrapper');
-
-  useEffect(() => {
-    setInternalIsExpanded(initialIsExpanded);
-  }, [initialIsExpanded]);
-
-  useEffect(() => {
-    if (preRef.current) {
-      const scrollHeight = preRef.current.scrollHeight;
-      if (scrollHeight > 450) {
-        setIsExpandable(true);
-      } else {
-        setIsExpandable(false);
-      }
-    }
-  }, [codeString]);
 
   return (
     <div
       className={cn(
-        'group relative mt-6 w-full overflow-hidden rounded-md bg-[#0e1216] transition-all duration-500',
-        !internalIsExpanded ? 'max-h-[450px]' : 'max-h-none',
+        'group relative mt-6 w-full overflow-hidden rounded-md bg-[#0e1216]',
         className,
       )}
     >
@@ -77,22 +52,6 @@ export function CodeBlock({
             ) : null}
           </div>
           <div className="flex items-center gap-2">
-            {isExpandable && (
-              <div className="flex items-center gap-2">
-                {expandButton ? (
-                  expandButton
-                ) : (
-                  <Button
-                    variant="link"
-                    onClick={() => setInternalIsExpanded((prev) => !prev)}
-                    className="h-auto p-0 text-xs font-normal text-white/50 hover:text-white/80"
-                  >
-                    {internalIsExpanded ? t('collapse') : t('expand')}
-                  </Button>
-                )}
-                <div className="h-4 w-px bg-white/20" />
-              </div>
-            )}
             <CopyButton value={codeString} />
           </div>
         </div>
