@@ -13,7 +13,7 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <div className="relative z-50 container mx-auto hidden w-full items-center justify-between px-4 py-3 lg:flex">
+    <div className="relative z-50 container mx-auto hidden w-full items-center justify-between px-4 py-3 md:flex">
       <div className="flex items-center justify-between gap-x-6">
         <Logo size="sm" />
         <nav className="flex items-center space-x-6 text-sm font-medium">

@@ -28,7 +28,7 @@ export function MobileMenu() {
   useLockBodyScroll(isMenuOpen);
 
   return (
-    <div className="relative flex w-full items-center justify-between px-5 py-5 lg:hidden">
+    <div className="relative flex w-full items-center justify-between px-5 py-5 md:hidden">
       <button
         className="flex items-center gap-x-2 text-sm font-medium"
         onClick={toggleMenu}
