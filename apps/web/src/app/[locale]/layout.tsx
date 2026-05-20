@@ -6,6 +6,7 @@ import { ThemeInitScript } from '@/features/theme/components/theme-init-script';
 import { routing } from '@/i18n/routing';
 import { fontHeading, fontSans } from '@/lib/font';
 import '@repo/ui/globals.css';
+import { Container } from '@repo/ui/src/layout/container';
 import type { Metadata } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
@@ -45,8 +46,8 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
         <NextIntlClientProvider>
           <Providers>
             <Header />
-            <main id="main-content" className="container">
-              {children}
+            <main id="main-content">
+              <Container size="fluid">{children}</Container>
             </main>
             <Footer />
           </Providers>

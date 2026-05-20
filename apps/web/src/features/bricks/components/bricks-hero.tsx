@@ -1,9 +1,9 @@
-import { Typography } from '@repo/ui/components/typography';
 import { GitHubStarHeroCta } from '@/components/common/github-star-cta';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Button } from '@repo/ui/components/button';
+import { Typography } from '@repo/ui/components/typography';
 import { Container } from '@repo/ui/layout/container';
 import { Flex } from '@repo/ui/layout/flex';
 import { Stack } from '@repo/ui/layout/stack';
@@ -26,8 +26,9 @@ export function BricksHero({ activeSlug }: BricksHeroProps) {
 
   return (
     <Stack align="center" className="bg-background relative overflow-hidden pt-24 pb-8">
-      <Container as="section" size="xl">
+      <Container as="section" size="fluid">
         <Stack align="center" justify="center" gap="3" className="relative z-10">
+          <GitHubStarHeroCta />
           <Stack gap="2" className="text-center">
             <Typography
               variant="h1"
@@ -60,7 +61,6 @@ export function BricksHero({ activeSlug }: BricksHeroProps) {
                 <Link href={action.href}>{action.label}</Link>
               </Button>
             ))}
-            <GitHubStarHeroCta />
           </Flex>
         </Stack>
       </Container>

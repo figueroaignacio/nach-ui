@@ -44,7 +44,7 @@ export function LandingHero() {
   return (
     <Stack align="center" className="bg-background relative min-h-svh overflow-hidden pt-24 pb-16">
       <motion.section variants={containerVariants} initial="hidden" animate="visible">
-        <Container size="xl">
+        <Container size="fluid">
           <Stack align="center" justify="center" gap="3" className="relative z-10">
             <motion.div variants={itemVariants} className="space-y-4 text-center">
               <GitHubStarHeroCta />
@@ -99,7 +99,7 @@ export function LandingHero() {
                 </Flex>
               </Flex>
             </motion.div>
-            <motion.div variants={itemVariants} className="relative mt-12 w-full">
+            <motion.div variants={itemVariants} className="relative w-full">
               <HeroComponentPreview />
             </motion.div>
           </Stack>

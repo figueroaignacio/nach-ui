@@ -1,9 +1,9 @@
-import { Typography } from '@repo/ui/components/typography';
 import { BricksHero } from '@/features/bricks/components/bricks-hero';
 import { BRICK_CATEGORIES } from '@/features/bricks/lib/bricks-registry';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { Typography } from '@repo/ui/components/typography';
 import { Container } from '@repo/ui/layout/container';
 import { Flex } from '@repo/ui/layout/flex';
 import { Grid } from '@repo/ui/layout/grid';
@@ -21,8 +21,7 @@ export default async function BricksPage({ params }: PageProps) {
   return (
     <div className="bg-background relative min-h-svh overflow-hidden pb-24">
       <BricksHero />
-
-      <Container size="xl" className="pt-16">
+      <Container size="fluid" className="pt-16">
         <Grid columns="1" gap="6" className="md:grid-cols-2 lg:grid-cols-3">
           {BRICK_CATEGORIES.map((category) => (
             <Link

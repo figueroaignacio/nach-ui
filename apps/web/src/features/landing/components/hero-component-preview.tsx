@@ -26,7 +26,7 @@ import { PreviewWorkspace } from './preview-cards/preview-workspace';
 
 export function HeroComponentPreview() {
   return (
-    <Container className="mt-16" size="2xl">
+    <Container className="mt-16 px-0" size="2xl">
       <div className="border-border bg-background relative overflow-hidden rounded-sm border backdrop-blur-xl">
         <Flex
           align="center"
