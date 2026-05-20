@@ -1,6 +1,6 @@
-import { Typography } from '@repo/ui/components/typography';
 import { BulbIcon, CodeIcon, Comment01Icon, SparklesIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
+import { Typography } from '@repo/ui/components/typography';
 import { useTranslations } from 'next-intl';
 
 interface ChatSuggestionsProps {
@@ -53,7 +53,7 @@ export function ChatSuggestions({ onSuggestionClick }: ChatSuggestionsProps) {
               className="text-muted-foreground group-hover:text-foreground transition-colors"
             />
             <Typography
-              variant="p"
+              variant="small"
               className="text-foreground/70 group-hover:text-foreground text-left text-[13px] leading-snug font-medium transition-colors"
             >
               {suggestion.text}
