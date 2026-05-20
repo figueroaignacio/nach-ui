@@ -40,7 +40,7 @@ export default async function DocPage({ params }: { params: Promise<DocPageProps
 
   return (
     <>
-      <Container size="md">
+      <Container size="md" className="px-0">
         <Stack as="article" className="w-full min-w-0">
           <Stack gap="1" className="mt-8 mb-10 sm:mt-10 sm:mb-12">
             <MobileToc toc={tocContent} />
