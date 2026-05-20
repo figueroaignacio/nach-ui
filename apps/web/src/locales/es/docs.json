@@ -223,6 +223,31 @@
           "description": "Restringe y centra el contenido."
         }
       ]
+    },
+    {
+      "title": "Bricks",
+      "items": [
+        {
+          "title": "Login",
+          "href": "/bricks/login"
+        },
+        {
+          "title": "Signup",
+          "href": "/bricks/signup"
+        },
+        {
+          "title": "Pricing",
+          "href": "/bricks/pricing"
+        },
+        {
+          "title": "Dashboard",
+          "href": "/bricks/Dashboard"
+        },
+        {
+          "title": "Settings",
+          "href": "/bricks/settings"
+        }
+      ]
     }
   ]
 }
