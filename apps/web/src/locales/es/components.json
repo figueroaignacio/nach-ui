@@ -53,7 +53,10 @@
       "getStarted": "¿Cómo empiezo?"
     },
     "header": {
-      "reset": "Nuevo chat"
+      "reset": "Nuevo chat",
+      "expand": "Expandir",
+      "collapse": "Contraer",
+      "close": "Cerrar"
     }
   },
   "backButton": {

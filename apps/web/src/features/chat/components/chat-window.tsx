@@ -1,11 +1,13 @@
 import type { Message } from '@/lib/definitions';
-import { AnimatePresence, motion } from 'motion/react';
+import { Container } from '@repo/ui/layout/container';
+import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { ChatHeader } from './chat-header';
 import { ChatInput } from './chat-input';
 import { ChatMessages } from './chat-messages';
 
 interface ChatWindowProps {
   isOpen: boolean;
+  isExpanded: boolean;
   messages: Message[];
   isLoading: boolean;
   isStreaming: boolean;
@@ -18,34 +20,32 @@ interface ChatWindowProps {
   onClose: () => void;
   onReset: () => void;
   onSuggestionClick: (text: string) => void;
+  onToggleExpand: () => void;
 }
 
-const backdropVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-} as const;
+const backdropTransition: Transition = { duration: 0.25, ease: [0.22, 1, 0.36, 1] };
 
-const backdropTransition = { duration: 0.2 };
-
-const windowVariants = {
-  initial: { opacity: 0, x: 'calc(100% + 2rem)' },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: 'calc(100% + 2rem)' },
-} as const;
-
-const windowTransition = {
+const panelEnterTransition = {
   type: 'spring' as const,
-  stiffness: 400,
-  damping: 30,
+  stiffness: 380,
+  damping: 34,
+  mass: 0.8,
+};
+
+const layoutTransition = {
+  type: 'spring' as const,
+  stiffness: 350,
+  damping: 32,
+  mass: 0.6,
 };
 
 const backdropStyle = { willChange: 'opacity' } as const;
-const windowStyle = { willChange: 'opacity, transform' } as const;
+const panelStyle = { willChange: 'transform, opacity' } as const;
 
 export function ChatWindow(props: ChatWindowProps) {
   const {
     isOpen,
+    isExpanded,
     messages,
     isLoading,
     isStreaming,
@@ -58,53 +58,95 @@ export function ChatWindow(props: ChatWindowProps) {
     onClose,
     onReset,
     onSuggestionClick,
+    onToggleExpand,
   } = props;
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence>
       {isOpen && (
         <>
           <motion.div
-            key="backdrop"
+            key="chat-backdrop"
             style={backdropStyle}
-            variants={backdropVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={backdropTransition}
-            className="bg-background/50 fixed inset-0 z-9999"
+            className="bg-background/50 fixed inset-0 z-9999 backdrop-blur-[2px]"
             onClick={onClose}
           />
           <motion.div
-            key="chat-window"
-            style={windowStyle}
-            variants={windowVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={windowTransition}
-            className="bg-background border-border fixed inset-y-0 right-0 z-9999 flex w-full flex-col overflow-hidden border-l md:w-[450px] lg:w-[700px]"
+            key="chat-panel"
+            layout
+            style={panelStyle}
+            initial={{ opacity: 0, x: 80, scale: 0.97 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 60, scale: 0.97 }}
+            transition={{
+              layout: layoutTransition,
+              ...panelEnterTransition,
+            }}
+            className={
+              isExpanded
+                ? 'bg-background fixed inset-0 z-9999 flex'
+                : 'bg-background border-border fixed inset-y-0 right-0 z-9999 flex h-full w-full flex-col overflow-hidden border-l md:w-[450px] lg:w-[700px]'
+            }
           >
-            <div className="relative z-10 flex h-full flex-col">
-              <ChatHeader onClose={onClose} onReset={onReset} />
-              <div className="flex-1 overflow-y-auto">
-                <ChatMessages
-                  messages={messages}
-                  isLoading={isLoading}
-                  isStreaming={isStreaming}
-                  error={error}
-                  endRef={messagesEndRef}
-                  onSuggestionClick={onSuggestionClick}
+            {isExpanded ? (
+              <Container size="lg">
+                <div className="bg-background relative z-10 flex h-full flex-col rounded-lg">
+                  <ChatHeader
+                    onClose={onClose}
+                    onReset={onReset}
+                    isExpanded={isExpanded}
+                    onToggleExpand={onToggleExpand}
+                  />
+                  <div className="flex-1 overflow-y-auto">
+                    <ChatMessages
+                      messages={messages}
+                      isLoading={isLoading}
+                      isStreaming={isStreaming}
+                      error={error}
+                      endRef={messagesEndRef}
+                      onSuggestionClick={onSuggestionClick}
+                    />
+                  </div>
+                  <ChatInput
+                    message={message}
+                    isLoading={isLoading || isStreaming}
+                    onMessageChange={onMessageChange}
+                    onSubmit={onSubmit}
+                    onKeyDown={onKeyDown}
+                  />
+                </div>
+              </Container>
+            ) : (
+              <div className="relative z-10 flex h-full flex-col">
+                <ChatHeader
+                  onClose={onClose}
+                  onReset={onReset}
+                  isExpanded={isExpanded}
+                  onToggleExpand={onToggleExpand}
+                />
+                <div className="flex-1 overflow-y-auto">
+                  <ChatMessages
+                    messages={messages}
+                    isLoading={isLoading}
+                    isStreaming={isStreaming}
+                    error={error}
+                    endRef={messagesEndRef}
+                    onSuggestionClick={onSuggestionClick}
+                  />
+                </div>
+                <ChatInput
+                  message={message}
+                  isLoading={isLoading || isStreaming}
+                  onMessageChange={onMessageChange}
+                  onSubmit={onSubmit}
+                  onKeyDown={onKeyDown}
                 />
               </div>
-              <ChatInput
-                message={message}
-                isLoading={isLoading || isStreaming}
-                onMessageChange={onMessageChange}
-                onSubmit={onSubmit}
-                onKeyDown={onKeyDown}
-              />
-            </div>
+            )}
           </motion.div>
         </>
       )}

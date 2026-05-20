@@ -2,6 +2,7 @@
 
 import { useChatInput } from '@/features/chat/hooks/use-chat-input';
 import { useLockBodyScroll } from '@/hooks/use-lock-body-scroll';
+import { AnimatePresence } from 'motion/react';
 import { useCallback, type RefObject } from 'react';
 import { useChatStore } from '../store/chat-store';
 import { ChatToggleButton } from './chat-toggle-button';
@@ -11,6 +12,8 @@ export function AiChat() {
   const {
     isOpen,
     setIsOpen,
+    isExpanded,
+    toggleExpanded,
     messages,
     isLoading,
     isStreaming,
@@ -22,7 +25,11 @@ export function AiChat() {
   } = useChatStore();
   const { message, setMessage, handleSubmit, handleKeyPress } = useChatInput(sendMessage);
 
-  const handleClose = () => setIsOpen(false);
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+    if (isExpanded) toggleExpanded();
+  }, [setIsOpen, isExpanded, toggleExpanded]);
+
   useLockBodyScroll(isOpen);
 
   const handleSuggestionClickWrapper = useCallback(
@@ -34,10 +41,17 @@ export function AiChat() {
   );
 
   return (
-    <div className="fixed right-6 bottom-6 z-500">
-      <ChatToggleButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+    <>
+      <div className="fixed right-6 bottom-6 z-500">
+        <AnimatePresence>
+          {!isOpen && !isExpanded && (
+            <ChatToggleButton isOpen={isOpen} onClick={() => setIsOpen(true)} />
+          )}
+        </AnimatePresence>
+      </div>
       <ChatWindow
         isOpen={isOpen}
+        isExpanded={isExpanded}
         messages={messages}
         isLoading={isLoading}
         isStreaming={isStreaming}
@@ -50,8 +64,9 @@ export function AiChat() {
         onClose={handleClose}
         onReset={resetChat}
         onSuggestionClick={handleSuggestionClickWrapper}
+        onToggleExpand={toggleExpanded}
       />
-    </div>
+    </>
   );
 }
 

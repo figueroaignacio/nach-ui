@@ -13,7 +13,7 @@ interface MarkdownContentProps {
 
 export function ChatMarkdownContent({ content }: MarkdownContentProps) {
   return (
-    <div className="max-w-full overflow-x-hidden">
+    <div className="hide-scrollbar max-w-full overflow-x-hidden">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

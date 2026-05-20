@@ -7,6 +7,10 @@ interface ChatStore {
   openChat: () => void;
   closeChat: () => void;
 
+  isExpanded: boolean;
+  setIsExpanded: (isExpanded: boolean) => void;
+  toggleExpanded: () => void;
+
   messages: Message[];
   isLoading: boolean;
   isStreaming: boolean;
@@ -28,6 +32,10 @@ export const useChatStore = create<ChatStore>((set, get) => ({
   setIsOpen: (isOpen) => set({ isOpen }),
   openChat: () => set({ isOpen: true }),
   closeChat: () => set({ isOpen: false }),
+
+  isExpanded: false,
+  setIsExpanded: (isExpanded) => set({ isExpanded }),
+  toggleExpanded: () => set((state) => ({ isExpanded: !state.isExpanded })),
 
   messages: [],
   isLoading: false,

@@ -1,6 +1,6 @@
 'use client';
 
-import { Cancel01Icon, ChatAdd01Icon, Tick02Icon } from '@hugeicons/core-free-icons';
+import { Cancel01Icon, ChatAdd01Icon, ExpandIcon, Tick02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Button } from '@repo/ui/components/button';
 import { Tooltip } from '@repo/ui/components/tooltip';
@@ -13,9 +13,11 @@ import { AiAvatar } from './ai-avatar';
 interface ChatHeaderProps {
   onClose?: () => void;
   onReset?: () => void;
+  isExpanded?: boolean;
+  onToggleExpand?: () => void;
 }
 
-export function ChatHeader({ onClose, onReset }: ChatHeaderProps) {
+export function ChatHeader({ onClose, onReset, isExpanded, onToggleExpand }: ChatHeaderProps) {
   const t = useTranslations('components.chat.header');
   const [confirming, setConfirming] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -51,22 +53,49 @@ export function ChatHeader({ onClose, onReset }: ChatHeaderProps) {
       <div className="flex items-center gap-3">
         <AiAvatar size="sm" />
         <Typography
-          variant="h2"
+          variant="small"
           className="text-foreground text-[15px] font-semibold tracking-tight"
         >
           Mate
         </Typography>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1">
+        {onToggleExpand && (
+          <Tooltip>
+            <Tooltip.Trigger>
+              <Button
+                onClick={onToggleExpand}
+                size="default"
+                variant="ghost"
+                className="hidden rounded-full transition-all lg:block"
+                aria-label={isExpanded ? 'Collapse chat' : 'Expand chat'}
+              >
+                <HugeiconsIcon
+                  icon={ExpandIcon}
+                  size={18}
+                  className={cn(
+                    'transition-transform duration-300 ease-out',
+                    isExpanded && 'rotate-180',
+                  )}
+                />
+              </Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content side="bottom">
+              <Typography variant="small" className="text-secondary">
+                {isExpanded ? t('collapse') : t('expand')}
+              </Typography>
+            </Tooltip.Content>
+          </Tooltip>
+        )}
         {onReset && (
           <Tooltip>
             <Tooltip.Trigger>
               <Button
                 onClick={handleResetClick}
-                size="icon"
+                size="default"
                 variant="ghost"
                 className={cn(
-                  'h-8 w-8 rounded-full transition-all duration-200',
+                  'rounded-full transition-all duration-200',
                   confirming && 'bg-destructive/10 text-destructive hover:bg-destructive/20',
                 )}
                 aria-label={confirming ? 'Confirm reset' : 'Reset chat'}
@@ -79,19 +108,30 @@ export function ChatHeader({ onClose, onReset }: ChatHeaderProps) {
               </Button>
             </Tooltip.Trigger>
             <Tooltip.Content side="bottom">
-              <Typography variant="p">{t('reset')}</Typography>
+              <Typography variant="small" className="text-secondary">
+                {t('reset')}
+              </Typography>
             </Tooltip.Content>
           </Tooltip>
         )}
-        <Button
-          onClick={onClose}
-          size="icon"
-          variant="ghost"
-          className="h-8 w-8 rounded-full transition-all"
-          aria-label="Close chat"
-        >
-          <HugeiconsIcon icon={Cancel01Icon} size={18} />
-        </Button>
+        <Tooltip>
+          <Tooltip.Trigger>
+            <Button
+              onClick={onClose}
+              size="default"
+              variant="ghost"
+              className="rounded-full transition-all"
+              aria-label="Close chat"
+            >
+              <HugeiconsIcon icon={Cancel01Icon} size={18} />
+            </Button>
+          </Tooltip.Trigger>
+          <Tooltip.Content side="bottom">
+            <Typography variant="small" className="text-secondary">
+              {t('close')}
+            </Typography>
+          </Tooltip.Content>
+        </Tooltip>
       </div>
     </header>
   );
