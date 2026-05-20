@@ -2,6 +2,7 @@ import { MDXContent } from '@/components/mdx/mdx-content';
 import { DocActions } from '@/features/docs/components/doc-actions';
 import { DocsNavigationButtons } from '@/features/docs/components/docs-navigation-button';
 import { DocsPagination } from '@/features/docs/components/docs-pagination';
+import { IssueCta } from '@/features/docs/components/issue-cta';
 import { MobileToc } from '@/features/docs/components/mobile-toc';
 import { Toc } from '@/features/docs/components/toc';
 import { ContentRepository } from '@/lib/content-repository';
@@ -73,6 +74,10 @@ export default async function DocPage({ params }: { params: Promise<DocPageProps
           <div className="min-w-0 flex-1">
             {doc.body ? <MDXContent code={doc.body} /> : <div>Error</div>}
           </div>
+          <IssueCta
+            pageTitle={doc.title}
+            pageUrl={getAbsoluteUrl(doc.locale || 'en', `/docs/${doc.slugAsParams}`)}
+          />
           <DocsPagination currentPath={currentPath} />
         </Stack>
       </Container>

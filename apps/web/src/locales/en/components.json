@@ -97,5 +97,10 @@
     "tocTitle": "Like NachUI?",
     "tocSubtitle": "Star on GitHub helps me a lot",
     "ariaLabel": "Star NachUI on GitHub"
+  },
+  "issueCta": {
+    "question": "Found something to improve?",
+    "description": "Notice a bug, typo, or missing detail on this page? Help us make the documentation better by opening a GitHub issue.",
+    "button": "Create an Issue"
   }
 }
