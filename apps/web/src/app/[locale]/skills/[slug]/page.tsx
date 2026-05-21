@@ -5,6 +5,8 @@ import { getSkillInstallCommand, getSkillSourceUrl } from '@/features/skills/lib
 import { ContentRepository } from '@/lib/content-repository';
 import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
 import { Container } from '@repo/ui/layout/container';
+import { Typography } from '@repo/ui/src/components/typography';
+import { Stack } from '@repo/ui/src/layout/stack';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -30,10 +32,8 @@ export default async function SkillDetailPage({ params }: PageProps) {
     <div className="bg-background min-h-svh">
       <Container size="fluid" className="max-w-3xl py-24">
         <BackButton />
-        <div className="border-border mt-6 mb-8 border-b pb-8">
-          <h1 className="text-foreground mb-2 text-3xl font-semibold tracking-tight">
-            {skill.name}
-          </h1>
+        <Stack className="border-border mt-6 mb-8 border-b pb-8" gap="4">
+          <Typography variant="h1">{skill.name}</Typography>
           <p className="text-muted-foreground mb-6 font-mono text-base">
             figueroaignacio/ui-skills ·{' '}
             <a
@@ -53,7 +53,7 @@ export default async function SkillDetailPage({ params }: PageProps) {
               className="text-muted-foreground hover:text-foreground shrink-0 transition-colors"
             />
           </div>
-        </div>
+        </Stack>
         <p className="text-muted-foreground mb-10 font-mono text-sm italic">
           {t('triggersWhen', { description: skill.description })}
         </p>
