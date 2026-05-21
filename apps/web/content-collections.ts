@@ -247,6 +247,39 @@ const posts = defineCollection({
   },
 });
 
+const skills = defineCollection({
+  name: 'skills',
+  directory: 'src/content/skills',
+  include: 'nachui-*.md',
+  schema: z.object({
+    name: z.string(),
+    description: z.string(),
+  }),
+  transform: async (document, context) => {
+    let tocEntries: TocEntry[] = [];
+
+    const body = await compileMDX(context, document, {
+      remarkPlugins,
+      rehypePlugins: createRehypePlugins((toc) => {
+        tocEntries = toc;
+      }),
+    });
+
+    const slug = document._meta.path;
+
+    return {
+      ...document,
+      slug,
+      body,
+      raw: document.content,
+      toc: {
+        content: tocEntries,
+        visible: true,
+      },
+    };
+  },
+});
+
 export default defineConfig({
-  content: [docs, posts],
+  content: [docs, posts, skills],
 });

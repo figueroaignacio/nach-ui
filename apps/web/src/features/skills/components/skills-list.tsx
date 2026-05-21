@@ -1,0 +1,101 @@
+'use client';
+
+import { useCopyToClipboard } from '@/features/docs/hooks/use-copy-to-clipboard';
+import { getSkillInstallCommand } from '@/features/skills/lib/skills';
+import { Container } from '@repo/ui/layout/container';
+import type { Route } from 'next';
+import { useTranslations } from 'next-intl';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState, useTransition } from 'react';
+import { SkillsFooter } from './skills-footer';
+import { SkillsHeader } from './skills-header';
+import { SkillsRow } from './skills-row';
+import { SkillsSearchInput } from './skills-search-input';
+
+export type SerializedSkill = {
+  slug: string;
+  name: string;
+  description: string;
+};
+
+export type SkillsListProps = {
+  initialSkills: SerializedSkill[];
+  initialQuery?: string;
+};
+
+export function SkillsList({ initialSkills, initialQuery }: SkillsListProps) {
+  const t = useTranslations('components.skillsList');
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
+
+  const [search, setSearch] = useState(initialQuery ?? '');
+  const { copyToClipboard } = useCopyToClipboard(2000);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const q = searchParams.get('q') ?? '';
+    setSearch(q);
+  }, [searchParams]);
+
+  const filtered = initialSkills.filter(
+    (s) =>
+      s.name.toLowerCase().includes(search.toLowerCase()) ||
+      s.description.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  const handleCopy = (slug: string) => {
+    copyToClipboard(getSkillInstallCommand(slug));
+    setCopiedId(slug);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+
+    const params = new URLSearchParams(searchParams);
+    if (value.trim()) params.set('q', value);
+    else params.delete('q');
+
+    startTransition(() => {
+      const qs = params.toString();
+      router.replace((qs ? `${pathname}?${qs}` : pathname) as Route);
+    });
+  };
+
+  return (
+    <div className="bg-background min-h-svh">
+      <Container size="fluid" className="max-w-4xl py-24">
+        <SkillsHeader totalCount={initialSkills.length} />
+        <SkillsSearchInput value={search} onChange={handleSearchChange} />
+
+        <div className="border-border text-muted-foreground hidden grid-cols-[2rem_1fr_auto] gap-4 border-b py-3 font-mono text-xs font-medium uppercase lg:grid">
+          <span>#</span>
+          <span>{t('columns.skill')}</span>
+          <span>{t('columns.install')}</span>
+        </div>
+
+        {filtered.length === 0 ? (
+          <p className="text-muted-foreground py-10 text-center font-mono text-sm">
+            {t('noResults', { query: search })}
+          </p>
+        ) : (
+          <ul>
+            {filtered.map((skill, idx) => (
+              <SkillsRow
+                key={skill.slug}
+                index={idx + 1}
+                skill={skill}
+                copied={copiedId === skill.slug}
+                onCopy={handleCopy}
+              />
+            ))}
+          </ul>
+        )}
+
+        <SkillsFooter />
+      </Container>
+    </div>
+  );
+}

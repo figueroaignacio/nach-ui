@@ -1,0 +1,97 @@
+import { BackButton } from '@/components/common/back-button';
+import { CopyButton } from '@/components/mdx/copy-button';
+import { MDXContent } from '@/components/mdx/mdx-content';
+import { getSkillInstallCommand, getSkillSourceUrl } from '@/features/skills/lib/skills';
+import { ContentRepository } from '@/lib/content-repository';
+import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
+import { Container } from '@repo/ui/layout/container';
+import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
+type PageProps = {
+  params: Promise<{ slug: string; locale: string }>;
+};
+
+export default async function SkillDetailPage({ params }: PageProps) {
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: 'components.skillDetail' });
+
+  const skill = ContentRepository.getSkillBySlug(slug);
+  if (!skill) {
+    notFound();
+  }
+
+  const cliCommand = getSkillInstallCommand(skill.slug);
+  const githubUrl = getSkillSourceUrl(skill.slug);
+
+  return (
+    <div className="bg-background min-h-svh">
+      <Container size="fluid" className="max-w-3xl py-24">
+        <BackButton />
+        <div className="border-border mt-6 mb-8 border-b pb-8">
+          <h1 className="text-foreground mb-2 text-3xl font-semibold tracking-tight">
+            {skill.name}
+          </h1>
+          <p className="text-muted-foreground mb-6 font-mono text-base">
+            figueroaignacio/ui-skills ·{' '}
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground underline underline-offset-2 transition-colors"
+            >
+              {t('viewSource')}
+            </a>
+          </p>
+          <div className="text-foreground bg-muted/30 border-border flex w-full max-w-lg items-center gap-3 rounded border px-4 py-2.5 font-mono text-sm">
+            <span className="text-muted-foreground shrink-0">$</span>
+            <code className="flex-1 truncate text-sm select-all">{cliCommand}</code>
+            <CopyButton
+              value={cliCommand}
+              className="text-muted-foreground hover:text-foreground shrink-0 transition-colors"
+            />
+          </div>
+        </div>
+        <p className="text-muted-foreground mb-10 font-mono text-sm italic">
+          {t('triggersWhen', { description: skill.description })}
+        </p>
+        <article className="prose prose-sm dark:prose-invert max-w-none">
+          <MDXContent code={skill.body} />
+        </article>
+      </Container>
+    </div>
+  );
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug, locale } = await params;
+  const skill = ContentRepository.getSkillBySlug(slug);
+  if (!skill) return { title: 'Skill Not Found' };
+
+  const canonicalUrl = getAbsoluteUrl(locale, `/skills/${slug}`);
+
+  return {
+    title: `${skill.name} — NachUI Skills`,
+    description: skill.description,
+    openGraph: {
+      title: `${skill.name} — NachUI Skills`,
+      description: skill.description,
+      type: 'article',
+      locale,
+      url: canonicalUrl,
+      siteName: 'NachUI',
+    },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: buildAlternates(`/skills/${slug}`),
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  return ContentRepository.getSkills().map((skill) => ({
+    slug: skill.slug,
+  }));
+}
