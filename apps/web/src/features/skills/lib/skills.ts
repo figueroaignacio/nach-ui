@@ -1,9 +1,9 @@
 export type SkillSlug = string;
 
 export function getSkillInstallCommand(slug: SkillSlug) {
-  return `npx skills add github:figueroaignacio/ui-skills/${slug}`;
+  return `npx skills add github:figueroaignacio/ui-skills/skills/${slug}`;
 }
 
 export function getSkillSourceUrl(slug: SkillSlug) {
-  return `https://github.com/figueroaignacio/ui-skills/blob/main/${slug}/SKILL.md`;
+  return `https://github.com/figueroaignacio/ui-skills/blob/main/skills/${slug}/SKILL.md`;
 }
