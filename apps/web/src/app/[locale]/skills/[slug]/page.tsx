@@ -30,7 +30,7 @@ export default async function SkillDetailPage({ params }: PageProps) {
 
   return (
     <div className="bg-background min-h-svh">
-      <Container size="fluid" className="max-w-3xl py-24">
+      <Container size="md" className="px-0 py-10">
         <BackButton />
         <Stack className="border-border mt-6 mb-8 border-b pb-8" gap="4">
           <Typography variant="h1">{skill.name}</Typography>

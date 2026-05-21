@@ -66,7 +66,7 @@ export function SkillsList({ initialSkills, initialQuery }: SkillsListProps) {
 
   return (
     <div className="bg-background min-h-svh">
-      <Container size="fluid" className="max-w-4xl py-24">
+      <Container size="lg" className="px-0 py-10">
         <SkillsHeader totalCount={initialSkills.length} />
         <SkillsSearchInput value={search} onChange={handleSearchChange} />
 
