@@ -3,7 +3,7 @@ name: 'nachui-cli-development'
 description: 'Use when modifying or extending CLI commands, prompts, build configurations, or API integrations in packages/cli.'
 ---
 
-# NachUI CLI Development Guide
+## NachUI CLI Development Guide
 
 You are modifying or expanding the official NachUI Command Line Interface (`packages/cli`). The CLI uses **Commander** for commands, **Clack** for prompts, and **Kleur** for console styling.
 

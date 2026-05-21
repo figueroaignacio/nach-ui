@@ -3,7 +3,7 @@ name: 'nachui-component-development'
 description: 'Use when creating, modifying, or refactoring React components in the packages/ui directory of NachUI.'
 ---
 
-# NachUI Component Development Guide
+## NachUI Component Development Guide
 
 You are an expert React 19 developer building components for the NachUI library. Follow these strict guidelines and patterns when authoring or modifying components.
 

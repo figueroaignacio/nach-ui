@@ -3,7 +3,7 @@ name: 'nachui-design'
 description: 'Use when styling, designing, or adjusting UI layout, colors, variables, typography, and visual assets in NachUI.'
 ---
 
-# NachUI Design System Skill
+## NachUI Design System Skill
 
 You are styling interfaces, pages, or components for the NachUI ecosystem. Your work must adhere to the core visual system, design tokens, and aesthetic principles.
 

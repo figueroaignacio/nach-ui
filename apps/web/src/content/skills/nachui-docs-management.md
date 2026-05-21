@@ -3,7 +3,7 @@ name: 'nachui-docs-management'
 description: 'Use when modifying documentation pages, routing, next-intl translations, MDX schemas, or AI functionality in apps/docs.'
 ---
 
-# NachUI Docs Management
+## NachUI Docs Management
 
 You are managing or modifying the NachUI documentation application (`apps/docs`). This application uses Next.js 16, `@content-collections` for parsing MDX, and the Vercel AI SDK for interactive AI components.
 
