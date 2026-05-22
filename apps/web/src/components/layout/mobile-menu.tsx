@@ -39,8 +39,16 @@ export function MobileMenu() {
       >
         <HugeiconsIcon icon={PanelLeftIcon} aria-hidden="true" />
       </button>
-      <div className="flex items-center gap-x-3">
+      <div className="flex items-center gap-x-5">
         <Searcher />
+        <button
+          title="Go to home page"
+          aria-label="Go to home page"
+          type="button"
+          className="flex items-center gap-x-2 text-sm font-medium"
+        >
+          <Logo size="mobile" />
+        </button>
       </div>
       <nav
         className={cn(
@@ -52,29 +60,20 @@ export function MobileMenu() {
         )}
       >
         <div className="flex items-center justify-between px-6 py-4">
-          <button
-            onClick={toggleMenu}
-            title="Go to home page"
-            aria-label="Go to home page"
-            type="button"
-            className="flex items-center gap-x-2 text-sm font-medium"
-          >
-            <Logo size="mobile" />
-          </button>
           <div className="flex items-center gap-x-3">
             <ThemeToggle />
             <LocaleSwitcher />
-            <button
-              onClick={toggleMenu}
-              title="Close menu"
-              aria-label="Close menu"
-              aria-expanded={isMenuOpen}
-              type="button"
-              className="hover:bg-muted rounded-md p-2 transition-colors"
-            >
-              <HugeiconsIcon icon={Cancel01Icon} size={20} aria-hidden="true" />
-            </button>
           </div>
+          <button
+            onClick={toggleMenu}
+            title="Close menu"
+            aria-label="Close menu"
+            aria-expanded={isMenuOpen}
+            type="button"
+            className="hover:bg-muted rounded-md p-2 transition-colors"
+          >
+            <HugeiconsIcon icon={Cancel01Icon} size={20} aria-hidden="true" />
+          </button>
         </div>
         <div className="flex-1 overflow-y-auto px-6 py-6">
           {navigation && navigation.length > 0 && (
