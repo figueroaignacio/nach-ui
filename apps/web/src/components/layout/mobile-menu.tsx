@@ -81,7 +81,7 @@ export function MobileMenu() {
         <div className="flex-1 overflow-y-auto px-6 py-6">
           {navigation && navigation.length > 0 && (
             <div className="mb-8">
-              <Typography className="text-muted-foreground mb-3 text-xs font-bold tracking-widest uppercase">
+              <Typography className="text-muted-foreground mb-3 text-xs font-bold tracking-widest">
                 Menu
               </Typography>
               <ul className="space-y-1">
@@ -112,7 +112,7 @@ export function MobileMenu() {
           )}
           {docsNavigation.map((section, sectionIndex) => (
             <div key={sectionIndex} className="mb-6 last:mb-0">
-              <Typography className="text-foreground font-heading mb-3 flex items-center gap-2 text-sm font-bold tracking-tight uppercase">
+              <Typography className="text-foreground font-heading mb-3 flex items-center gap-2 text-sm tracking-tight">
                 {getIcon(section.title)}
                 {section.title}
               </Typography>
