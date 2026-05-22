@@ -3,7 +3,7 @@ name: 'nachui-usage'
 description: 'Use when consuming, importing, or integrating NachUI components inside apps/web or any app that depends on @repo/ui.'
 ---
 
-# NachUI Usage Guide
+## NachUI Usage Guide
 
 You are consuming components from the NachUI. Follow these rules precisely.
 
