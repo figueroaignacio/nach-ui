@@ -59,7 +59,7 @@ export function MobileMenu() {
             type="button"
             className="flex items-center gap-x-2 text-sm font-medium"
           >
-            <Logo size="sm" />
+            <Logo size="mobile" />
           </button>
           <div className="flex items-center gap-x-3">
             <ThemeToggle />
