@@ -1,0 +1,44 @@
+---
+title: Command
+description: Muestra comandos de terminal con copia en un clic. Ideal para snippets de instalación y guías de inicio rápido.
+published: true
+date: 2026-05-22
+label: New
+locale: es
+toc:
+  visible: true
+---
+
+<ComponentPreview component="command" demo="default" />
+
+## Instalación
+
+<ComponentInstallTabs component="cli-command" />
+
+## Anatomía
+
+```tsx
+import { CliCommand } from '@/components/ui/cli-command';
+```
+
+```tsx
+<CliCommand command="npx shadcn@latest add button" />
+```
+
+## Ejemplos
+
+### Predeterminado (Default)
+
+<ComponentPreview component="cli-command" demo="default" />
+
+## Referencia de API
+
+### CliCommand
+
+| Prop         | Tipo         | Por defecto | Descripción                                                              |
+| ------------ | ------------ | ----------- | ------------------------------------------------------------------------ |
+| `command`    | `string`     | —           | El comando CLI que se muestra y se copia al portapapeles.                |
+| `prefix`     | `string`     | `"$"`       | Símbolo que aparece antes del comando (por ej. `$`, `>`, `%`).           |
+| `resetDelay` | `number`     | `2000`      | Milisegundos antes de que el estado "copiado" vuelva al ícono de copiar. |
+| `onCopied`   | `() => void` | —           | Callback que se ejecuta cuando el comando se copia correctamente.        |
+| `className`  | `string`     | —           | Clases CSS adicionales aplicadas al elemento raíz.                       |

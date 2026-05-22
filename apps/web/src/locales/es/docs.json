@@ -93,6 +93,11 @@
           "description": "Un control que permite al usuario alternar entre marcado y no marcado."
         },
         {
+          "title": "Command",
+          "href": "/docs/components/command",
+          "description": "Un componente para mostrar y copiar comandos de la línea de comandos."
+        },
+        {
           "title": "Collapsible",
           "href": "/docs/components/collapsible",
           "description": "Secciones plegables con animaciones suaves."

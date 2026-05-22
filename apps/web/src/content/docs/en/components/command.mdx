@@ -1,0 +1,44 @@
+---
+title: Command
+description: Display shell commands with one-click copy. Perfect for installation snippets and quick-start guides.
+published: true
+date: 2026-05-22
+label: New
+locale: en
+toc:
+  visible: true
+---
+
+<ComponentPreview component="command" demo="default" />
+
+## Installation
+
+<ComponentInstallTabs component="cli-command" />
+
+## Anatomy
+
+```tsx
+import { CliCommand } from '@/components/ui/cli-command';
+```
+
+```tsx
+<CliCommand command="npx shadcn@latest add button" />
+```
+
+## Examples
+
+### Default
+
+<ComponentPreview component="cli-command" demo="default" />
+
+## API Reference
+
+### CliCommand
+
+| Prop         | Type         | Default | Description                                                        |
+| ------------ | ------------ | ------- | ------------------------------------------------------------------ |
+| `command`    | `string`     | —       | The CLI command string to display and copy to clipboard.           |
+| `prefix`     | `string`     | `"$"`   | Symbol displayed before the command (e.g. `$`, `>`, `%`).          |
+| `resetDelay` | `number`     | `2000`  | Milliseconds before the copied state resets back to the copy icon. |
+| `onCopied`   | `() => void` | —       | Callback fired after the command is successfully copied.           |
+| `className`  | `string`     | —       | Additional CSS class names applied to the root element.            |

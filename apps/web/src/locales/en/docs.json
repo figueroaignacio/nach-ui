@@ -93,6 +93,11 @@
           "description": "A control that allows the user to toggle between checked and not checked."
         },
         {
+          "title": "Command",
+          "href": "/docs/components/command",
+          "description": "A component for displaying and copying CLI commands."
+        },
+        {
           "title": "Collapsible",
           "href": "/docs/components/collapsible",
           "description": "Hide or show sections of content dynamically."
