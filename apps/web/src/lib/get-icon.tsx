@@ -1,5 +1,6 @@
 import {
-  AiBrain03Icon,
+  AiBrain01Icon,
+  AiInnovation02Icon,
   BookOpen01Icon,
   BrickWallIcon,
   ComponentIcon,
@@ -27,7 +28,7 @@ export const getIcon = (title: string, href?: string) => {
   if (['bricks'].includes(lowerTitle)) return <HugeiconsIcon icon={BrickWallIcon} size={16} />;
   if (['faq', 'faqs'].includes(lowerTitle))
     return <HugeiconsIcon icon={HelpSquareIcon} size={16} />;
-  if ('skills'.includes(lowerTitle)) return <HugeiconsIcon icon={AiBrain03Icon} size={16} />;
+  if ('skills'.includes(lowerTitle)) return <HugeiconsIcon icon={AiInnovation02Icon} size={16} />;
 
   if (href) {
     if (href.includes('/installation')) return <HugeiconsIcon icon={Download01Icon} size={16} />;
@@ -37,6 +38,7 @@ export const getIcon = (title: string, href?: string) => {
     if (href.includes('/docs/components/'))
       return <HugeiconsIcon icon={SourceCodeIcon} size={16} />;
     if (href === '/docs') return <HugeiconsIcon icon={BookOpen01Icon} size={16} />;
+    if (href.includes('/skills/')) return <HugeiconsIcon icon={AiBrain01Icon} size={16} />;
   }
 
   return <HugeiconsIcon icon={Layout01Icon} size={16} />;
