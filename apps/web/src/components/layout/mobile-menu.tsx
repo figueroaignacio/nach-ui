@@ -1,6 +1,5 @@
 'use client';
 
-import { AiChat } from '@/features/chat/components/ai-chat';
 import { Searcher } from '@/features/docs/components/searcher';
 import { useLockBodyScroll } from '@/hooks/use-lock-body-scroll';
 import { Link, usePathname } from '@/i18n/navigation';
@@ -41,7 +40,6 @@ export function MobileMenu() {
         <HugeiconsIcon icon={PanelLeftIcon} aria-hidden="true" />
       </button>
       <div className="flex items-center gap-x-3">
-        <AiChat />
         <Searcher />
       </div>
       <nav
