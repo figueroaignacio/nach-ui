@@ -9,6 +9,7 @@ export const COMPONENT_REGISTRY = {
   radio: 'packages/ui/src/components/radio.tsx',
   collapsible: 'packages/ui/src/components/collapsible.tsx',
   callout: 'packages/ui/src/components/callout.tsx',
+  command: 'packages/ui/src/components/command.tsx',
   breadcrumb: 'packages/ui/src/components/breadcrumb.tsx',
   dialog: 'packages/ui/src/components/dialog.tsx',
   'dropdown-menu': 'packages/ui/src/components/dropdown-menu.tsx',
@@ -240,6 +241,10 @@ export const DEMO_REGISTRY = {
   // Container demos
   container: {
     default: 'packages/ui/src/demos/container/default.tsx',
+  },
+  // CLI Command demos
+  command: {
+    default: 'packages/ui/src/demos/command/default.tsx',
   },
   // Typography demos
   typography: {

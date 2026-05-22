@@ -41,6 +41,7 @@ import { WithLabel as CheckboxWithLabel } from '@repo/ui/src/demos/checkbox/with
 import { Bordered as CollapsibleBordered } from '@repo/ui/src/demos/collapsible/bordered';
 import { Card as CollapsibleCard } from '@repo/ui/src/demos/collapsible/card';
 import { Default as CollapsibleDefault } from '@repo/ui/src/demos/collapsible/default';
+import { Default as CommandDefault } from '@repo/ui/src/demos/command/default';
 import { Default as ContainerDefault } from '@repo/ui/src/demos/container/default';
 import { Alert as DialogAlert } from '@repo/ui/src/demos/dialog/alert';
 import { Default as DialogDefault } from '@repo/ui/src/demos/dialog/default';
@@ -268,6 +269,9 @@ export const DEMO_COMPONENTS: Record<string, Record<string, React.ComponentType>
   },
   container: {
     default: ContainerDefault,
+  },
+  command: {
+    default: CommandDefault,
   },
   typography: {
     default: TypographyDefault,
