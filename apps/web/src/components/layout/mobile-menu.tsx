@@ -47,7 +47,7 @@ export function MobileMenu() {
       <nav
         className={cn(
           'bg-background fixed z-50 flex flex-col overflow-hidden shadow-2xl transition-all duration-300',
-          'inset-0 h-[100svh] w-full sm:inset-2 sm:h-[calc(100svh-1rem)] sm:w-[380px] sm:rounded-lg sm:border',
+          'inset-0 h-lvh w-full sm:inset-2 sm:h-[calc(100svh-1rem)] sm:w-[380px] sm:rounded-lg sm:border',
           isMenuOpen
             ? 'translate-x-0'
             : '-translate-x-full opacity-0 sm:translate-x-[calc(-90%-2rem)]',
