@@ -1,30 +1,47 @@
 import { Accordion } from '@repo/ui/components/accordion';
-import { Card } from '@repo/ui/components/card';
 
 export function PreviewAccordion() {
   return (
-    <Card variant="default">
-      <Card.Content compact className="flex flex-col gap-2 pt-4">
-        <div className="text-muted-foreground mb-2 text-xs font-medium">Common Questions</div>
-        <Accordion type="single" defaultValue="item-1">
-          <Accordion.Item value="item-1">
-            <Accordion.Trigger value="item-1" className="py-2 text-xs">
-              What is NachUI?
-            </Accordion.Trigger>
-            <Accordion.Content value="item-1" className="text-[11px]">
-              A premium React component library built with Tailwind CSS v4 and Framer Motion.
-            </Accordion.Content>
-          </Accordion.Item>
-          <Accordion.Item value="item-2">
-            <Accordion.Trigger value="item-2" className="py-2 text-xs">
-              Is it responsive?
-            </Accordion.Trigger>
-            <Accordion.Content value="item-2" className="text-[11px]">
-              Yes, every component is designed to work perfectly on any screen size.
-            </Accordion.Content>
-          </Accordion.Item>
-        </Accordion>
-      </Card.Content>
-    </Card>
+    <div
+      className="flex flex-col gap-3 rounded-2xl border border-zinc-200/80 bg-white/60 p-5 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60"
+      role="region"
+      aria-label="Frequently asked questions accordion"
+    >
+      <span className="mb-1 text-[10px] font-bold tracking-widest text-zinc-400 uppercase dark:text-zinc-500">
+        Common Questions
+      </span>
+      <Accordion type="single" defaultValue="item-1">
+        <Accordion.Item value="item-1" className="border-zinc-100 dark:border-zinc-900/50">
+          <Accordion.Trigger
+            value="item-1"
+            className="hover:text-primary cursor-pointer py-2.5 text-xs font-semibold text-zinc-900 transition-colors dark:text-zinc-50"
+          >
+            What is NachUI?
+          </Accordion.Trigger>
+          <Accordion.Content
+            value="item-1"
+            className="pb-3 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400"
+          >
+            A premium React component library built with Tailwind CSS v4 and Framer Motion. Built
+            for visual excellence.
+          </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item value="item-2" className="border-none">
+          <Accordion.Trigger
+            value="item-2"
+            className="hover:text-primary cursor-pointer py-2.5 text-xs font-semibold text-zinc-900 transition-colors dark:text-zinc-50"
+          >
+            Is it production ready?
+          </Accordion.Trigger>
+          <Accordion.Content
+            value="item-2"
+            className="pb-1 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400"
+          >
+            Absolutely. Built on top of strict TypeScript presets and comprehensive unit tests with
+            Vitest.
+          </Accordion.Content>
+        </Accordion.Item>
+      </Accordion>
+    </div>
   );
 }

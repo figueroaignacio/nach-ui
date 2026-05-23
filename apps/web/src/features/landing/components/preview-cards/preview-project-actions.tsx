@@ -1,65 +1,99 @@
 import { Delete02Icon, GlobalIcon, UserGroupIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Badge } from '@repo/ui/components/badge';
-import { Card } from '@repo/ui/components/card';
 import { Kbd } from '@repo/ui/components/kbd';
 import { Label } from '@repo/ui/components/label';
 
 export function PreviewProjectActions() {
   return (
-    <Card variant="outline">
-      <Card.Content compact className="flex flex-col gap-2 pt-5 pb-5">
-        <Label className="mb-2 text-[10px] font-bold tracking-widest uppercase opacity-70">
-          Project Actions
-        </Label>
+    <div
+      className="flex flex-col gap-2 rounded-2xl border border-zinc-200/80 bg-white/60 p-5 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60"
+      role="menu"
+      aria-label="Project quick actions"
+    >
+      <Label className="mb-2 text-[10px] font-bold tracking-widest text-zinc-400 uppercase dark:text-zinc-500">
+        Project Actions
+      </Label>
 
-        <div className="group hover:bg-muted/50 flex cursor-pointer items-center justify-between rounded-lg p-2 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="bg-muted flex size-8 items-center justify-center rounded-full">
-              <HugeiconsIcon icon={UserGroupIcon} size={16} className="text-foreground" />
-            </div>
-            <div>
-              <div className="text-foreground text-xs font-bold">Invite Team</div>
-              <div className="text-muted-foreground text-[10px]">Add members</div>
+      <div
+        role="menuitem"
+        tabIndex={0}
+        className="group focus:ring-primary/20 flex cursor-pointer items-center justify-between rounded-xl p-2 transition-colors duration-200 outline-none hover:bg-zinc-100/80 focus:ring-1 dark:hover:bg-zinc-900/60"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex size-8 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-900">
+            <HugeiconsIcon
+              icon={UserGroupIcon}
+              size={16}
+              className="text-zinc-700 dark:text-zinc-300"
+            />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-zinc-900 dark:text-zinc-50">Invite Team</div>
+            <div className="text-[10px] text-zinc-400 dark:text-zinc-500">Add team members</div>
+          </div>
+        </div>
+        <Kbd>⌘I</Kbd>
+      </div>
+
+      <div
+        role="menuitem"
+        tabIndex={0}
+        className="group focus:ring-primary/20 flex cursor-pointer items-center justify-between rounded-xl p-2 transition-colors duration-200 outline-none hover:bg-zinc-100/80 focus:ring-1 dark:hover:bg-zinc-900/60"
+      >
+        <div className="flex items-center gap-3">
+          <div className="flex size-8 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-900">
+            <HugeiconsIcon
+              icon={GlobalIcon}
+              size={16}
+              className="text-zinc-700 dark:text-zinc-300"
+            />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-zinc-900 dark:text-zinc-50">Deployments</div>
+            <div className="text-[10px] text-zinc-400 dark:text-zinc-500">
+              Manage URLs & domains
             </div>
           </div>
-          <Kbd>⌘I</Kbd>
         </div>
+        <Kbd>⌘D</Kbd>
+      </div>
 
-        <div className="group hover:bg-muted/50 flex cursor-pointer items-center justify-between rounded-lg p-2 transition-colors">
-          <div className="flex items-center gap-3">
-            <div className="bg-muted flex size-8 items-center justify-center rounded-full">
-              <HugeiconsIcon icon={GlobalIcon} size={16} className="text-foreground" />
-            </div>
-            <div>
-              <div className="text-foreground text-xs font-bold">Deployments</div>
-              <div className="text-muted-foreground text-[10px]">Manage URLs</div>
-            </div>
-          </div>
-          <Kbd>⌘D</Kbd>
-        </div>
-
-        <div className="mt-4 flex items-center justify-between gap-2 px-2">
-          <Label className="text-destructive text-[10px] font-bold tracking-widest uppercase">
+      <div className="mt-2 border-t border-zinc-100 pt-3 dark:border-zinc-900/50">
+        <div className="mb-2 flex items-center justify-between gap-2 px-2">
+          <Label className="text-[10px] font-bold tracking-widest text-red-500 uppercase dark:text-red-400">
             Danger zone
           </Label>
-          <Badge variant="destructive" className="h-4 px-1 text-[9px] font-bold">
+          <Badge
+            variant="destructive"
+            className="h-4 border-none bg-red-100 px-1 text-[8px] leading-none font-bold text-red-600 dark:bg-red-950/50 dark:text-red-400"
+          >
             CRITICAL
           </Badge>
         </div>
 
-        <div className="group hover:bg-destructive/10 flex cursor-pointer items-center justify-between rounded-lg p-2 transition-colors">
+        <div
+          role="menuitem"
+          tabIndex={0}
+          className="group flex cursor-pointer items-center justify-between rounded-xl p-2 transition-colors duration-200 outline-none hover:bg-red-50 focus:ring-1 focus:ring-red-500/20 dark:hover:bg-red-950/20"
+        >
           <div className="flex items-center gap-3">
-            <div className="bg-destructive/10 group-hover:bg-destructive/20 flex size-8 items-center justify-center rounded-full">
-              <HugeiconsIcon icon={Delete02Icon} size={16} className="text-destructive" />
+            <div className="flex size-8 items-center justify-center rounded-lg bg-red-100/60 group-hover:bg-red-100 dark:bg-red-950/50 dark:group-hover:bg-red-950">
+              <HugeiconsIcon
+                icon={Delete02Icon}
+                size={16}
+                className="text-red-600 dark:text-red-400"
+              />
             </div>
             <div>
-              <div className="text-destructive text-xs font-bold">Delete Project</div>
-              <div className="text-destructive/70 text-[10px]">Irreversible action</div>
+              <div className="text-xs font-bold text-red-600 dark:text-red-400">Delete Project</div>
+              <div className="text-[10px] text-red-400 dark:text-red-500/70">
+                Permanently remove folder
+              </div>
             </div>
           </div>
         </div>
-      </Card.Content>
-    </Card>
+      </div>
+    </div>
   );
 }

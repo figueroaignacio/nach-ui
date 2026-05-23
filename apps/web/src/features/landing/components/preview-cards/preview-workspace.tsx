@@ -1,5 +1,3 @@
-import { Typography } from '@repo/ui/components/typography';
-import { Card } from '@repo/ui/components/card';
 import { Input } from '@repo/ui/components/input';
 import { Label } from '@repo/ui/components/label';
 import { Progress } from '@repo/ui/components/progress';
@@ -8,44 +6,74 @@ import { Switch } from '@repo/ui/components/switch';
 
 export function PreviewWorkspace() {
   return (
-    <Card variant="outline">
-      <Card.Content compact className="flex flex-col gap-5 pt-5 pb-5">
-        <Input
-          label="Workspace Name"
-          defaultValue="acme-corp"
-          description="This will be your project's unique identifier."
-        />
+    <div
+      className="flex flex-col gap-4 rounded-2xl border border-zinc-200/80 bg-white/60 p-5 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60"
+      role="region"
+      aria-label="Workspace Settings Widget"
+    >
+      <div className="flex flex-col gap-1">
+        <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          Workspace Settings
+        </span>
+        <span className="text-[10px] text-zinc-500 dark:text-zinc-400">
+          Configure environment preferences
+        </span>
+      </div>
+
+      <div className="space-y-4">
+        <div>
+          <Input
+            label="Workspace ID"
+            defaultValue="nach-design-system"
+            className="bg-muted/40 border-zinc-200 text-xs text-zinc-900 dark:border-zinc-800 dark:text-zinc-50"
+            aria-describedby="workspace-id-desc"
+          />
+          <p id="workspace-id-desc" className="mt-1 text-[9px] text-zinc-400 dark:text-zinc-500">
+            Your workspace URL:{' '}
+            <span className="font-mono text-zinc-600 dark:text-zinc-300">
+              nachui.com/nach-design-system
+            </span>
+          </p>
+        </div>
 
         <div className="space-y-1.5">
-          <Label>Environment</Label>
-          <Select defaultValue="production">
+          <Label htmlFor="env-select" className="text-xs">
+            Deployment Target
+          </Label>
+          <Select
+            id="env-select"
+            defaultValue="production"
+            className="bg-muted/40 border-zinc-200 text-xs text-zinc-950 dark:border-zinc-800 dark:text-zinc-50"
+          >
             <option value="development">Development</option>
-            <option value="staging">Staging</option>
-            <option value="production">Production</option>
+            <option value="staging">Staging (edge)</option>
+            <option value="production">Production (multi-region)</option>
           </Select>
         </div>
 
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <Label className="text-xs">Maintenance Mode</Label>
-            <Typography variant="p" className="text-muted-foreground text-[10px]">
-              Disable public access
-            </Typography>
+            <Label htmlFor="maintenance-switch" className="text-xs">
+              Maintenance Mode
+            </Label>
+            <p className="text-[9px] text-zinc-400 dark:text-zinc-500">
+              Route traffic to custom loading screen
+            </p>
           </div>
-          <Switch defaultChecked />
+          <Switch id="maintenance-switch" defaultChecked={false} />
         </div>
 
-        <div className="space-y-2 pt-2">
-          <div className="text-foreground flex justify-between text-[10px] font-bold tracking-widest uppercase">
-            <span className="text-muted-foreground">API Rate Limit</span>
-            <span>70%</span>
+        <div className="space-y-2 border-t border-zinc-100 pt-3 dark:border-zinc-900/50">
+          <div className="flex justify-between text-[9px] font-bold tracking-widest uppercase">
+            <span className="text-zinc-400 dark:text-zinc-500">API Usage Cap</span>
+            <span className="text-zinc-900 dark:text-zinc-50">92%</span>
           </div>
-          <Progress value={70} />
-          <Typography variant="p" className="text-muted-foreground text-right text-[10px]">
-            700 / 1,000 hr
-          </Typography>
+          <Progress value={92} aria-label="API rate limit usage" />
+          <p className="text-right text-[9px] text-zinc-400 dark:text-zinc-500">
+            9,234,101 / 10,000,000 reqs
+          </p>
         </div>
-      </Card.Content>
-    </Card>
+      </div>
+    </div>
   );
 }

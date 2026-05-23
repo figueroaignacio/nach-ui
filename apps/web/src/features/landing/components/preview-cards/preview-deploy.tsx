@@ -1,57 +1,59 @@
-import { Typography } from '@repo/ui/components/typography';
 import { Rocket01Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Badge } from '@repo/ui/components/badge';
 import { Button } from '@repo/ui/components/button';
-import { Card } from '@repo/ui/components/card';
 import { Progress } from '@repo/ui/components/progress';
 
 export function PreviewDeploy() {
   return (
-    <Card variant="outline">
-      <Card.Content compact className="space-y-6 pt-6 pb-6">
-        <div className="flex flex-col items-center gap-2">
-          <div className="border-border bg-muted/50 mb-2 flex size-12 items-center justify-center rounded-full border">
-            <HugeiconsIcon icon={Rocket01Icon} className="text-foreground" size={24} />
+    <div
+      className="flex flex-col gap-5 rounded-2xl border border-zinc-200/80 bg-white/60 p-5 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/60"
+      role="region"
+      aria-label="Deployment Status Tracker"
+    >
+      <div className="flex flex-col items-center gap-3">
+        <div className="flex size-12 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 shadow-inner dark:border-zinc-800 dark:bg-zinc-900/50">
+          <HugeiconsIcon
+            icon={Rocket01Icon}
+            className="text-zinc-900 dark:text-zinc-50"
+            size={22}
+          />
+        </div>
+        <div className="text-center">
+          <div className="flex items-center justify-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-50">
+            Deploy to Vercel
+            <Badge variant="secondary" className="h-5 animate-pulse text-[9px] font-bold">
+              BUILDING
+            </Badge>
           </div>
-          <div className="text-center">
-            <Typography
-              variant="h4"
-              className="text-foreground flex items-center justify-center gap-2 text-lg font-bold"
-            >
-              Deploy to Edge
-              <Badge variant="secondary" className="h-5 animate-pulse text-[10px]">
-                LIVE
-              </Badge>
-            </Typography>
-            <Typography
-              variant="p"
-              className="text-muted-foreground mt-1 text-sm leading-tight text-balance"
-            >
-              Push your application globally in seconds.
-            </Typography>
+          <p className="mt-1 text-xs leading-normal text-zinc-500 dark:text-zinc-400">
+            Push code to branch{' '}
+            <span className="bg-muted rounded px-1 py-0.5 font-mono text-zinc-900 dark:text-zinc-100">
+              main
+            </span>{' '}
+            to trigger automatic deployment.
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <div className="space-y-1.5">
+          <div className="flex justify-between text-[9px] font-bold tracking-widest uppercase">
+            <span className="text-zinc-400 dark:text-zinc-500">Deploying edge functions</span>
+            <span className="text-zinc-900 dark:text-zinc-50">85%</span>
           </div>
+          <Progress value={85} aria-label="Build progress" />
         </div>
 
-        <div className="space-y-4">
-          <div className="space-y-1.5">
-            <div className="flex justify-between text-[10px] font-bold tracking-widest uppercase">
-              <span className="text-muted-foreground">Uploading Assets</span>
-              <span className="text-foreground">85%</span>
-            </div>
-            <Progress value={85} />
-          </div>
-
-          <div className="flex gap-2">
-            <Button className="flex-1" size="sm">
-              View Log
-            </Button>
-            <Button variant="outline" className="flex-1" size="sm">
-              Cancel
-            </Button>
-          </div>
+        <div className="flex gap-2">
+          <Button className="flex-1 text-xs font-bold" size="sm">
+            View Live Logs
+          </Button>
+          <Button variant="outline" className="flex-1 text-xs font-bold" size="sm">
+            Cancel Build
+          </Button>
         </div>
-      </Card.Content>
-    </Card>
+      </div>
+    </div>
   );
 }
