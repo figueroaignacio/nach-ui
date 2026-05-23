@@ -1,15 +1,5 @@
 import { Link } from '@/i18n/navigation';
-import { LOGO_ASCII } from '@/lib/logo-ascii';
-
-const SIZES: Record<keyof typeof LOGO_ASCII, string> = {
-  mobile: 'text-[5px]',
-  sm: 'text-[3px] sm:text-[3px]',
-  md: 'text-[10px] sm:text-xs',
-  lg: 'text-[12px] sm:text-sm',
-  xl: 'text-[14px] sm:text-base',
-  skills: 'text-[10px] sm:text-xs',
-  bricks: 'text-[10px] sm:text-xs',
-};
+import { LOGO_ASCII, SIZES } from '@/lib/logo-ascii';
 
 export function Logo({ size = 'md' }: { size?: keyof typeof SIZES }) {
   return (
