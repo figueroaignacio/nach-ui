@@ -51,13 +51,12 @@ export function ChatHeader({ onClose, onReset, isExpanded, onToggleExpand }: Cha
   return (
     <header className="bg-background/80 flex items-center justify-between px-6 py-3.5 backdrop-blur-md">
       <div className="flex items-center gap-3">
-        <AiAvatar size="sm" />
-        <Typography
-          variant="small"
-          className="text-foreground text-[15px] font-semibold tracking-tight"
-        >
-          Mate
-        </Typography>
+        <div className="flex items-center gap-3">
+          <AiAvatar size="sm" />
+          <pre className="text-foreground font-mono text-[2px] leading-none whitespace-pre">
+            {`███╗   ██╗██╗ █████╗ ████████╗███████╗\n████╗ ████║██║██╔══██╗╚══██╔══╝██╔════╝\n██╔████╔██║██║███████║   ██║   █████╗  \n██║╚██╔╝██║██║██╔══██║   ██║   ██╔══╝  \n██║ ╚═╝ ██║██║██║  ██║   ██║   ███████╗\n╚═╝     ╚═╝╚═╝╚═╝  ╚═╝   ╚═╝   ╚══════╝`}
+          </pre>
+        </div>
       </div>
       <div className="flex items-center gap-1">
         {onToggleExpand && (
