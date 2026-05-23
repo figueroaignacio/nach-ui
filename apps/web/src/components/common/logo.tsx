@@ -7,6 +7,7 @@ const SIZES: Record<keyof typeof LOGO_ASCII, string> = {
   md: 'text-[10px] sm:text-xs',
   lg: 'text-[12px] sm:text-sm',
   xl: 'text-[14px] sm:text-base',
+  skills: 'text-[10px] sm:text-xs',
 };
 
 export function Logo({ size = 'md' }: { size?: keyof typeof SIZES }) {
