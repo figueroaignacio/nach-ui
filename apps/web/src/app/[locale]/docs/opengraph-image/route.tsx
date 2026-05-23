@@ -1,0 +1,149 @@
+import { ContentRepository } from '@/lib/content-repository';
+import type { NextRequest } from 'next/server';
+import { ImageResponse } from 'next/og';
+
+export const runtime = 'edge';
+
+export const size = { width: 1200, height: 630 };
+export const contentType = 'image/png';
+
+export async function GET(
+  req: NextRequest,
+  {
+    params,
+  }: {
+    params: Promise<{
+      locale?: string;
+    }>;
+  },
+) {
+  const { locale = 'en' } = await params;
+  const slugPath = req.nextUrl.searchParams.get('slug') ?? '';
+  const doc = slugPath ? ContentRepository.getDocBySlug(slugPath, locale) : undefined;
+
+  const title = doc?.title ?? 'Documentation';
+  const description = doc?.description ?? '';
+  const section = slugPath ? (slugPath.split('/')[0] ?? 'Docs') : 'Docs';
+
+  const fontSize = title.length > 40 ? 48 : title.length > 25 ? 56 : 64;
+  const truncatedDesc = description.length > 120 ? `${description.slice(0, 120)}...` : description;
+
+  return new ImageResponse(
+    <div
+      style={{
+        width: 1200,
+        height: 630,
+        backgroundColor: '#09090b',
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '72px 80px',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {Array.from({ length: 8 }).map((_, i) => (
+        <div
+          key={`v${i}`}
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: ((i + 1) * 1200) / 9,
+            width: 1,
+            backgroundColor: '#18181b',
+          }}
+        />
+      ))}
+
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div
+          key={`h${i}`}
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: ((i + 1) * 630) / 5,
+            height: 1,
+            backgroundColor: '#18181b',
+          }}
+        />
+      ))}
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          marginBottom: 52,
+          fontFamily: 'monospace',
+        }}
+      >
+        <span style={{ color: '#6366f1', fontSize: 13, letterSpacing: '0.12em' }}>NACHUI</span>
+        <span style={{ color: '#3f3f46', fontSize: 13 }}>/</span>
+        <span style={{ color: '#52525b', fontSize: 13, letterSpacing: '0.08em' }}>
+          {section.toUpperCase()}
+        </span>
+      </div>
+
+      <div style={{ width: 44, height: 2, backgroundColor: '#6366f1', marginBottom: 36 }} />
+
+      <div
+        style={{
+          fontSize,
+          fontWeight: 600,
+          color: '#f4f4f5',
+          lineHeight: 1.12,
+          letterSpacing: '-0.025em',
+          marginBottom: 24,
+          maxWidth: 960,
+          fontFamily: 'sans-serif',
+        }}
+      >
+        {title}
+      </div>
+
+      {truncatedDesc && (
+        <div
+          style={{
+            fontSize: 21,
+            color: '#71717a',
+            lineHeight: 1.55,
+            maxWidth: 800,
+            fontFamily: 'sans-serif',
+          }}
+        >
+          {truncatedDesc}
+        </div>
+      )}
+
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 56,
+          left: 80,
+          right: 80,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          fontFamily: 'monospace',
+        }}
+      >
+        <span style={{ color: '#3f3f46', fontSize: 13, letterSpacing: '0.05em' }}>nachui.tech</span>
+        <div style={{ display: 'flex', gap: 7 }}>
+          {[true, false, false].map((accent, i) => (
+            <div
+              key={i}
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: 4,
+                backgroundColor: accent ? '#6366f1' : '#27272a',
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>,
+    size,
+  );
+}

@@ -13,7 +13,7 @@ import { Stack } from '@repo/ui/layout/stack';
 import { Container } from '@repo/ui/src/layout/container';
 import { allDocs as docs } from 'content-collections';
 import type { Metadata } from 'next';
-import type { Locale } from 'next-intl';
+import type { Locale } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 
 type DocPageProps = {
@@ -120,7 +120,7 @@ export async function generateMetadata({
       siteName: 'NachUI',
       images: [
         {
-          url: getAbsoluteUrl(locale, '/opengraph-image.png'),
+          url: getAbsoluteUrl(locale, `/docs/opengraph-image?slug=${encodeURIComponent(slugPath)}`),
           width: 1200,
           height: 630,
           alt: metaTitle,
@@ -131,7 +131,9 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
-      images: [getAbsoluteUrl(locale, '/opengraph-image.png')],
+      images: [
+        getAbsoluteUrl(locale, `/docs/opengraph-image?slug=${encodeURIComponent(slugPath)}`),
+      ],
     },
     alternates: {
       canonical: canonicalUrl,
