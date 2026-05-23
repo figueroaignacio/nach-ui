@@ -18,7 +18,7 @@ export function GitHubStarHeroCta() {
       aria-label={t('ariaLabel')}
     >
       <div
-        className="via-primary/[0.07] pointer-events-none absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent to-transparent"
+        className="via-primary/[0.07] pointer-events-none absolute inset-0 -skew-x-12 bg-linear-to-r from-transparent to-transparent"
         style={{ width: '200%' }}
       />
 
