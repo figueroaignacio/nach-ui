@@ -1,30 +1,13 @@
-import { ContentRepository } from '@/lib/content-repository';
-import type { NextRequest } from 'next/server';
 import { ImageResponse } from 'next/og';
+import type { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
-export const size = { width: 1200, height: 630 };
-export const contentType = 'image/png';
-
-export async function GET(
-  req: NextRequest,
-  {
-    params,
-  }: {
-    params: Promise<{
-      locale?: string;
-    }>;
-  },
-) {
-  const { locale = 'en' } = await params;
-  const slugPath = req.nextUrl.searchParams.get('slug') ?? '';
-  const doc = slugPath ? ContentRepository.getDocBySlug(slugPath, locale) : undefined;
-
-  const title = doc?.title ?? 'Documentation';
-  const description = doc?.description ?? '';
-  const section = slugPath ? (slugPath.split('/')[0] ?? 'Docs') : 'Docs';
-
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl;
+  const title = searchParams.get('title') ?? 'Documentation';
+  const description = searchParams.get('description') ?? '';
+  const section = searchParams.get('section') ?? 'Docs';
   const fontSize = title.length > 40 ? 48 : title.length > 25 ? 56 : 64;
   const truncatedDesc = description.length > 120 ? `${description.slice(0, 120)}...` : description;
 
@@ -54,7 +37,6 @@ export async function GET(
           }}
         />
       ))}
-
       {Array.from({ length: 4 }).map((_, i) => (
         <div
           key={`h${i}`}
@@ -68,7 +50,6 @@ export async function GET(
           }}
         />
       ))}
-
       <div
         style={{
           display: 'flex',
@@ -84,9 +65,7 @@ export async function GET(
           {section.toUpperCase()}
         </span>
       </div>
-
       <div style={{ width: 44, height: 2, backgroundColor: '#6366f1', marginBottom: 36 }} />
-
       <div
         style={{
           fontSize,
@@ -101,7 +80,6 @@ export async function GET(
       >
         {title}
       </div>
-
       {truncatedDesc && (
         <div
           style={{
@@ -115,7 +93,6 @@ export async function GET(
           {truncatedDesc}
         </div>
       )}
-
       <div
         style={{
           position: 'absolute',
@@ -144,6 +121,6 @@ export async function GET(
         </div>
       </div>
     </div>,
-    size,
+    { width: 1200, height: 630 },
   );
 }

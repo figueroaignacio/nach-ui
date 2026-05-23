@@ -5,6 +5,7 @@ import { DocsPagination } from '@/features/docs/components/docs-pagination';
 import { IssueCta } from '@/features/docs/components/issue-cta';
 import { MobileToc } from '@/features/docs/components/mobile-toc';
 import { Toc } from '@/features/docs/components/toc';
+import type { Locale } from '@/i18n/routing';
 import { ContentRepository } from '@/lib/content-repository';
 import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
 import { Typography } from '@repo/ui/components/typography';
@@ -13,7 +14,6 @@ import { Stack } from '@repo/ui/layout/stack';
 import { Container } from '@repo/ui/src/layout/container';
 import { allDocs as docs } from 'content-collections';
 import type { Metadata } from 'next';
-import type { Locale } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 
 type DocPageProps = {
@@ -99,15 +99,18 @@ export async function generateMetadata({
   const slugPath = parameters.slug?.join('/') || '';
 
   if (!doc) {
-    return {
-      title: 'Documentation not found',
-    };
+    return { title: 'Documentation not found' };
   }
 
   const metaTitle = doc.title;
-  const metaDescription = doc.description;
+  const metaDescription = doc.description ?? '';
+  const section = parameters.slug?.[0] ?? 'Docs';
   const canonicalUrl = getAbsoluteUrl(locale, `/docs/${slugPath}`);
 
+  const ogUrl = new URL('https://nachui.tech/api/og');
+  ogUrl.searchParams.set('title', metaTitle);
+  ogUrl.searchParams.set('description', metaDescription);
+  ogUrl.searchParams.set('section', section);
   return {
     title: metaTitle,
     description: metaDescription,
@@ -115,25 +118,16 @@ export async function generateMetadata({
       title: metaTitle,
       description: metaDescription,
       type: 'article',
-      locale: locale,
+      locale,
       url: canonicalUrl,
       siteName: 'NachUI',
-      images: [
-        {
-          url: getAbsoluteUrl(locale, `/docs/opengraph-image?slug=${encodeURIComponent(slugPath)}`),
-          width: 1200,
-          height: 630,
-          alt: metaTitle,
-        },
-      ],
+      images: [{ url: ogUrl.toString(), width: 1200, height: 630, alt: metaTitle }],
     },
     twitter: {
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
-      images: [
-        getAbsoluteUrl(locale, `/docs/opengraph-image?slug=${encodeURIComponent(slugPath)}`),
-      ],
+      images: [ogUrl.toString()],
     },
     alternates: {
       canonical: canonicalUrl,
