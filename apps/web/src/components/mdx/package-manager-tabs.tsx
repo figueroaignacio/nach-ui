@@ -1,7 +1,7 @@
 'use client';
 
 import { Tabs } from '@repo/ui/components/tabs';
-import { CodeBlock } from './codeblock';
+import { Command } from '@repo/ui/src/components/command';
 import { PackageManagerIcons } from './package-manager-icons';
 
 interface PackageManagerTabsProps {
@@ -41,25 +41,19 @@ export function PackageManagerTabs({
   command,
   managers = ['npm', 'pnpm', 'yarn', 'bun'],
   defaultManager = 'npm',
-  showLineNumbers = false,
 }: PackageManagerTabsProps) {
   return (
     <Tabs defaultValue={defaultManager} className="mt-5 w-full" size="sm">
       <Tabs.List variant="default">
         {managers.map((manager) => (
           <Tabs.Trigger key={manager} value={manager} className="flex-row gap-2">
-            {/* <div>{PACKAGE_MANAGERS[manager].icon}</div> */}
             <div>{PACKAGE_MANAGERS[manager].name}</div>
           </Tabs.Trigger>
         ))}
       </Tabs.List>
       {managers.map((manager) => (
-        <Tabs.Content key={manager} value={manager} className="mt-0">
-          <CodeBlock
-            code={PACKAGE_MANAGER_COMMANDS[manager](command)}
-            language="bash"
-            showLineNumbers={showLineNumbers}
-          />
+        <Tabs.Content key={manager} value={manager} className="mt-5">
+          <Command command={PACKAGE_MANAGER_COMMANDS[manager](command)} />
         </Tabs.Content>
       ))}
     </Tabs>

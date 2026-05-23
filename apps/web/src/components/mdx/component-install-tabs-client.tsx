@@ -1,8 +1,8 @@
 'use client';
 
 import { Tabs } from '@repo/ui/components/tabs';
+import { Command } from '@repo/ui/src/components/command';
 import type { ReactNode } from 'react';
-import { CodeBlock } from './codeblock';
 
 interface ComponentInstallTabsClientProps {
   component: string;
@@ -43,12 +43,8 @@ export function ComponentInstallTabsClient({
             ))}
           </Tabs.List>
           {MANAGERS.map((m) => (
-            <Tabs.Content key={m} value={m} className="mt-0">
-              <CodeBlock
-                code={CLI_COMMANDS[m](component)}
-                language="bash"
-                showLineNumbers={false}
-              />
+            <Tabs.Content key={m} value={m} className="mt-5">
+              <Command command={CLI_COMMANDS[m](component)} />
             </Tabs.Content>
           ))}
         </Tabs>
