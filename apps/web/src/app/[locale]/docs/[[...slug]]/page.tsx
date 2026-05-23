@@ -120,7 +120,7 @@ export async function generateMetadata({
       siteName: 'NachUI',
       images: [
         {
-          url: getAbsoluteUrl(locale, `/docs/${slugPath}/opengraph-image`),
+          url: getAbsoluteUrl(locale, '/opengraph-image.png'),
           width: 1200,
           height: 630,
           alt: metaTitle,
@@ -131,7 +131,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
-      images: [getAbsoluteUrl(locale, `/docs/${slugPath}/opengraph-image`)],
+      images: [getAbsoluteUrl(locale, '/opengraph-image.png')],
     },
     alternates: {
       canonical: canonicalUrl,
