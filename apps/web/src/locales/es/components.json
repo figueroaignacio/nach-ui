@@ -98,6 +98,14 @@
     "tocSubtitle": "Una estrella en GitHub me ayuda mucho",
     "ariaLabel": "Dar estrella a NachUI en GitHub"
   },
+  "landingLogoCta": {
+    "version": "v1.0",
+    "line1": "Componentes preconstruidos. Totalmente tuyos.",
+    "line2": "Hecho para React moderno.",
+    "primaryAction": "Comenzar",
+    "secondaryAction": "Ver componentes →",
+    "license": "MIT"
+  },
   "issueCta": {
     "question": "¿Encontraste algo que mejorar?",
     "description": "¿Notaste un error, tipografía o detalle faltante en esta página? Ayúdanos a mejorar la documentación abriendo un issue en GitHub.",

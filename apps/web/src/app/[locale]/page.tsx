@@ -1,4 +1,4 @@
-import { LandingFeatures } from '@/features/landing/components/landing-features';
+import { LandingLogoCta } from '@/components/common/landing-logo-cta';
 import { LandingHero } from '@/features/landing/components/landing-hero';
 import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
 import { Stack } from '@repo/ui/layout/stack';
@@ -16,7 +16,7 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <Stack align="center">
       <LandingHero />
-      <LandingFeatures />
+      <LandingLogoCta />
     </Stack>
   );
 }

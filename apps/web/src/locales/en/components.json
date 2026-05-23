@@ -98,6 +98,14 @@
     "tocSubtitle": "Star on GitHub helps me a lot",
     "ariaLabel": "Star NachUI on GitHub"
   },
+  "landingLogoCta": {
+    "version": "v1.0",
+    "line1": "Pre-built components. Fully yours.",
+    "line2": "Built for modern React.",
+    "primaryAction": "Get started",
+    "secondaryAction": "Browse components →",
+    "license": "MIT"
+  },
   "issueCta": {
     "question": "Found something to improve?",
     "description": "Notice a bug, typo, or missing detail on this page? Help us make the documentation better by opening a GitHub issue.",

@@ -68,7 +68,7 @@ export function Footer() {
         <Grid columns="2" gap="8" className="py-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-12">
           <div className="col-span-2 lg:col-span-2">
             <div className="mb-4">
-              <Logo />
+              <Logo size="mobile" />
             </div>
             <Typography variant="p" className="text-muted-foreground mb-6 max-w-xs text-sm">
               {t('home.description')}

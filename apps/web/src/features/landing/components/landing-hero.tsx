@@ -46,6 +46,7 @@ export function LandingHero() {
       <motion.section variants={containerVariants} initial="hidden" animate="visible">
         <Container size="fluid">
           <Stack align="center" justify="center" gap="3" className="relative z-10">
+            <GitHubStarHeroCta />
             <motion.div variants={itemVariants} className="space-y-4 text-center">
               <Typography
                 variant="h1"
@@ -95,7 +96,6 @@ export function LandingHero() {
                 >
                   <span className="text-muted-foreground mr-1 text-sm font-medium">Theme</span>
                   <ThemeColorSwitcher />
-                  <GitHubStarHeroCta />
                 </Flex>
               </Flex>
             </motion.div>
