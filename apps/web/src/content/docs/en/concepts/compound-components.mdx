@@ -1,0 +1,112 @@
+---
+title: Compound Components
+description: Learn the compound component pattern for building flexible, typed UI APIs with shared state and explicit slots.
+published: true
+toc:
+  visible: true
+date: 2026-05-22
+locale: en
+---
+
+Compound components let you expose a single root component together with named sub-components. This pattern is ideal when a UI primitive has multiple interactive parts that must stay coordinated, such as tabs, menus, or form fields.
+
+In NachUI, we create them by defining a root component and then attaching named child units with `Object.assign`:
+
+```tsx
+const Tabs = Object.assign(TabsRoot, {
+  List: TabsList,
+  Trigger: TabsTrigger,
+  Content: TabsContent,
+});
+
+export { Tabs };
+```
+
+This is the pattern used across the package to keep the public API simple and consistent, with `<Tabs.List />`, `<Tabs.Trigger />`, and `<Tabs.Content />`.
+
+## Why use compound components
+
+Compound components make your API:
+
+- explicit: each slot is a named sub-component instead of a generic `children` blob
+- composable: users can mix and match child pieces inside the root
+- typed: TypeScript can infer props for each sub-component independently
+- stateful: the root can share state through context instead of prop drilling
+
+## How it works
+
+The root component owns the logic and provides context. Sub-components read from that context to render the correct behavior.
+
+```tsx
+function Tabs({ children, defaultValue }: TabsProps) {
+  const [value, setValue] = useState(defaultValue);
+
+  return (
+    <TabsContext.Provider value={{ value, setValue }}>
+      <div className="space-y-4">{children}</div>
+    </TabsContext.Provider>
+  );
+}
+
+Tabs.List = function TabsList({ children }: { children: ReactNode }) {
+  return <div className="flex gap-2">{children}</div>;
+};
+
+Tabs.Trigger = function TabsTrigger({ value, children }: TabsTriggerProps) {
+  const context = useTabsContext();
+  const selected = context.value === value;
+
+  return (
+    <button
+      type="button"
+      className={cn('rounded-md px-3 py-2', selected ? 'bg-primary text-white' : 'bg-muted')}
+      onClick={() => context.setValue(value)}
+    >
+      {children}
+    </button>
+  );
+};
+
+Tabs.Content = function TabsContent({ value, children }: TabsContentProps) {
+  const context = useTabsContext();
+  return context.value === value ? <div>{children}</div> : null;
+};
+```
+
+### Example usage
+
+```tsx
+<Tabs defaultValue="overview">
+  <Tabs.List>
+    <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+    <Tabs.Trigger value="details">Details</Tabs.Trigger>
+  </Tabs.List>
+
+  <Tabs.Content value="overview">Overview content</Tabs.Content>
+  <Tabs.Content value="details">Details content</Tabs.Content>
+</Tabs>
+```
+
+## When to use this pattern
+
+Use compound components when a UI primitive has multiple named pieces that depend on shared state. Good candidates are:
+
+- tabs
+- accordions
+- dropdown menus
+- dialog headers / footers
+- form controls with label and description slots
+
+If the component is simple and only needs one element, prefer a single component API instead.
+
+## Best practices
+
+- export sub-components as static members on the root export
+- keep the root responsible for shared state and class generation
+- avoid deeply nested contexts unless the hierarchy is required
+- document the sub-component names and expected slot order
+- use clear TypeScript props for each child component
+
+## Why this architecture fits NachUI
+
+NachUI favors predictable, composable primitives. Compound components keep UI APIs readable and make it easy to add optional slots or variants without breaking consumptions.

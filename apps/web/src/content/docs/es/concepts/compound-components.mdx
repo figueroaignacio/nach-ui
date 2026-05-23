@@ -1,0 +1,112 @@
+---
+title: Componentes compuestos
+description: Aprende el patrón de componentes compuestos para crear APIs de UI flexibles, tipadas y con estados compartidos.
+published: true
+toc:
+  visible: true
+date: 2026-05-22
+locale: es
+---
+
+Los componentes compuestos exponen un único componente raíz junto con subcomponentes con nombre. Este patrón es ideal cuando un elemento de UI tiene varias piezas interactivas que deben permanecer coordinadas, como pestañas, menús o campos de formulario.
+
+En NachUI, los creamos definiendo un componente raíz y luego adjuntando subcomponentes con nombre mediante `Object.assign`:
+
+```tsx
+const Tabs = Object.assign(TabsRoot, {
+  List: TabsList,
+  Trigger: TabsTrigger,
+  Content: TabsContent,
+});
+
+export { Tabs };
+```
+
+Este patrón se usa en todo el paquete para mantener la API pública simple y consistente, con `<Tabs.List />`, `<Tabs.Trigger />`, y `<Tabs.Content />`.
+
+## Por qué usar componentes compuestos
+
+Los componentes compuestos hacen que tu API sea:
+
+- explícita: cada ranura es un subcomponente nombrado en lugar de un `children` genérico
+- componible: los usuarios pueden mezclar partes dentro del componente raíz
+- tipada: TypeScript puede inferir props específicas para cada subcomponente
+- con estado: el componente raíz comparte estado mediante contexto en vez de pasar props manualmente
+
+## Cómo funciona
+
+El componente raíz posee la lógica y provee el contexto. Los subcomponentes leen ese contexto para renderizar el comportamiento correcto.
+
+```tsx
+function Tabs({ children, defaultValue }: TabsProps) {
+  const [value, setValue] = useState(defaultValue);
+
+  return (
+    <TabsContext.Provider value={{ value, setValue }}>
+      <div className="space-y-4">{children}</div>
+    </TabsContext.Provider>
+  );
+}
+
+Tabs.List = function TabsList({ children }: { children: ReactNode }) {
+  return <div className="flex gap-2">{children}</div>;
+};
+
+Tabs.Trigger = function TabsTrigger({ value, children }: TabsTriggerProps) {
+  const context = useTabsContext();
+  const selected = context.value === value;
+
+  return (
+    <button
+      type="button"
+      className={cn('rounded-md px-3 py-2', selected ? 'bg-primary text-white' : 'bg-muted')}
+      onClick={() => context.setValue(value)}
+    >
+      {children}
+    </button>
+  );
+};
+
+Tabs.Content = function TabsContent({ value, children }: TabsContentProps) {
+  const context = useTabsContext();
+  return context.value === value ? <div>{children}</div> : null;
+};
+```
+
+### Ejemplo de uso
+
+```tsx
+<Tabs defaultValue="overview">
+  <Tabs.List>
+    <Tabs.Trigger value="overview">Resumen</Tabs.Trigger>
+    <Tabs.Trigger value="details">Detalles</Tabs.Trigger>
+  </Tabs.List>
+
+  <Tabs.Content value="overview">Contenido del resumen</Tabs.Content>
+  <Tabs.Content value="details">Contenido de detalles</Tabs.Content>
+</Tabs>
+```
+
+## Cuándo usar este patrón
+
+Usa componentes compuestos cuando un elemento de UI tiene varias piezas nombradas que dependen de un estado compartido. Buenos candidatos son:
+
+- pestañas
+- acordeones
+- menús desplegables
+- encabezados/pies de diálogo
+- controles de formulario con etiqueta y descripción
+
+Si el componente es simple y solo necesita un elemento, prefiere una API de componente único.
+
+## Buenas prácticas
+
+- exporta los subcomponentes como miembros estáticos del componente raíz
+- mantiene el estado compartido y la generación de clases en el componente raíz
+- evita contextos profundamente anidados salvo que la jerarquía lo requiera
+- documenta los nombres de los subcomponentes y el orden esperado
+- usa props claras y tipadas para cada hijo
+
+## Por qué esta arquitectura funciona en NachUI
+
+NachUI prioriza primitivas de UI predecibles y componibles. Los componentes compuestos mantienen las APIs claras y facilitan agregar ranuras opcionales o variantes sin romper a los consumidores.

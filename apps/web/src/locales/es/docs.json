@@ -39,6 +39,10 @@
           "href": "/docs/concepts/dark-mode"
         },
         {
+          "title": "Componentes compuestos",
+          "href": "/docs/concepts/compound-components"
+        },
+        {
           "title": "CLI",
           "href": "/docs/concepts/cli"
         }
