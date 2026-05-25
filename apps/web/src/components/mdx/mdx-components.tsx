@@ -4,6 +4,7 @@ import { HugeiconsIcon } from '@hugeicons/react';
 import { Callout } from '@repo/ui/components/callout';
 import { Steps } from '@repo/ui/components/steps';
 import { cn } from '@repo/ui/lib/cn';
+import { Command } from '@repo/ui/src/components/command';
 import { isValidElement } from 'react';
 import { CodeBlockWrapper } from './code-block-wrapper';
 import { CodeBlock } from './codeblock';
@@ -226,4 +227,5 @@ export const mdxComponents = {
   File: MdxFile,
   Steps,
   DocsFaq,
+  Command,
 };

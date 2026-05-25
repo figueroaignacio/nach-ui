@@ -32,9 +32,9 @@ Initializes NachUI in your project. This is the **first command you should run**
 4. Inject the CSS design tokens into your stylesheet (`src/app/globals.css` for Next.js or `src/index.css` for Vite).
 5. Generate the `cn` utility function in the path defined by `aliases.utils`.
 
-```bash
-pnpm dlx nachui init
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui init" />
+</div>
 
 After running `init`, your project will contain a `nachui.json` file like this:
 
@@ -66,15 +66,15 @@ After running `init`, your project will contain a `nachui.json` file like this:
 
 Adds a component from the registry to your project. Requires `nachui.json` to exist (run `init` first).
 
-```bash
-pnpm dlx nachui add <component>
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui add <component>" />
+</div>
 
 **Example:**
 
-```bash
-pnpm dlx nachui add button
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui add button" />
+</div>
 
 **What it does:**
 
@@ -94,9 +94,9 @@ pnpm dlx nachui add button
 
 Lists all components currently available in the NachUI registry.
 
-```bash
-pnpm dlx nachui list
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui list" />
+</div>
 
 **Output example:**
 
@@ -115,15 +115,15 @@ Each entry shows the component name, its slug (used with `add`/`update`/`remove`
 
 Fetches the latest version of an already-installed component from the registry and overwrites the local file.
 
-```bash
-pnpm dlx nachui update <component>
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui update <component>" />
+</div>
 
 **Example:**
 
-```bash
-pnpm dlx nachui update button
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui update button" />
+</div>
 
 <Callout variant="warning" className="mt-4">
   <Callout.Title>Warning</Callout.Title>
@@ -144,15 +144,15 @@ The command will:
 
 Removes an installed component from your project by deleting its file (or folder) from the components directory.
 
-```bash
-pnpm dlx nachui remove <component>
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui remove <component>" />
+</div>
 
 **Example:**
 
-```bash
-pnpm dlx nachui remove button
-```
+<div className="my-12">
+  <Command command="pnpm dlx nachui remove button" />
+</div>
 
 The command looks for `button.tsx` (or a `button/` folder) inside `src/components/ui/`. If found, it asks for confirmation before permanently deleting the file.
 
@@ -165,22 +165,29 @@ The command looks for `button.tsx` (or a `button/` folder) inside `src/component
 
 ## Typical workflow
 
-```bash
-# 1. Initialize NachUI in your project
-pnpm dlx nachui init
+<Steps>
 
-# 2. Browse available components
-pnpm dlx nachui list
+#### Initialize NachUI in your project
 
-# 3. Add a component
-pnpm dlx nachui add button
+<Command command="pnpm dlx nachui init" />
 
-# 4. Update a component to the latest version
-pnpm dlx nachui update button
+#### Browse available components
 
-# 5. Remove a component you no longer need
-pnpm dlx nachui remove button
-```
+<Command command="pnpm dlx nachui list" />
+
+#### Add a component
+
+<Command command="pnpm dlx nachui add button" />
+
+#### Update a component to the latest version
+
+<Command command="pnpm dlx nachui update button" />
+
+#### Remove a component you no longer need
+
+<Command command="pnpm dlx nachui remove button" />
+
+</Steps>
 
 ## Configuration file
 
