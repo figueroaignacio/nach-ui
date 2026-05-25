@@ -9,6 +9,7 @@ import { Cancel01Icon, PanelLeftIcon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Typography } from '@repo/ui/components/typography';
 import { cn } from '@repo/ui/lib/cn';
+import { Flex } from '@repo/ui/src/layout/flex';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { LocaleSwitcher } from '../common/locale-switcher';
@@ -29,26 +30,28 @@ export function MobileMenu() {
 
   return (
     <div className="relative flex w-full items-center justify-between px-5 py-5 md:hidden">
-      <button
-        className="flex items-center gap-x-2 text-sm font-medium"
-        onClick={toggleMenu}
-        title="Open menu"
-        aria-label="Open menu"
-        aria-expanded={isMenuOpen}
-        type="button"
-      >
-        <HugeiconsIcon icon={PanelLeftIcon} aria-hidden="true" />
-      </button>
-      <div className="flex items-center gap-x-5">
-        <Searcher />
+      <Flex gap="4" align="center">
+        <button
+          className="flex items-center gap-x-2 text-sm font-medium"
+          onClick={toggleMenu}
+          title="Open menu"
+          aria-label="Open menu"
+          aria-expanded={isMenuOpen}
+          type="button"
+        >
+          <HugeiconsIcon icon={PanelLeftIcon} aria-hidden="true" />
+        </button>
         <button
           title="Go to home page"
           aria-label="Go to home page"
           type="button"
           className="flex items-center gap-x-2 text-sm font-medium"
         >
-          <Logo size="mobile" />
+          <Logo size="sm" />
         </button>
+      </Flex>
+      <div className="flex items-center gap-x-5">
+        <Searcher />
       </div>
       <nav
         className={cn(
