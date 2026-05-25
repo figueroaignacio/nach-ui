@@ -8,7 +8,7 @@ export function LandingLogoCta() {
   const t = useTranslations('components');
 
   return (
-    <section className="bg-background/60 relative w-full overflow-hidden">
+    <section className="bg-background/60 relative w-full">
       <div className="bg-foreground/3 pointer-events-none absolute top-1/2 left-1/2 h-[400px] w-[1200px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl" />
       <Container size="lg">
         <div className="relative flex min-h-lvh flex-col items-center justify-center gap-8 py-24 text-center sm:py-32">
