@@ -103,7 +103,7 @@
     "line1": "Pre-built components. Fully yours.",
     "line2": "Built for modern React.",
     "primaryAction": "Get started",
-    "secondaryAction": "Browse components →",
+    "secondaryAction": "Browse components",
     "license": "MIT"
   },
   "issueCta": {
