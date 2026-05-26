@@ -1,5 +1,6 @@
 import { BricksHero } from '@/features/bricks/components/bricks-hero';
 import { BRICK_CATEGORIES } from '@/features/bricks/lib/bricks-registry';
+import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight02Icon } from '@hugeicons/core-free-icons';
 import { HugeiconsIcon } from '@hugeicons/react';
@@ -8,6 +9,7 @@ import { Container } from '@repo/ui/layout/container';
 import { Flex } from '@repo/ui/layout/flex';
 import { Grid } from '@repo/ui/layout/grid';
 import { Stack } from '@repo/ui/layout/stack';
+import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
 type PageProps = {
@@ -68,4 +70,40 @@ export default async function BricksPage({ params }: PageProps) {
       </Container>
     </div>
   );
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const canonicalUrl = getAbsoluteUrl(locale, '/bricks');
+
+  return {
+    title: 'Bricks - NachUI',
+    description: 'Explore ready-to-use UI components and blocks for your next project.',
+    openGraph: {
+      title: 'Bricks - NachUI',
+      description: 'Explore ready-to-use UI components and blocks for your next project.',
+      type: 'website',
+      locale,
+      url: canonicalUrl,
+      siteName: 'NachUI',
+      images: [
+        {
+          url: getAbsoluteUrl(locale, '/images/og/og-bricks.png'),
+          width: 1200,
+          height: 630,
+          alt: 'Bricks - NachUI',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Bricks - NachUI',
+      description: 'Explore ready-to-use UI components and blocks for your next project.',
+      images: [getAbsoluteUrl(locale, '/images/og/og-bricks.png')],
+    },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: buildAlternates('/bricks'),
+    },
+  };
 }

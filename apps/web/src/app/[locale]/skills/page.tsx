@@ -39,6 +39,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale,
       url: canonicalUrl,
       siteName: 'NachUI',
+      images: [
+        {
+          url: getAbsoluteUrl(locale, '/images/og/og-skills.png'),
+          width: 1200,
+          height: 630,
+          alt: 'Agent Skills - NachUI',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Agent Skills - NachUI',
+      description: 'Custom AI agent skills designed for the NachUI component library ecosystem.',
+      images: [getAbsoluteUrl(locale, '/images/og/og-skills.png')],
     },
     alternates: {
       canonical: canonicalUrl,

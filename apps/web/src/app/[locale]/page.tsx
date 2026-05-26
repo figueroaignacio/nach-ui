@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       siteName: 'NachUI',
       images: [
         {
-          url: getAbsoluteUrl(locale, '/opengraph-image.png'),
+          url: getAbsoluteUrl(locale, '/images/og/og-home.png'),
           width: 1200,
           height: 630,
           alt: t('description'),
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: [getAbsoluteUrl(locale, '/opengraph-image.png')],
+      images: [getAbsoluteUrl(locale, '/images/og/og-home.png')],
     },
     alternates: {
       canonical: canonicalUrl,
