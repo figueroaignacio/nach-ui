@@ -3,6 +3,7 @@ import { BricksHero } from '@/features/bricks/components/bricks-hero';
 import { BRICK_COMPONENTS } from '@/features/bricks/lib/brick-components';
 import { getAllCategorySlugs, getBrickCategory } from '@/features/bricks/lib/bricks-registry';
 import { getBrickSourceCode } from '@/features/bricks/lib/get-brick-source';
+import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
 import { Container } from '@repo/ui/layout/container';
 import { Stack } from '@repo/ui/layout/stack';
 import type { Metadata } from 'next';
@@ -19,16 +20,50 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { category } = await params;
+  const { locale, category } = await params;
   const brickCategory = getBrickCategory(category);
 
   if (!brickCategory) {
     return { title: 'Bricks' };
   }
 
+  const canonicalUrl = getAbsoluteUrl(locale, `/bricks/${category}`);
+  const count = brickCategory.bricks.length;
+  const ogImageUrl =
+    `${getAbsoluteUrl(locale, '/api/og/bricks')}` +
+    `?name=${encodeURIComponent(brickCategory.name)}` +
+    `&description=${encodeURIComponent(brickCategory.description)}` +
+    `&count=${count}`;
+
   return {
-    title: `${brickCategory.name} Bricks`,
+    title: `${brickCategory.name} Bricks — NachUI`,
     description: brickCategory.description,
+    openGraph: {
+      title: `${brickCategory.name} Bricks — NachUI`,
+      description: brickCategory.description,
+      type: 'website',
+      locale,
+      url: canonicalUrl,
+      siteName: 'NachUI',
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${brickCategory.name} Bricks — NachUI`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${brickCategory.name} Bricks — NachUI`,
+      description: brickCategory.description,
+      images: [ogImageUrl],
+    },
+    alternates: {
+      canonical: canonicalUrl,
+      languages: buildAlternates(`/bricks/${category}`),
+    },
   };
 }
 

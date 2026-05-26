@@ -107,7 +107,7 @@ export async function generateMetadata({
   const section = parameters.slug?.[0] ?? 'Docs';
   const canonicalUrl = getAbsoluteUrl(locale, `/docs/${slugPath}`);
 
-  const ogUrl = new URL('https://nachui.tech/api/og');
+  const ogUrl = new URL(getAbsoluteUrl(locale, '/api/og/docs'));
   ogUrl.searchParams.set('title', metaTitle);
   ogUrl.searchParams.set('description', metaDescription);
   ogUrl.searchParams.set('section', section);

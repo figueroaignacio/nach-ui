@@ -72,6 +72,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonicalUrl = getAbsoluteUrl(locale, `/skills/${slug}`);
 
+  const ogImageUrl = `${getAbsoluteUrl(locale, '/api/og/skills')}?name=${encodeURIComponent(skill.name)}&description=${encodeURIComponent(skill.description)}`;
+
   return {
     title: `${skill.name} — NachUI Skills`,
     description: skill.description,
@@ -82,6 +84,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       locale,
       url: canonicalUrl,
       siteName: 'NachUI',
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${skill.name} — NachUI Skills`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${skill.name} — NachUI Skills`,
+      description: skill.description,
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: canonicalUrl,
