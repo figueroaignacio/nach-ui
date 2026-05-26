@@ -5,10 +5,11 @@ export const runtime = 'edge';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const title = searchParams.get('title') ?? 'Documentation';
+  const name = searchParams.get('name') ?? 'Bricks';
   const description = searchParams.get('description') ?? '';
-  const section = searchParams.get('section') ?? 'Docs';
-  const fontSize = title.length > 40 ? 48 : title.length > 25 ? 56 : 64;
+  const count = searchParams.get('count') ?? '';
+
+  const fontSize = name.length > 40 ? 48 : name.length > 25 ? 56 : 64;
   const truncatedDesc = description.length > 120 ? `${description.slice(0, 120)}...` : description;
 
   return new ImageResponse(
@@ -50,6 +51,7 @@ export async function GET(req: NextRequest) {
           }}
         />
       ))}
+
       <div
         style={{
           display: 'flex',
@@ -61,11 +63,67 @@ export async function GET(req: NextRequest) {
       >
         <span style={{ color: '#6366f1', fontSize: 13, letterSpacing: '0.12em' }}>NACHUI</span>
         <span style={{ color: '#3f3f46', fontSize: 13 }}>/</span>
-        <span style={{ color: '#52525b', fontSize: 13, letterSpacing: '0.08em' }}>
-          {section.toUpperCase()}
-        </span>
+        <span style={{ color: '#52525b', fontSize: 13, letterSpacing: '0.08em' }}>BRICKS</span>
       </div>
-      <div style={{ width: 44, height: 2, backgroundColor: '#6366f1', marginBottom: 36 }} />
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          marginBottom: 28,
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: '#0f172a',
+            border: '1px solid #1e3a5f',
+            borderRadius: 6,
+            padding: '4px 12px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+          }}
+        >
+          <div style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#38bdf8' }} />
+          <span
+            style={{
+              color: '#38bdf8',
+              fontSize: 12,
+              fontFamily: 'monospace',
+              letterSpacing: '0.1em',
+            }}
+          >
+            UI COMPONENTS
+          </span>
+        </div>
+        {count && (
+          <div
+            style={{
+              backgroundColor: '#18181b',
+              border: '1px solid #3f3f46',
+              borderRadius: 6,
+              padding: '4px 12px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <span
+              style={{
+                color: '#71717a',
+                fontSize: 12,
+                fontFamily: 'monospace',
+                letterSpacing: '0.08em',
+              }}
+            >
+              {count} COMPONENTS
+            </span>
+          </div>
+        )}
+      </div>
+
+      <div style={{ width: 44, height: 2, backgroundColor: '#6366f1', marginBottom: 32 }} />
+
       <div
         style={{
           fontSize,
@@ -78,8 +136,9 @@ export async function GET(req: NextRequest) {
           fontFamily: 'sans-serif',
         }}
       >
-        {title}
+        {name}
       </div>
+
       {truncatedDesc && (
         <div
           style={{
@@ -93,6 +152,7 @@ export async function GET(req: NextRequest) {
           {truncatedDesc}
         </div>
       )}
+
       <div
         style={{
           position: 'absolute',
@@ -105,7 +165,9 @@ export async function GET(req: NextRequest) {
           fontFamily: 'monospace',
         }}
       >
-        <span style={{ color: '#3f3f46', fontSize: 13, letterSpacing: '0.05em' }}>nachui.tech</span>
+        <span style={{ color: '#3f3f46', fontSize: 13, letterSpacing: '0.05em' }}>
+          nachui.tech/bricks
+        </span>
         <div style={{ display: 'flex', gap: 7 }}>
           {[true, false, false].map((accent, i) => (
             <div
