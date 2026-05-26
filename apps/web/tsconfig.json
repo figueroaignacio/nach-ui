@@ -22,6 +22,10 @@
       }
     ],
     "paths": {
+      "@/components/*": ["./src/shared/components/*"],
+      "@/hooks/*": ["./src/shared/hooks/*"],
+      "@/lib/*": ["./src/shared/lib/*"],
+      "@/types/*": ["./src/shared/types/*"],
       "@/*": ["./src/*"],
       "@repo/ui/src/*": ["../../packages/ui/src/*"],
       "content-collections": ["./.content-collections/generated"]

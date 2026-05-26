@@ -8,7 +8,7 @@ export interface DocSection {
   items: DocItem[];
 }
 
-export interface Navigation extends DocItem {}
+export type Navigation = DocItem;
 
 export interface SearchResultItem {
   title: string;

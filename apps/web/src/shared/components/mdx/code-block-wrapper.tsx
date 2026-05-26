@@ -1,11 +1,8 @@
 'use client';
 
-// Hooks
+import { Button } from '@repo/ui/components/button';
 import { useTranslations } from 'next-intl';
 import { cloneElement, useState } from 'react';
-
-// Components
-import { Button } from '@repo/ui/components/button';
 
 interface CodeBlockProps {
   expandButton?: React.ReactNode;
@@ -17,10 +14,7 @@ interface CodeBlockWrapperProps {
   expandButtonTitle?: string;
 }
 
-export function CodeBlockWrapper({
-  children,
-  expandButtonTitle = 'Expandir',
-}: CodeBlockWrapperProps) {
+export function CodeBlockWrapper({ children }: CodeBlockWrapperProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const t = useTranslations('components.codeblockWrapper');
 
