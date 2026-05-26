@@ -111,6 +111,7 @@ export async function generateMetadata({
   ogUrl.searchParams.set('title', metaTitle);
   ogUrl.searchParams.set('description', metaDescription);
   ogUrl.searchParams.set('section', section);
+
   return {
     title: metaTitle,
     description: metaDescription,
