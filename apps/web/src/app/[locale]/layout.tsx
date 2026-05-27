@@ -63,24 +63,24 @@ export const metadata: Metadata = {
     default: 'NachUI',
     template: `NachUI - %s`,
   },
-  description: 'Next-generation React components built for performance.',
+  description: 'A React design system toolkit with zero wrappers and full code ownership.',
   openGraph: {
     title: 'NachUI',
-    description: 'Next-generation React components built for performance.',
+    description: 'A React design system toolkit with zero wrappers and full code ownership.',
     siteName: 'NachUI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'NachUI',
-    description: 'Next-generation React components built for performance.',
+    description: 'A React design system toolkit with zero wrappers and full code ownership.',
   },
   other: {
     'application/ld+json': JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'SoftwareApplication',
       name: 'NachUI',
-      description: 'Next-generation React components built for performance.',
+      description: 'A React design system toolkit with zero wrappers and full code ownership.',
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'Web',
     }),
