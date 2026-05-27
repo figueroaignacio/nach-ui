@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: Welcome to the official NachUI documentation.
+description: Learn how to build, customize, and own your React design system with NachUI.
 published: true
 toc:
   visible: true
@@ -10,24 +10,24 @@ locale: 'en'
 
 ## Build UIs. Keep Control.
 
-Standard component libraries work until you need custom behavior. Then come wrappers, style overrides, and broken consistency.
+NachUI is a design system toolkit, not a packaged component library. We give you the raw source code so you have complete control over your design primitives.
 
-NachUI solves this. We give you **the actual source code**. You own the components, design tokens, and patterns. Extend them without limits.
+Conventional UI libraries work until you need custom behavior. Then you're stuck writing hacky wrappers, overriding styles, and fighting `node_modules`. NachUI solves this by shipping the actual source code directly to your repository. You own the components, the design tokens, and the patterns. Customize them however you want, without limits.
 
-- **Full Ownership**: Code lives in your project. Nothing hidden.
-- **Open Code**: Every line transparent, editable, auditable.
-- **Unified Design**: Components follow strict visual rules.
-- **Compound Components**: Semantic API via dot-notation (`<Card.Header>`). Maximum flexibility.
-- **CLI Distribution**: Install components via single command. Code copies direct to your repo.
-- **AI-Native**: Standardized patterns built for AI code generation.
+- **Full Ownership**: The component code is copied directly into your repository, giving you total freedom to refactor, debug, and customize it without waiting for upstream package updates.
+- **Open Code**: With no compiled files or black-box dependencies, you can audit, trace, and modify every line of CSS and React to match your security and performance standards.
+- **Unified Design**: Standardized design tokens ensure every component you copy shares the same typography, colors, and layout structure, keeping your UI consistent across pages.
+- **Compound Components**: Compose complex interfaces using modular dot-notation (like `<Card.Header>`), keeping your JSX readable and avoiding monolithic components cluttered with endless boolean flags.
+- **CLI Distribution**: Use our command-line utility to pull clean component source files into your project instantly, bypassing npm package management entirely.
+- **AI-Native**: Structured patterns and clean code allow AI coding assistants to easily read, extend, and refactor your components to match new requirements without breaking style integrity.
 
-## Why Open Source?
+## Code Ownership over npm Dependencies
 
-Adding a NachUI component means the source code becomes yours.
+Adding a NachUI component means the source code becomes yours. You work directly with clean, readable code that fits your exact requirements.
 
-- Inspect, audit, modify everything.
-- Change APIs or internal structures without restrictions.
-- No vendor lock-in. No waiting for upstream PRs.
+- Inspect, audit, and modify every single hook and style.
+- Change APIs or internal state structures without restrictions.
+- No vendor lock-in and no waiting for upstream PR merges.
 
 Work directly with the code you need.
 
@@ -58,15 +58,9 @@ Avoid monolithic components with endless boolean flags. Compose UI using semanti
 - **Focused Typings**: Sub-components have specific props. Clean TypeScript autocomplete.
 - **Implicit State**: Parent shares context with children automatically.
 
-## Built for AI
+## AI-Native by Design
 
-NachUI accelerates AI-assisted development.
-
-- Open, readable code.
-- Repeatable patterns. AI follows without ambiguity.
-- AI extends your Design System without breaking coherence.
-
-Build faster. Keep ownership.
+Because every component lives directly in your repository as plain React and CSS code, AI agents can read, extend, and refactor your design system just like any other file in your project. There are no black-box node_modules hiding the implementation. The clean, standardized patterns ensure your AI coding assistant can generate new views and variations that perfectly match your design system's rules without losing coherence.
 
 ## Everything you need to know
 
