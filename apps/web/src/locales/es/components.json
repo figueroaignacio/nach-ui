@@ -100,8 +100,8 @@
   },
   "landingLogoCta": {
     "version": "v1.0",
-    "line1": "Componentes preconstruidos. Totalmente tuyos.",
-    "line2": "Hecho para React moderno.",
+    "line1": "Código fuente en tu repositorio.",
+    "line2": "Sin wrappers en node_modules.",
     "primaryAction": "Comenzar",
     "secondaryAction": "Ver componentes",
     "license": "MIT"

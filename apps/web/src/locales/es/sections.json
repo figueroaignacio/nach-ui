@@ -1,9 +1,9 @@
 {
   "home": {
     "badge": "Presentando NachUI v1",
-    "subheading1": "Crea interfaces que tus usuarios recuerden.",
-    "subheading2": "Hermoso. Rápido. Accesible.",
-    "description": "Una colección de componentes de React de élite diseñada para creadores que se niegan a conformarse con interfaces genéricas. Copia, pega y lanza interfaces de nivel de producción en minutos.",
+    "subheading1": "Tu sistema de diseño. En tu repositorio.",
+    "subheading2": "Sin wrappers. Escrito desde cero.",
+    "description": "Deja de importar librerías de UI infladas. NachUI copia componentes compuestos de React directamente a tu base de código mediante una CLI. Totalmente tuyos, totalmente editables.",
     "github": "Código abierto, el código es tuyo",
     "actions": [
       {
@@ -92,7 +92,7 @@
   "bricks": {
     "title": "Deja de construir desde cero.",
     "subtitle": "Copia. Pega. Lanza.",
-    "description": "Componentes de React de nivel de producción diseñados para creadores. Cero dependencias. Código limpio y accesible, listo para tu próximo proyecto.",
+    "description": "Plantillas de React listas para producción. Cero dependencias, cero wrappers. Código compuesto y limpio copiado directamente a tu proyecto.",
     "actions": [
       {
         "label": "Leer Documentación",
@@ -135,7 +135,7 @@
     "sitemap": "Mapa del sitio"
   },
   "faq": {
-    "title": "Propiedad, Control y Cero 'AI Slop'",
+    "title": "Propiedad, Control y Código Transparente",
     "items": [
       {
         "question": "¿Por qué no es un paquete npm?",
@@ -159,7 +159,7 @@
       },
       {
         "question": "¿Cómo funciona con herramientas de IA como Cursor o Claude?",
-        "answer": "NachUI es nativo para la IA. Al ser código abierto y visible en tu repositorio, los asistentes de IA pueden leerlo, entenderlo y modificarlo directamente, facilitando una colaboración sin fricciones."
+        "answer": "Dado que cada componente se copia directamente en tu repositorio, los asistentes de IA pueden leer, extender y refactorizar tu sistema de diseño como cualquier otro archivo local. Sin cajas negras."
       },
       {
         "question": "¿Es accesible?",

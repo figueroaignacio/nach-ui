@@ -1,9 +1,9 @@
 {
   "home": {
     "badge": "Introducing NachUI v1",
-    "subheading1": "Build UI that users remember.",
-    "subheading2": "Beautiful. Fast. Accessible.",
-    "description": "An elite collection of React components designed for builders who refuse to settle for generic 'AI slop'. Copy, paste, and ship production-grade interfaces in minutes.",
+    "subheading1": "Your design system. In your repository.",
+    "subheading2": "Zero wrappers. Built from scratch.",
+    "description": "Stop importing bloated UI packages. NachUI copies compound React components directly into your codebase via a CLI. Fully yours, fully editable.",
     "github": "Open source, the code is yours",
     "actions": [
       {
@@ -92,7 +92,7 @@
   "bricks": {
     "title": "Stop building from scratch.",
     "subtitle": "Copy. Paste. Ship.",
-    "description": "Production-grade React components designed for builders. Zero dependencies. No 'AI slop'. Just clean, accessible code ready for your next project.",
+    "description": "Production-ready React layouts designed for builders. Zero dependencies, zero wrappers. Clean, compound components copy-pasted directly to your project.",
     "actions": [
       {
         "label": "Read the Docs",
@@ -135,7 +135,7 @@
     "sitemap": "Sitemap"
   },
   "faq": {
-    "title": "Ownership, Control, and No 'AI Slop'",
+    "title": "Ownership, Control, and Transparent Code",
     "items": [
       {
         "question": "Why isn't this an npm package?",
@@ -159,7 +159,7 @@
       },
       {
         "question": "How does it work with AI tools like Cursor or Claude?",
-        "answer": "NachUI is AI-native. Since the source code is visible in your repository, AI assistants can read, understand, and modify it directly. It enables seamless collaboration without 'black box' confusion."
+        "answer": "Because every component is copied directly into your repository, AI coding assistants can read, extend, and refactor your design system like any other local file. No black boxes."
       },
       {
         "question": "Is it accessible?",

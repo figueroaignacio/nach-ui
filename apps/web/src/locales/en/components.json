@@ -100,8 +100,8 @@
   },
   "landingLogoCta": {
     "version": "v1.0",
-    "line1": "Pre-built components. Fully yours.",
-    "line2": "Built for modern React.",
+    "line1": "Source code in your repo.",
+    "line2": "No node_modules wrapper.",
     "primaryAction": "Get started",
     "secondaryAction": "Browse components",
     "license": "MIT"

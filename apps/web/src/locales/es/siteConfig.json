@@ -1,6 +1,6 @@
 {
-  "title": "Componentes UI accesibles y personalizables para aplicaciones web profesionales. ",
-  "description": "Construidos con estándares de accesibilidad y diseñados para adaptarse a cualquier sistema de diseño.",
+  "title": "Componentes de React que realmente te pertenecen.",
+  "description": "Un sistema de diseño React desde cero. Copia componentes compuestos directamente a tu repo con nuestra CLI. Sin wrappers de npm ni dependencias.",
   "openGraph": {
     "type": "website",
     "siteName": "NachUI",
@@ -9,7 +9,7 @@
         "url": "/opengraph-image",
         "width": 1200,
         "height": 630,
-        "alt": "Componentes UI accesibles y personalizables para aplicaciones web profesionales. "
+        "alt": "Un sistema de diseño React desde cero. Copia componentes compuestos directamente a tu repo con nuestra CLI. Sin wrappers de npm ni dependencias."
       }
     ]
   },

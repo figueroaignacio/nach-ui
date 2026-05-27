@@ -1,6 +1,6 @@
 {
-  "title": "Accessible and customizable UI components for professional web applications.",
-  "description": "Built with accessibility standards and designed to adapt to any design system.",
+  "title": "Design system components you actually own.",
+  "description": "React design system components copy-pasted directly into your repository. Zero dependencies, no npm wrappers.",
   "openGraph": {
     "type": "website",
     "siteName": "NachUI",
@@ -9,7 +9,7 @@
         "url": "/opengraph-image",
         "width": 1200,
         "height": 630,
-        "alt": "Accessible and customizable UI components for professional web applications."
+        "alt": "React design system components copy-pasted directly into your repository. Zero dependencies, no npm wrappers."
       }
     ]
   },
