@@ -33,9 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((doc) => doc.published)
     .flatMap((doc) => {
       return locales.map((locale) => {
-        const localizedDoc = docs.find(
-          (d) => d.locale === locale && d.slug === doc.slug.replace(/\/(es|en)\//, `/${locale}/`),
-        );
+        const localizedDoc = docs.find((d) => d.locale === locale && d.slug === doc.slug);
         const slugPath = localizedDoc?.slugAsParams || doc.slugAsParams || '';
 
         return entry(locale, `/docs/${slugPath}`, {
@@ -50,9 +48,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((post) => post.published)
     .flatMap((post) => {
       return locales.map((locale) => {
-        const localizedPost = posts.find(
-          (p) => p.locale === locale && p.slug === post.slug.replace(/\/(es|en)\//, `/${locale}/`),
-        );
+        const localizedPost = posts.find((p) => p.locale === locale && p.slug === post.slug);
         const slugPath = localizedPost?.slugAsParams || post.slugAsParams || '';
 
         return entry(locale, `/blog/${slugPath}`, {
