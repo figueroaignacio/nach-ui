@@ -10,7 +10,7 @@ import { Flex } from '@repo/ui/layout/flex';
 import { Grid } from '@repo/ui/layout/grid';
 import { Stack } from '@repo/ui/layout/stack';
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -74,14 +74,15 @@ export default async function BricksPage({ params }: PageProps) {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'sections.bricks' });
   const canonicalUrl = getAbsoluteUrl(locale, '/bricks');
 
   return {
-    title: 'Bricks - NachUI',
-    description: 'Explore ready-to-use UI components and blocks for your next project.',
+    title: 'Bricks',
+    description: t('description'),
     openGraph: {
-      title: 'Bricks - NachUI',
-      description: 'Explore ready-to-use UI components and blocks for your next project.',
+      title: 'Bricks | NachUI',
+      description: t('description'),
       type: 'website',
       locale,
       url: canonicalUrl,
@@ -91,14 +92,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: getAbsoluteUrl(locale, '/images/og/og-bricks.png'),
           width: 1200,
           height: 630,
-          alt: 'Bricks - NachUI',
+          alt: 'Bricks | NachUI',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Bricks - NachUI',
-      description: 'Explore ready-to-use UI components and blocks for your next project.',
+      title: 'Bricks | NachUI',
+      description: t('description'),
       images: [getAbsoluteUrl(locale, '/images/og/og-bricks.png')],
     },
     alternates: {

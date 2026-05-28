@@ -113,6 +113,7 @@
   },
   "skillsList": {
     "title": "NachUI Skills",
+    "description": "Habilidades personalizadas de agentes de IA diseñadas para el ecosistema de componentes de NachUI.",
     "subtitle": "figueroaignacio/ui-skills · {count} skills",
     "searchLabel": "Buscar skills",
     "searchPlaceholder": "Buscar skills...",

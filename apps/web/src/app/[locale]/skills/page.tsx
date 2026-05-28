@@ -2,7 +2,7 @@ import { SkillsList } from '@/features/skills/components/skills-list';
 import { ContentRepository } from '@/lib/content-repository';
 import { buildAlternates, getAbsoluteUrl } from '@/lib/domains';
 import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -27,14 +27,15 @@ export default async function SkillsPage({ params, searchParams }: PageProps) {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'components.skillsList' });
   const canonicalUrl = getAbsoluteUrl(locale, '/skills');
 
   return {
-    title: 'Agent Skills',
-    description: 'Custom AI agent skills designed for the NachUI component library ecosystem.',
+    title: t('title'),
+    description: t('description'),
     openGraph: {
-      title: 'Agent Skills - NachUI',
-      description: 'Custom AI agent skills designed for the NachUI component library ecosystem.',
+      title: `${t('title')} | NachUI`,
+      description: t('description'),
       type: 'website',
       locale,
       url: canonicalUrl,
@@ -44,14 +45,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: getAbsoluteUrl(locale, '/images/og/og-skills.png'),
           width: 1200,
           height: 630,
-          alt: 'Agent Skills - NachUI',
+          alt: `${t('title')} | NachUI`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Agent Skills - NachUI',
-      description: 'Custom AI agent skills designed for the NachUI component library ecosystem.',
+      title: `${t('title')} | NachUI`,
+      description: t('description'),
       images: [getAbsoluteUrl(locale, '/images/og/og-skills.png')],
     },
     alternates: {
