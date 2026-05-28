@@ -46,6 +46,28 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
+    openGraph: {
+      title: `${post.title} | NachUI`,
+      description: post.description,
+      type: 'article',
+      locale,
+      url: canonicalUrl,
+      siteName: 'NachUI',
+      images: [
+        {
+          url: getAbsoluteUrl(locale, '/images/og/og-home.png'),
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${post.title} | NachUI`,
+      description: post.description,
+      images: [getAbsoluteUrl(locale, '/images/og/og-home.png')],
+    },
     alternates: {
       canonical: canonicalUrl,
       languages: buildAlternates(`/blog/${slugPath}`),
