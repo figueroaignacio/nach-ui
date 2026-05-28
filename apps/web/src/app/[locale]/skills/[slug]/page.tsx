@@ -75,10 +75,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const ogImageUrl = `${getAbsoluteUrl(locale, '/api/og/skills')}?name=${encodeURIComponent(skill.name)}&description=${encodeURIComponent(skill.description)}`;
 
   return {
-    title: `${skill.name} — NachUI Skills`,
+    title: skill.name,
     description: skill.description,
     openGraph: {
-      title: `${skill.name} — NachUI Skills`,
+      title: `${skill.name} | NachUI`,
       description: skill.description,
       type: 'article',
       locale,
@@ -89,13 +89,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: `${skill.name} — NachUI Skills`,
+          alt: `${skill.name} | NachUI`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${skill.name} — NachUI Skills`,
+      title: `${skill.name} | NachUI`,
       description: skill.description,
       images: [ogImageUrl],
     },

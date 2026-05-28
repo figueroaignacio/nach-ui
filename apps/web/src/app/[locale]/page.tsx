@@ -27,7 +27,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = getAbsoluteUrl(locale, '/');
 
   return {
-    title: t('title'),
+    title: {
+      absolute: `NachUI | ${t('title')}`,
+    },
     description: t('description'),
     openGraph: {
       title: t('title'),
